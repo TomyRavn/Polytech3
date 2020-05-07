@@ -3,8 +3,7 @@
 ---
 ### - 편집 공간 -
 #### 공가영
-![점심](./img/milk.jpg)
-![밥](./img/today mill.jpg)
+![점심](./img/today.jpg)
 ---
 #### 이강민
 ##### Test 작성
