@@ -6,7 +6,7 @@
 ---
 #### 이강민
 ##### Test 작성
-![러버덕](./Test_Temp/RubberDuck.jpg)
+![러버덕](./img/RubberDuck.jpg)
 ---
 #### 이소희
 ---
