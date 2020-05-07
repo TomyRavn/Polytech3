@@ -11,6 +11,7 @@
 ![러버덕](./img/RubberDuck.jpg)
 ---
 #### 이소희
+![dog](./img/dog.jpg)
 ---
 #### 정연서
 ---
