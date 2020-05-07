@@ -9,5 +9,5 @@
 2.
 3.
 ---
-![강아지](./img/dog.jpg)
+![dog](./img/dog.jpg)
 
