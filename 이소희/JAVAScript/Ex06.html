@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        var K = Number (prompt('국어 성적을 입력하세요'))
+
+        var M = Number (prompt('수학 성적을 입력하세요'))
+
+        var S = Number (prompt('과학 성적을 입력하세요'))
+
+        var grade = (K+M+S)/3
+
+        // var a = 1.1
+        // alert(a)
+        // a = parseInt(a)
+        // alert(a)
+        // 소수점 없이 점수를 나타내고 싶을 때! (Number 대신 쓴다?) a만 K,M,S 등으로 바꾸면 된다.
+
+        if(grade >= 95)
+            alert('A+')
+        else if (grade >= 90)
+            alert('A')
+        else if(grade >= 80)
+            alert('B')
+        else if(grade >= 70)
+            alert('c')
+        else if(grade >= 60)
+            alert('D')
+        else 
+            alert('F')
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
