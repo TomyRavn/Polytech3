@@ -68,7 +68,7 @@
 		2.
 		로그인 성공 링크를 클릭하면, "로그인 성공"이 출력되고,
 		로그인 실패 링크를 클릭하면, "로그인 실패"가 출력되도록,
-		링크를 현재 파일(param.html)에 추가<br />
+		링크를 현재 파일(param.html)에 추가(변하지 않는 값)<br />
 	</div>
 	<div>
 		a. <a href = "login.do?id=a001&pw=1234">로그인 성공</a>
@@ -79,12 +79,42 @@
 	<div>
 		3.
 		아이디와 비밀번호를 입력받아서 POST 방식으로 전송하는 폼을
-		현재 파일(param.html)에 추가<br />
+		현재 파일(param.html)에 추가(변하는 값 → 제일 많이 쓰임)<br />
 	</div>
 	<form action="login.do" method="post">
 		ID: <input type="text" name="id" />
 		PW: <input type="text" name="pw" />
 		<input type="submit" />
 	</form>
+	<hr />
+	<div>
+		4."1달러"링크를 클릭하면 http://localhost:8000/ex_web/exchange.do?dollar=1 주소로
+		요청을 전송하고, 화면에 "1달러=1216.90원"이라고 출력되도록 링크를 작성<br />
+		<a href = "exchange.do?dollar=1"><h3>1달러</h3></a>
+	</div>
+	<hr />
+	<div>
+		5.달러 금액을 입력받아서 GET 방식으로 전송하는 폼을 작성
+		<form action="exchange.do" method="get"> <!-- 기본이 get방식이므로 생략 가능 -->
+			달러: <input type="text" name="dollar" value="0"/> <!-- value로 기본값 설정 -->
+			<input type="submit" value="원화로 변환"/>	<!-- value로 제출칸 텍스트 변환 -->
+		</form>
+	</div>
+	<hr />
+	<div>
+		6.x,y,op 값을 입력받아 POST 방식으로 전송하는 폼을 작성(op값은 select 엘리먼트 사용하여 입력)
+		<form action="cal.do" method="post">
+			x: <input type="text" name="x">
+			op: <select name="op">
+					<option value="plu">+ (plu)</option>
+					<option value="min">- (min)</option>
+					<option value="mul">* (mul)</option>
+					<option value="div">/ (div)</option>
+				</select>
+			y: <input type="text" name="y">
+			<input type="submit" value="계산"/>
+		</form>
+	</div>
+	<hr />
 </body>
 </html>
