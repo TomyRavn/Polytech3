@@ -1,0 +1,42 @@
+package com.exam;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/login.do")
+
+public class LoginServlet extends HttpServlet{
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
+	public static void main(String[] args) {
+		String id = "a001";
+		String pw = "1234";
+		
+		String inputId;
+		String inputPw;
+		
+		System.out.print("ID를 입력하세요 > ");
+		inputId = sc.nextLine();
+		System.out.print("비밀번호를 입력하세요 > ");
+		inputPw = sc.nextLine();
+			
+		if(inputId.equals(id)) {
+			if(inputPw.equals(pw)) {
+				System.out.println("로그인 성공");
+				}
+			else {
+				System.out.println("로그인 실패");
+				}
+		} else {
+			System.out.println("존재하지 않는 ID입니다");
+		}
+	}
+}

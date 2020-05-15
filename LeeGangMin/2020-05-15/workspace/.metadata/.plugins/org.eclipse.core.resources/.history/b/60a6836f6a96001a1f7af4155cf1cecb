@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파라미터 테스트</title>
+</head>
+<body>
+	<h1>파라미터를 포함한 요청을 보내는 방법</h1>
+	<h2>1.웹 브라우저의 주소창에 주소와 파라미터를 직접 입력(GET방식 요청)</h2>
+	<div>http://서버컴퓨터주소:포트번호/요청파일경로?파라미터이름=파라미터값&파라미터이름=파라미터값,...</div>
+	<!--예시 : http://localhost:8000/ex_web/hello.do?a=%ED%8F%AC%EB%A1%9C%EB%A6%AC&b=%EB%84%88%EB%B6%80%EB%A6%AC-->
+	
+	<h2>2. 링크를 클릭하여 href 속성의 주소로 요청 전송(GET방식 요청)</h2>
+	<div>
+		<!-- 절대경로 : <a href = "http://localhost:8000/ex_web/hello.do?a=포로리&b=너부리">HelloServelt 실행 링크 ← 이 링크를 클릭하면 이동</a> -->
+		<!-- 상대경로(중복되는 절대 경로의 생략;현재폴더) -->
+		<a href = "hello.do?a=포로리&b=너부리">HelloServlet 실행 링크 ← 이 링크를 클릭하면 이동</a>
+		<!-- 단점 : 파라미터 값이 항상 똑같음 = html파일 수정이 필요 -->
+		<!-- 사용자가 원할 때마다 파라미터 값 다르게 = html의 form? 과 같은 태그 이용 -->
+	</div>
+	
+	<h2>3.form 내부의 submit 버튼을 클릭하여 action 속성의 주소로 요청 전송</h2>
+		<form action="hello.do">
+			<!-- type 태그 : 입력받을 파라미터 -->
+			<label for="ina">a:</label><input type="text" name="a" placeholder="a를 입력하시오" id="ina"/>
+			<!-- name 태그 : 여기 입력받은 값을 파라미터값으로 -->
+			
+			<!-- type 태그 : 입력받을 파라미터 -->
+			b: <input type="text" name="b" placeholder="b를 입력하시오"/>
+			<!-- name 태그 : 여기 입력받은 값을 파라미터값으로-->	
+			
+			<input type="submit" />	<!-- submit:action에 지정한 주소로 이동하겠다. 파라미터 제외한 주소 지정 -->
+		</form>
+		
+	<div>다양한 요청방식(==HTTP메소드 ==HTTP커맨드)이 존재 : GET,POST,PUT,DELETE,...</div>
+	<div>form 엘리먼트의 method 속성으로 요청방식 지정 가능</div>
+	
+	<h3>GET 방식 요청 폼</h3>
+	<form action="hello.do" method="get">
+		a: <input type="text" name="a" />
+		b: <input type="text" name="b" />
+		<input type="submit" />
+	</form>
+	
+	<h3>POST 방식 요청 폼</h3>
+	<div>
+		장점 : 파라미터가 주소뒤에 붙어서 전송되지 않고,
+		요청메시지 본문에 포함되어 전송되므로,
+		브라우저 주소표시줄에 보이지 않는다
+		파라미터 값의 용량(글자 수) 제한이 없다.
+	</div>
+	<form action="hello.do" method="post">
+		a: <input type="text" name="a" />
+		b: <input type="text" name="b" />
+		<input type="submit" />
+	</form>
+	<hr />
+	<div>
+		1. 웹브라우저 주소창에
+		http://localhost:8000/ex_web/login.do?id=a001&pw=1234
+		를 입력하고 요청을 보내면 로그인 성공이 출력되고,
+		id 파라미터 값이 a001 이 아니면 "존재하지 않는 ID입니다"라고 출력<br />
+		id 파라미터 값이 a001이고 pw 파라미터 값이 "1234"가 아니면,
+		"로그인 실패"라고 출력되도록 LoginServlet.java 서블릿 클래스 파일을 작성<br />
+		2.
+		로그인 성공 링크를 클릭하면, "로그인 성공"이 출력되고,
+		로그인 실패 링크를 클릭하면, "로그인 실패"가 출력되도록,
+		링크를 현재 파일(param.html)에 추가<br />
+		3.
+		아이디와 비밀번호를 입력받아서 POST 방식으로 전송하는 폼을
+		현재 파일(param.html)에 추가<br />
+	</div>
+	<div>
+		<a href = "login.do?id=a001&pw=1234">로그인 성공 링크</a>
+		<a href = "login.do?id=a001&pw=1235">로그인 실패 링크</a>
+	</div>
+</body>
+</html>

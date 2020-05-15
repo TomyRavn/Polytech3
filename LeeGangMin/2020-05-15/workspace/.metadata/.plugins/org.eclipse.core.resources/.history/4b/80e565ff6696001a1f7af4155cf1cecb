@@ -1,0 +1,55 @@
+package com.exam;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/login.do")
+public class LoginServlet extends HttpServlet{
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		String id = req.getParameter("a001");
+		String pw = req.getParameter("1234");
+		
+		String inputId=null;
+		String inputPw=null;
+		
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("UTF-8");
+		PrintWriter out = resp.getWriter();
+		
+		//HTML 파일 복사 붙여넣기
+		out.println("<!DOCTYPE html>                  	  ");
+		out.println("<html>                           	  ");
+		out.println("<head>                           	  ");
+		out.println("<meta charset='UTF-8'>           	  ");
+		out.println("<title>Insert title here</title> 	  ");
+		out.println("</head>                          	  ");
+		out.println("<body>                           	  ");
+		out.println("<h1></h1>    		  ");
+//		out.println("<h1>ID를 입력하세요 > </h1>    		  ");
+//		out.println("<h1>비밀번호를 입력하세요 > </h1>	      ");
+		out.println("</body>                          	  ");
+		out.println("</html>                          	  ");
+		
+//		if(inputId.equals(id)) {
+//			if(inputPw.equals(pw)) {
+//				System.out.println("로그인 성공");
+//				}
+//			else {
+//				System.out.println("로그인 실패");
+//				}
+//		} else {
+//			System.out.println("존재하지 않는 ID입니다");
+//		}
+	}
+}
