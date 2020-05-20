@@ -1,5 +1,5 @@
 
-public class Ex05_별출력 {
+public class Ex05_별다섯개씩출력 {
 
 	public static void main(String[] args) {
 	

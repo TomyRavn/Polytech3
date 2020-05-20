@@ -1,5 +1,5 @@
 
-public class Ex01_10까지의합 {
+public class Ex01_10까지의합_기본 {
 
 	public static void main(String[] args) {
 		
