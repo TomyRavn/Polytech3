@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //기본 TIP
+        //1.
+        // var a = Math.random();
+        // alert(a);
+        //2.
+        // b = [];
+        // b.push(a);
+        // b.push(a);
+        // alert(b);
+
+
+        //로또 번호 45번까지 중복없이 배열하기
+        num = [];
+        var temp;
+        var duplicate = Boolean();
+
+        for(var i = 0; i < 6; i++){
+            duplicate = true;
+
+            while(duplicate){
+                temp = parseInt(Math.random()*45 + 1);
+                duplicate = false;
+
+                for(var j = 0; j < i; j++){
+
+                    if(temp == num[j]){
+                        duplicate = true;
+                        break;
+                    }
+                }
+
+            }
+            num.push(temp);
+        }
+        
+
+        alert(num);
+    </script>
+</body>
+</html>
