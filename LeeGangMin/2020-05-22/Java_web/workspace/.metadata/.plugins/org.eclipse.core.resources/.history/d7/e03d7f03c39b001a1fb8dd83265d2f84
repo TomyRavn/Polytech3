@@ -1,0 +1,27 @@
+package kr.ac.kopo.exapp;
+import java.util.Scanner;
+
+public class ListPro {
+	public static void main(String[] args) {
+		
+		boolean flag = true;
+		
+		while (flag) {
+			System.out.println("1.목록  2.추가  3.삭제  4.종료");
+			Scanner sc = new Scanner(System.in);
+			String menu = sc.nextLine();
+			switch(menu) {
+			case "1":
+				break;
+			case "2":
+				break;
+			case "3":
+				break;
+			case "4"
+			break;
+			default:
+			}
+		}
+		
+	}
+}
