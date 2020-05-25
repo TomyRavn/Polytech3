@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            position: absolute;                 /*절대 위치 ; 0,0부터 위치를 정함(왼쪽 위가 0,0)*/
+            top: 70px;
+            left: 60px;                         /*위에서 70px, 왼쪽에서 60px 떨어진 부분에서 그리기*/
+            width: 100px;
+            height: 60px;
+            border: 2px solid green;          
+            text-align: center;                 /*가로 중앙 정렬?*/
+            line-height: 60px;                  /*줄 간격*/
+            background-color: lightblue;
+        }
+        .box:hover {    /* ':형식 -> 15도 만큼 회전' */
+            /*웹킷, 모질라와 같은 것들이 접두어*/
+            -webkit-transform: rotate(15deg);   /*웹킷*/
+            -moz-transform: rotate(15deg);      /*모질라*/
+            -o-transform: rotate(15deg);        /*오페라*/
+            -ms-transform: rotate(15deg);       /*마이크로소프트*/
+            transform: rotate(15deg);           /*이것 저것 여러가지*/
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Mouse Over</div>
+</body>
+</html>
