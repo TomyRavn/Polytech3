@@ -1,0 +1,30 @@
+install.packages ("sets")
+library(sets)
+sets_options(“"universe”", seq(from = 0, to = 20, by = 0.1))
+variables <-
+set(
+x = fuzzy_variable(
+BP_low = fuzzy_trapezoid(corners = c(-2, 0, 5, 9)),
+BP_normal = fuzzy_trapezoid(corners = c(7, 10, 10 , 14)),
+BP_high = fuzzy_trapezoid(corners = c(12, 15, 20, 25))),
+y = fuzzy_variable(
+WT_normal = fuzzy_trapezoid(corners = c(-2, 0, 5, 15)),
+WT_over = fuzzy_trapezoid(corners = c(5, 15, 20, 25))),
+z = fuzzy_variable(
+IS_preferred = fuzzy_trapezoid(corners = c(-2, 0, 5, 8)),
+IS_standard = fuzzy_trapezoid(corners = c(6, 8, 12 , 14)),
+IS_decline = fuzzy_trapezoid(corners = c(12, 15, 20, 25)))
+)
+rules <-set(
+fuzzy_rule(x %is% BP_normal && y %is% WT_over, z %is% IS_standard),
+fuzzy_rule(x %is% BP_low || y %is% WT_normal, z %is% IS_preferred),
+fuzzy_rule(x %is% BP_high, z %is% IS_decline)
+)
+system <- fuzzy_system(variables, rules)
+print(system)
+plot(system)
+
+fi <- fuzzy_inference(system, list(x = 6, y = 7))
+plot(fi)
+
+gset_defuzzify(fi, "centroid")
