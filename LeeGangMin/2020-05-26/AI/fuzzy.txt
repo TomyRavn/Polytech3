@@ -1,7 +1,8 @@
-install.packages ("sets")
+install.packages ("sets")	//퍼지를 계산하기 위해 함수를 import(sets라고 이미 만들어짐), 라이브러리에 가져올래?
+			//미러에서 가져옴?
 library(sets)
-sets_options(“"universe”", seq(from = 0, to = 20, by = 0.1))
-variables <-
+sets_options("universe", seq(from = 0, to = 20, by = 0.1))
+variables <-		//퍼지 집합 설계
 set(
 x = fuzzy_variable(
 BP_low = fuzzy_trapezoid(corners = c(-2, 0, 5, 9)),
@@ -15,11 +16,14 @@ IS_preferred = fuzzy_trapezoid(corners = c(-2, 0, 5, 8)),
 IS_standard = fuzzy_trapezoid(corners = c(6, 8, 12 , 14)),
 IS_decline = fuzzy_trapezoid(corners = c(12, 15, 20, 25)))
 )
-rules <-set(
+//버전 문제 경고 메시지 출력 -> 무시
+rules <-set(		//룰 구축
 fuzzy_rule(x %is% BP_normal && y %is% WT_over, z %is% IS_standard),
 fuzzy_rule(x %is% BP_low || y %is% WT_normal, z %is% IS_preferred),
 fuzzy_rule(x %is% BP_high, z %is% IS_decline)
 )
+
+//출력
 system <- fuzzy_system(variables, rules)
 print(system)
 plot(system)
@@ -27,4 +31,4 @@ plot(system)
 fi <- fuzzy_inference(system, list(x = 6, y = 7))
 plot(fi)
 
-gset_defuzzify(fi, "centroid")
+gset_defuzzify(fi, "centroid")	//그래프에 나온 면적의 반
