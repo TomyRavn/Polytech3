@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <script>
+            //1
+           var lotto =new Array(6);
+           var count = 0;
+           var mFlag = true;
+           
+           while(count <6){   
+
+                  var a = parseInt(Math.random()*45)+1;
+
+                  for(var i=0; i<count; i++){
+                      if(lotto[i] == a) mFlag=flase;
+                      
+                  }
+                  if(mFlag){
+                      lotto[count] =a;
+                        count++;
+                  }
+
+                  mFlag=true;
+           }
+                          
+            alert(lotto)
+         
+
+
+        </script>
+
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>
