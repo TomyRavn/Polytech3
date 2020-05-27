@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    .box{
+        position: absolute; /*절대자리*/
+        top: 70px;
+        left: 60px;
+        width: 100px;
+        height: 60px;
+        top: 70px;
+        border: 2px solid #9696FF;
+        text-align: center;
+        line-height: 60px;
+        background-color: #EBFBFF;
+
+    }
+        .box:hover{  
+        -webkit-transition: rotate(15deg);
+        -moz-transform: rotate(15deg);
+        -o-transform: rotate(15deg);
+        -ms-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+</style>
+</head>
+<body>
+   <div class="box">Mouse Over</div>
+</body>
+</html>
