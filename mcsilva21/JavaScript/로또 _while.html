@@ -6,37 +6,35 @@
     <title>Document</title>
 </head>
 <script>
-    lotto=[]
+function lotto(){
+        lotto=[];
+
     while(true){
-        var temp = parseInt(Math.random()*45+1)
+        var temp = parseInt(Math.random()*45+1);
         if(lotto.length == 0){
-            lotto.push(temp)
+            lotto.push(temp);
         }
         else {
-           var count = 0
             for(var j = 0; j < lotto.length; j++){
                 if (lotto[j] == temp){
-                   count =count+1              
+                   break;            
             }
-        }
-            if (count == 0){
-                lotto.push(temp)
+        
+            if (j == lotto.length-1){
+                lotto.push(temp);
             }
         }
 
     }
-        if(lotto.length == 6){
-        break
+        if(lotto.length == 10){
+        break;
      }
-      
-        alert(lotto)
-    
+    }
+        alert(lotto);
+    }
 
-
-</script>
-
-
-
+    lotto(); 
+    </script>
 
 <body>
     
