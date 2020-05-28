@@ -1,0 +1,37 @@
+package kr.ac.kopo.exapp;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class ListPro {
+	private static final String ArrayList<String> list  = null;
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		boolean flag = true;
+		ArrayList<String> list = new ArrayList<String>();
+		while (flag) {
+			
+			System.out.println("1.목록  2.추가  3.삭제  4.종료");
+			String menu = sc.nextLine();
+			
+			switch(menu) {
+			case "1":
+				
+				break;
+			case "2":
+				
+				break;
+			case "3":
+				
+				break;
+			case "4":
+				
+				break;
+				
+			default:
+			}
+		}
+		
+	}
+}

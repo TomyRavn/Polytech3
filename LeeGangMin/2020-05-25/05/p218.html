@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color:blue; /*태그 스타일 : 3(우선순위)*/
+        }
+        #habor{
+            color: green; /*아이디 스타일 : 1*/
+            border: 1px solid gray; /*선 추가, 회색으로 이어지는 네모 선*/ 
+            padding: 10px;  /*선하고 글씨 사이를 10px만큼 다 띄어주는 역할*/
+        }
+        .heading{
+            color:red; /*클래스 스타일 : 2*/
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading" id="habor">세계 3대 미항</h1>
+    <img src="img/sydney.jpg" alt="브라질 리우데자네이루">
+    <p>시드니(Sydney), 호주</p>
+    <p>리우데자네이루(Rio de Janeiro), 브라질</p>
+    <p>나폴리(Naples), 이탈리아</p>
+</body>
+</html>

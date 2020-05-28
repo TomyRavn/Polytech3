@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.배열
+
+        //var a = ['a','b','c','d','e'];
+        //alert(a[0]);
+
+        // for(var i = 0; i < 5; i++){
+        //     alert(a[i]);
+        // }
+
+        //2.정렬1
+        // var num = [5,2,9,4,1,10,9,4,0,3,8];
+        // var temp = num;
+
+        // var tempNum = num[0];
+        // for(var i = 0; i < num.length; i++){
+            
+        //     for(var j = 0; j < num.length; j++){
+
+        //         if(num[i] < num[j]){
+        //              tempNum = num[i];
+        //              num[i] = num[j];
+        //              num[j] = tempNum;
+        //         }
+        //     }
+            
+        // }
+        // alert(num);
+        
+        //3.정렬2(버블 정렬)
+        // var a = [5,4,3,6,1,2,8,7,9,0,10,5];
+        // var temp;
+
+        // for(var j = 0; j < a.length-1; j++){        //-1을 안해도 지금 당장 문제가 생기진 않지만, 논리적으로 -1을 하는게 맞음
+        //     for(var i = 0; i < a.length-1; i++){
+
+        //         if(a[i] > a[i+1]){
+        //             temp = a[i];
+        //             a[i] = a[i+1];
+        //             a[i+1] = temp;
+        //         }
+
+        //     }
+        // }
+        // alert(a);
+        
+          //4.cf)
+        //var num = [5,2,4,10,9,0]
+        //alert(num.sort());  //10 넘어가면 무쓸모
+
+        //5.정렬3(선택 정렬)      //max_num을 뒤쪽으로 빼는 방식
+        var num = [5,2,4,10,9,0]
+        var max_num = 0;
+        temp = 0;
+
+        for(var i = num.length-1; i >= 0; i--){
+            max_num = i;
+
+            for(var j = i; j >= 0; j--){
+        
+                if(num[max_num] < num[j]){   //최소값을 찾은 경우 인덱스를 따로 저장
+                    max_num = j;
+                }
+
+            }
+            
+            temp = num[max_num];
+            num[max_num] = num[i];
+            num[i] = temp;
+
+        }
+
+        alert(num);
+
+        //6.정렬4(선택 정렬)      //min_num을 앞쪽으로 빼는 형식
+        // var num = [5,2,4,10,9,0];
+
+        // var temp = 0;
+        // var min_num = 0;
+
+        // //최소값을 처음으로 두어 빼는 반복문
+        // for(var j = 0; j < num.length; j++){
+        //     min_num = j;     //첫 값을 임의로 최소값으로 설정
+
+        //     //최소값을 찾아줌
+        //     for(var i = j+1; i < num.length; i++){
+        
+        //         if(num[min_num] > num[i]){   //최소값을 찾은 경우 인덱스를 따로 저장
+        //             min_num = i;
+        //         }
+        
+        //     }
+
+        //     //최소값의 인덱스와 첫인덱스를 교환(이후 다음 첫 인덱스는 1증가한 값)
+        //     temp = num[min_num];
+        //     num[min_num] = num[j];
+        //     num[j] = temp;
+        // }
+        
+        // alert(num);
+    </script>
+</body>
+</html>

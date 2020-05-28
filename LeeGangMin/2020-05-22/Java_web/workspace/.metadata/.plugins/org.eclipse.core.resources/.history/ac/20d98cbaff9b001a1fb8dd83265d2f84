@@ -1,0 +1,128 @@
+package kr.ac.kopo.exapp;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class ExMember {
+	public static void main(String[] args) {
+		//"1.회원목록 2.회원추가 3.회원삭제 4.종료" 라고 메뉴를 출력
+		//번호를 입력받는다
+		//"1"을 입력한 경우, 데이터베이스에 존재하는 모든 회원 목록을 출력
+		//"2"를 입력한 경우, 회원 아이디, 비밀번호, 이름, 포인트를 입력받아서,
+		//				데이터베이스의 member 테이블에 저장
+		//"3"을 입력한 경우, "삭제할 회원의 아이디를 입력하세요"라고 출력하고,
+		//	입력한 아이디의 회원을 member 테이블에서 삭제
+		//"4"를 입력한 경우, 프로그램을 종료
+		//위 작업을 무한 반복
+		
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String url = "oracle:jdbc:thin:@localhost:1521:xe";
+		String user = "com";
+		String password = "com01";
+		
+		Scanner sc = new Scanner(System.in);	//System.in : 현재 시스템의 표준 입력
+		String choose = "";						//빈 값으로 초기화
+		String sql = "";
+		
+		while(true) {	//무한 반복
+			//입력
+			System.out.println("1.회원목록 2.회원추가 3.회원삭제 4.종료");
+			System.out.println("실행하고 싶은 명령을 입력해주세요 > ");
+			choose = sc.nextLine();	//선택 항목이 무엇인지 저장할 변수
+			
+			//1번 입력했을 때 회원목록 출력
+			if(choose.equals("1")) {
+				sql = "SELECT mem_id, mem_pass, mem_name, mem_point FROM member";
+				try (
+						Connection conn = DriverManager.getConnection(url, user, password);
+						PreparedStatement pstmt = conn.prepareStatement(sql);
+						ResultSet rs = pstmt.executeQuery();
+						){
+					
+					while(rs.next()) {
+						String memId = rs.getString("mem_id");
+						String memPass = rs.getString("mem_pass");
+						String memName = rs.getString("mem_name");
+						int memPoint = rs.getInt("mem_point");
+						
+						System.out.println(memId + " : " + memPass + " : " + memName  + " : " + memPoint);
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			//2번 입력했을 때 회원추가
+			else if(choose.equals("2")) {
+				System.out.println("추가할 회원의 '아이디'를 입력하세요");
+				String memId = sc.nextLine();
+				System.out.println("추가할 회원의 '비밀번호'를 입력하세요");
+				String memPass = sc.nextLine();
+				System.out.println("추가할 회원의 '이름'을 입력하세요");
+				String memName = sc.nextLine();
+				System.out.println("추가할 회원의 '포인트'를 입력하세요");
+				int memPoint = Integer.parseInt(sc.nextLine());
+				
+				sql = "INSERT INTO member (mem_id, mem_pass, mem_name, mem_point) "
+						+ "VALUES (?, ?, ?, ?)";
+				try (
+						Connection conn = DriverManager.getConnection(url, user, password);
+						PreparedStatement pstmt = conn.prepareStatement(sql);
+						){
+					
+					pstmt.setString(1, memId);
+					pstmt.setString(2, memPass);
+					pstmt.setString(3, memName);
+					pstmt.setInt(4, memPoint);
+					
+					int num = pstmt.executeUpdate();
+					System.out.println(num + "개의 레코드가 추가 되었습니다.");
+					} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			//3번 입력했을 때 삭제
+			else if(choose.equals("3")) {
+				System.out.println("삭제할 회원의 '아이디'를 입력하세요");
+				String delId = sc.nextLine();
+				
+				sql = "DELETE FROM member WHERE mem_id = ?";
+				try (
+						Connection conn = DriverManager.getConnection(url, user, password);
+						PreparedStatement pstmt = conn.prepareStatement(sql);
+						){
+					
+					pstmt.setString(1, delId);
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			//4번 입력했을 때 프로그램 종료
+			else if(choose.equals("4")) {
+				System.out.println("프로그램을 종료합니다.");
+				return;				
+			}
+			
+			//1,2,3,4를 제외한 값이 입력된 경우 예외처리
+			else
+			{
+				System.out.println("잘못 입력하였습니다. 다시 입력해주세요");
+			}
+		}
+		
+		
+	}
+}

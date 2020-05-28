@@ -1,0 +1,9 @@
+package com.exam;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/exchange.do")
+public class ExchangeServlet extends HttpServlet{
+
+}

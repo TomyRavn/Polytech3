@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        lotto=[];
+        //for문만 쓴 코드 + count 변수 이용
+        for(var i = 0; i < 9999999; i++){   //== while(true)
+            var temp = parseInt(Math.random() * 45 + 1);
+            
+            if(lotto.length == 0){  //제어문(조건문, 반복문)
+                lotto.push(temp);
+            }
+            else{
+                var count = 0;
+                for(var j = 0; j < lotto.length; j++){
+                    if(lotto[j] == temp){
+                        count = count + 1;
+                    }
+                }
+                if(count == 0){
+                    lotto.push(temp);
+                }
+            }
+
+            if(lotto.length == 6){
+                break;              //보조 제어문(break, continue(밑을 생략하고 위로 올라가 다음턴 실행))
+            }
+        }
+
+        alert(lotto);
+        
+    </script>
+</body>
+</html>

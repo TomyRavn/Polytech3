@@ -1,0 +1,14 @@
+package kr.ac.kopo.exapp;
+import java.util.Scanner;
+
+public class ListPro {
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		while(true) {
+			
+		}
+		
+	}
+}
