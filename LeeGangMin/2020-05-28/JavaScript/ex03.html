@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+      function create_lotto(){
+
+            lotto=[];
+
+            while(true){
+                var temp = parseInt(Math.random() * 45 + 1);
+                
+                if(lotto.length == 0){
+                    lotto.push(temp);
+                }
+                else{
+                    for(var j = 0; j < lotto.length; j++){
+                        if(lotto[j] == temp){
+                            break;
+                        }
+                        if(j == lotto.length-1){
+                            lotto.push(temp);
+                        }
+                    }
+                }
+
+                if(lotto.length == 6){
+                    break;
+                }
+            }
+
+            return lotto;
+        }
+
+        var winning = [4,5,9,14,22,35]
+        var count = "5등"
+
+        while(true){
+            var create = create_lotto()
+            var check = 0
+        
+            for(var i = 0; i < create.length; i++){
+                for(var j = 0; j < winning.length; j++){
+                    if(create[i] == winning[j]){
+                        check++;
+                    }
+                } 
+            }
+
+            if(check == 3){
+                alert(count)
+            }
+            break
+        }
+
+    </script>
+</body>
+</html>

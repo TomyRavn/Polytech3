@@ -1,0 +1,29 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/member/add.do")
+public class MemberAddServlet extends HttpServlet{
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//POST방식으로 전송된 파라미터 값의 인코딩 설정
+		req.setCharacterEncoding("UTF-8");			//변수 저장 전에 위치
+		
+		String memId = req.getParameter("memId");
+		String memPass = req.getParameter("memPass");
+		String memName = req.getParameter("memName");
+		int memPoint = Integer.parseInt(req.getParameter("memPoint"));
+		
+		
+	}
+	
+}

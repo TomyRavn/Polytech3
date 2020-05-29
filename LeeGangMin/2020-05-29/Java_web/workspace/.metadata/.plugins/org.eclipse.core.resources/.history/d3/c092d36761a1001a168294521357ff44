@@ -1,0 +1,10 @@
+package kr.ac.kopo.member;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+
+@WebServlet()
+public class MemberAddServlet extends HttpServlet{
+	
+}
