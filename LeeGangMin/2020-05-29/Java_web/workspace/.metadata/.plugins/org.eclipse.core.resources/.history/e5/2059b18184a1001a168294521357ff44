@@ -1,0 +1,105 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//브라우저 주소창에
+//localhost:8000/ex_web/member/editform.do?memId=a001
+//을 입력하고 엔터키를 입력하면,
+
+//브라우저 화면에 회원정보를 입력할 수 있는 폼과 입력 엘리먼트를 출력하고,
+//데이터베이스에서 아이디가 'a001'인 회원의 정보를 조회하여
+//그 정보를 입력엘리먼트들에 현재 값으로 출력(기본 값으로 출력)
+//a001의 정보가 들어가 있어야 함
+
+@WebServlet("/member/editform.do")
+public class MemberEditFormServlet extends HttpServlet{
+
+	{
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "com";
+	String password = "com01";
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("UTF-8");
+		PrintWriter out = resp.getWriter();
+		
+		out.println("<!DOCTYPE html>                  ");
+		out.println("<html>                           ");
+		out.println("<head>                           ");
+		out.println("<meta charset='UTF-8'>           ");
+		out.println("<title>회원관리</title> ");
+		out.println("</head>                          ");
+		out.println("<body>                           ");
+		out.println("	<h1>회원 정보 변경</h1>     ");
+		
+		
+		String altId = req.getParameter("memId");	//파라미터의 이름이 주소창에 나오는 항목이다. 데이터베이스의 컬럼명과는 관계가 없다
+		String sql = "SELECT mem_id, mem_pass, mem_name, mem_point FROM member WHERE mem_id = ?";
+		
+		try (	
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+			){
+			
+			pstmt.setString(1, altId);
+			
+			try (
+					ResultSet rs = pstmt.executeQuery();	
+					){
+				if(rs.next()) {
+					String memId = rs.getString("mem_id");
+					String memPass = rs.getString("mem_pass");
+					String memName = rs.getString("mem_name");
+					int memPoint = rs.getInt("mem_point");
+					
+					/*disabled는 disabled 자체의 전송이 되지 않고 readonly(read only)는 그 자체도 전송이 된다. 따라서 read only가 맞다*/
+					out.println("<form action=\"" + req.getContextPath() + "/member/add.do\" method=\"post\">");
+					out.println("아이디를 입력하세요 : <input type=\"text\" name=\"memId\" value=\"" + memId + "\" disabled />");
+					out.println("</br>");
+					out.println("</br>");
+					out.println("비밀번호를 입력하세요 : <input type=\"text\" name=\"memPass\" value=\"" + memPass + "\" />");
+					out.println("</br>");
+					out.println("</br>");
+					out.println("이름을 입력하세요 : <input type=\"text\" name=\"memName\" value=\"" + memName + "\" />");
+					out.println("</br>");
+					out.println("</br>");
+					out.println("포인트를 입력하세요 : <input type=\"text\" name=\"memPoint\" value=\"" + memPoint + "\" />");
+					out.println("<input class=\"accept\" type=\"submit\" value=\"저장\" />");
+					out.println("</form>");
+					out.println("</br>");
+					out.println("</br>");
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		out.println("</body>                          ");
+		out.println("</html>                          ");
+		
+	}
+}
