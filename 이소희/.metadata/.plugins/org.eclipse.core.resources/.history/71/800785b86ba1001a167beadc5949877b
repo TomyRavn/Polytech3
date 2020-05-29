@@ -1,0 +1,58 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// 브라우저 주소 창에
+// http://localhost:8000/exweb/member/addform.do
+//를 입력하고 엔터키를 입력하면,
+//브라우저 화면에 회원 정보를 입력할 수 있는 입력 엘리먼트들이 출력되도록
+
+@WebServlet("/member/addform.do")
+public class MemberAddFormServlet extends HttpServlet {
+	
+
+@Override
+protected void service(HttpServletRequest req, HttpServletResponse resp) 
+		throws ServletException, IOException {
+	
+	resp.setContentType("text/html");
+	resp.setCharacterEncoding("UTF-8");
+	PrintWriter out = resp.getWriter();
+	
+	
+	out.println("<!DOCTYPE html>                  ");
+	out.println("<html>                           ");
+	out.println("<head>                           ");
+	out.println("<meta charset='UTF-8'>           ");
+	out.println("<title>회원 관리</title>");
+	out.println("</head>                          ");
+	out.println("<body>                           ");
+	
+	
+	out.println("	<h1>회원 추가</h1>   ");
+	
+	//ContextPath : 현재 웹애플리케이션(프로젝트)의 고유 경로
+	out.println("		<form action=\"" + req.getContextPath() + "/member/add.do\" method=\"post\"> ");
+	out.println("		아이디: <input text='text' name='memId'/><br/>                       ");
+	out.println("		비밀번호: <input text='text' name='memPw'/><br/>                        ");
+	out.println("		이름: <input text='text' name='memName'/><br/>                       ");
+	out.println("		포인트: <input text='number' name='memPoint'/><br/>                        ");
+	out.println("		<input type='submit' value='저장' />                                        ");
+	out.println("</form> ");
+	
+	out.println("</body>                          ");
+	out.println("</html>                          ");
+}
+}

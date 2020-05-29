@@ -1,0 +1,41 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+// 브라우저 주소 창에
+// http://localhost:8000/exweb/member/addform.do
+//를 입력하고 엔터키를 입력하면,
+//브라우저 화면에 회원 정보를 입력할 수 있는 입력 엘리먼트들이 출력되도록
+
+@WebServlet("/member/addform.do")
+public class MemberAddFormServlet extends HttpServlet {
+@Override
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+	String Id = req.getParameter("id");
+	String Pw = req.getParameter("pw");
+	resp.setContentType("text/html");
+	resp.setCharacterEncoding("UTF-8");
+	PrintWriter out = resp.getWriter();
+	
+	out.println("<!DOCTYPE html>                  ");
+	out.println("<html>                           ");
+	out.println("<head>                           ");
+	out.println("<meta charset='UTF-8'>           ");
+	out.println("<title>회원 관리</title>");
+	out.println("</head>                          ");
+	out.println("<body>                           ");
+	out.println("	<h1>회원 추가</h1>   ");
+	out.println("아이디: " + "<br/>");
+	out.println("비밀번호: ");
+	out.println("</body>                          ");
+	out.println("</html>                          ");
+}
+}
