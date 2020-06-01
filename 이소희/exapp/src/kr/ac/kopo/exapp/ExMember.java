@@ -1,3 +1,4 @@
+
 package kr.ac.kopo.exapp;
 
 import java.sql.Connection;
@@ -19,7 +20,7 @@ public class ExMember {
 		//위 작업을 무한 반복
 		
 		try {
-			Class.forName("new oracle.jdbc.OracleDriver");
+			Class.forName("oracle.jdbc.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -70,11 +71,7 @@ public class ExMember {
 					String name = sc.nextLine();
 					System.out.println("회원 포인트를 입력하세요");
 					int point = Integer.parseInt(sc.nextLine());
-					try {
-						Class.forName("new oracle.jdbc.OracleDriver");
-					} catch (ClassNotFoundException e) {
-						e.printStackTrace();
-					}
+					
 					
 					sql = "INSERT INTO member (mem_id, mem_pass, mem_name, mem_point) " + "VALUES (?,?,?,?)";
 					try (Connection conn = DriverManager.getConnection(url, user, password);

@@ -1,0 +1,30 @@
+
+public class Ex04 {
+
+	public static void main(String[] args) {
+		// 난수 발생 시켜서 5개의 값 저장, 오름차순 출력하기.
+		
+		
+		int[] arr = new int[5];
+		int tmp;
+	
+		for(int i=0; i<arr.length; i++) {
+			int m = i;
+			arr[i] =(int)(Math.random()*101);
+			System.out.printf("%d번째 난수:%d",i+1, arr[i]);
+			System.out.println();
+			
+			for(int j = i+1; j<5; j++) {
+				if(arr[i]>arr[j])
+					m=j;
+					
+			}
+			
+			tmp = arr[m];
+			arr[m] = arr[i];
+			arr[i] = tmp;					
+		}
+		System.out.println(arr);
+
+}
+}

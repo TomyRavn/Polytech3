@@ -25,7 +25,7 @@ public class ExStudent {
 		//해당 학생의 성적을 입력한 성적으로 테이블에서 변경
 				
 				try {
-					Class.forName("new oracle.jdbc.OracleDriver");
+					Class.forName("oracle.jdbc.OracleDriver");
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -38,6 +38,7 @@ public class ExStudent {
 
 				Scanner sc = new Scanner(System.in);
 				
+				
 				boolean flag = true;
 				while (flag) {
 					System.out.println("1.학생 목록 2.학생 추가 3.학생 삭제 4.종료 5.성적 변경");
@@ -49,40 +50,38 @@ public class ExStudent {
 						String sql = "SELECT stu_no, stu_name, stu_score FROM student";
 
 						try (Connection conn = DriverManager.getConnection(url, user, password);
-								PreparedStatement pstmt = conn.prepareStatement(sql);
-								ResultSet rs = pstmt.executeQuery();) {
+							 PreparedStatement pstmt = conn.prepareStatement(sql);
+							 ResultSet rs = pstmt.executeQuery();) {
 
-						while (rs.next()) {
-							String stno = rs.getString("stu_no");
-							String stname = rs.getString("stu_name");
-							String stscore = rs.getString("stu_score");
-							System.out.println(stno + ":" + stname + ":" + stscore);
+						while (rs.next()) {//다음 레코드로 이동하고, 다음 레코드가 없으면 false
+							String stno = rs.getString("stu_no"); //현재 rs가 가르키는 레코드
+							String stname = rs.getString("stu_name"); //현재 rs가 가르키는 레코드
+							String stscore = rs.getString("stu_score"); //현재 rs가 가르키는 레코드
+							System.out.println(stno + " : " + stname + " : " + stscore);
 
 						}
 
 						} catch (SQLException e) {
-						e.printStackTrace();
+							e.printStackTrace();
 						}
 						break;
 				
 					
 					case "2" :
-							System.out.println("이름을 입력하세요");
-							String stno = sc.nextLine();
 							System.out.println("학번을 입력하세요");
+							String stno = sc.nextLine();
+							System.out.println("이름을 입력하세요");
 							String stname = sc.nextLine();
 							System.out.println("점수를 입력하세요");
 							int stscore = Integer.parseInt(sc.nextLine());
-							try {
-								Class.forName("new oracle.jdbc.OracleDriver");
-							} catch (ClassNotFoundException e) {
-								e.printStackTrace();
-							}
 							
+							//sql 문에서 변화하는 값은 ?로 표시
 							sql = "INSERT INTO student (stu_no, stu_name, stu_score) " + "VALUES (?,?,?)";
+							
 							try (Connection conn = DriverManager.getConnection(url, user, password);
-							PreparedStatement pstmt = conn.prepareStatement(sql);) {		
-							pstmt.setString(1, stno); 
+							PreparedStatement pstmt = conn.prepareStatement(sql);) 
+							{
+							pstmt.setString(1, stno);
 							pstmt.setString(2, stname); 
 							pstmt.setInt(3, stscore); 
 							int num = pstmt.executeUpdate();
@@ -91,19 +90,20 @@ public class ExStudent {
 							} catch (SQLException e) {
 									e.printStackTrace();
 							}break;
+							
 					
 					case "3" : 
 							{System.out.println("삭제할 학생의 학번 : ");
 							String delstno = sc.nextLine();
 							{
-								sql = "DELETE FROM member where stu_no = ?";
+								sql = "DELETE FROM student WHERE stu_no = ?";
 
 							try(
 								Connection conn = DriverManager.getConnection(url, user, password);		
 								PreparedStatement pstmt = conn.prepareStatement(sql);
 							) {
 								pstmt.setString(1, delstno); 
-								int num = pstmt.executeUpdate(); 
+								int num = pstmt.executeUpdate(); //실행 결과 변경된 레코드 수를 반환
 								System.out.println(num + "명의 학생 삭제");
 
 							} catch (SQLException e) {
@@ -118,35 +118,64 @@ public class ExStudent {
 							flag = false;
 							break;
 							
-					case "5":
-						System.out.println("성적을 변경할 학생의 학번을 입력하세요");
-						String delstno = sc.nextLine();
-						sql = "SELECT stu_no, stu_name, stu_score FROM student";
-
-						try (Connection conn = DriverManager.getConnection(url, user, password);
-								PreparedStatement pstmt = conn.prepareStatement(sql);
-								ResultSet rs = pstmt.executeQuery();) {
-
-						while (rs.next()) {
-							stno = rs.getString("stu_no");
-							stname = rs.getString("stu_name");
-							stscore = rs.getInt("stu_score");
-							System.out.println(stno + ":" + stname + ":" + stscore);
-							break;
-					
 							
-					default:
-							break;
+					case "5":
+				            System.out.println("성적을 변경할 학생의 학번을 입력하세요");
+				            String No = sc.nextLine();
+				            
+				            
+				            sql = "SELECT stu_no, stu_name, stu_score FROM student WHERE stu_no = ?";
+				            
+				            try (
+				                  Connection conn = DriverManager.getConnection(url, user, password);
+				                  PreparedStatement pstmt = conn.prepareStatement(sql);				            						            	 
+				                  ) 
+				            		{
+				            	 	pstmt.setString(1, No); //No 값을 첫 번째 물음표에 채워라.		                
+				                 	try (ResultSet rs = pstmt.executeQuery();) //실행결과 레코드들을 가리키고 있는 resultset 값 반환			                 	
+				                 		{ 	
+				                 		if(rs.next()) {
+				                 		String stuNo = rs.getString("stu_no");
+				                 		String stuName = rs.getString("stu_name");
+				                 		int stuScore = rs.getInt("stu_score");
+				                 		System.out.println(stuNo + " : " + stuName + " : " + stuScore);
+				                 			
+				                 			//try 바깥에 있으면 변경할 학생이 없을 때에도 무조건 실행되기 때문에 try 안에 넣어줌.
+				                 		 	System.out.println("변경할 성적을 입력하세요");
+								            int Score = Integer.parseInt(sc.nextLine());					            
+								            String sql2 = "UPDATE student SET stu_score = ? WHERE stu_no = ?";
+								            
+								            try (
+									             Connection conn2 = DriverManager.getConnection(url, user, password);
+									             PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+									            ) {
+									               
+									               pstmt2.setInt(1, Score);
+									               pstmt2.setString(2, No);				               
+									               int num = pstmt2.executeUpdate(); //실행결과 변경된 레코드값 반환 
+									               System.out.println(num + "개의 레코드가 변경 되었습니다.");
+									               
+									            } catch (SQLException e) {
+									               e.printStackTrace();
+									            }
+									            
+						               }													                	
+				                 	   }
+				                 	
+				                 	
+				            } catch (SQLException e) {
+				               e.printStackTrace();
+				            }
+				            
+				            break;
+			                   
+				            
+				         default:
+				            break;
+				         }
+				      }			      			      
+				      
+				      
+				   }
 				}
-						
-			}
-
-
-			}
-		}
-
-		
-	}
-
-
 
