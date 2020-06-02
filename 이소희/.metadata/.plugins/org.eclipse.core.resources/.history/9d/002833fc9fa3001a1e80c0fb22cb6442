@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class Ex02 {
+
+	public static void main(String[] args) {
+		//이 차원 배열 행, 열 값 입력 받아 출력하기
+		int[][] arr = new int[2][3];
+		Scanner sc = new Scanner(System.in);
+		System.out.println("행 값을 입력하세요.");
+		int num = sc.nextInt();
+		System.out.println("열 값을 입력하세요.");
+		int num2 = sc.nextInt();
+		
+		
+		for (num = 0; num < arr.length; num++) {
+			for (num2 = 0; num2 < arr[num].length; num2++) {
+				System.out.printf("%4d",arr[num][num2]);
+			}
+			System.out.println();
+		}
+
+	}
+
+}

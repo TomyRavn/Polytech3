@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="VALUES"/>
+		<item key="selection" value="stu"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="values"/>
-			<item value="UTF"/>
+			<item value="mem"/>
+			<item value="회원"/>
+			<item value="point"/>
+			<item value="member"/>
+			<item value="id"/>
+			<item value="회원 "/>
+			<item value="StuNo"/>
+			<item value="Stu_No"/>
+			<item value="mem_Id"/>
+			<item value="memid"/>
+			<item value="Id"/>
+			<item value="Score"/>
+			<item value="Point"/>
+			<item value="stupoint"/>
+			<item value="stuId"/>
 		</list>
 		<list key="replacehistory">
+			<item value="stu"/>
+			<item value="학생"/>
+			<item value="score"/>
+			<item value="student"/>
+			<item value="no"/>
+			<item value="stu_no"/>
+			<item value="Stu_No"/>
+			<item value="StuNo"/>
+			<item value="Score"/>
+			<item value="No"/>
+			<item value="Stu"/>
+			<item value="Student"/>
+			<item value="stuScore"/>
+			<item value="stu_score"/>
+			<item value="stuNo"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="924"/>
-		<item key="DIALOG_Y_ORIGIN" value="319"/>
+		<item key="DIALOG_X_ORIGIN" value="556"/>
+		<item key="DIALOG_Y_ORIGIN" value="585"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

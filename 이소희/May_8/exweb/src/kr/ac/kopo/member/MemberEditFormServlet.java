@@ -55,7 +55,6 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)
 	out.println("<title>회원 관리</title>");
 	out.println("</head>                          ");
 	out.println("<body>                           ");
-	ut.println("<a href='" + req.getContextPath() + "/member/del.do?memId=" + memId + "'><button> 삭제 </button></a><br / >");	
 	
 	out.println("	<h1>회원 정보 수정</h1>   ");
 	
@@ -77,7 +76,7 @@ protected void service(HttpServletRequest req, HttpServletResponse resp)
          		String MemPass = rs.getString("mem_pass");
          		String MemName = rs.getString("mem_name");
          		int MemPoint = rs.getInt("mem_point");
-         		
+         		out.println("<a href='" + req.getContextPath() + "/member/edit.do?memId=" +MemId + "'>"+ MemId + "</a>"+":"+MemPass+":"+MemName+":"+MemPoint);
          		out.println("		<form action='" + req.getContextPath() + "/member/edit.do' method='post'> ");
          		//disabled 는 전송이 안 됨! readonly는 전송이 됨!
          		out.println("		아이디: <input text='text' name='memId' value='" + MemId + "' readonly /><br/>                       ");
