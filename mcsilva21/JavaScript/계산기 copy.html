@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+   
+</head>
+<body>
+    <div class='container'>
+        <div class="jumbotron">
+        </div>
+        <br/>
+            <div class="panel-body" id = 'q'></div>
+        <br/>
+        <div class="input-group input-group-lg">
+            <span class="input-group-addon" id="sizing-addon1">정답</span>
+            <input type="text" id='my' class="form-control" placeholder="정답을 입력하세요" aria-describedby="sizing-addon1">       
+        </div>
+        <div align='right'>
+            <button type="button" class="btn btn-default navbar-btn" onclick="check()">정답 확인</button>
+        </div>
+        <br/>     
+    </div>
+    
+    <script>
+        var cal_list = ['+','-','*','/']
+        var q = document.getElementById('q');
+        var num1 = parseInt(Math.random()*10);
+        var num2 = parseInt(Math.random()*10);
+        var cal = cal_list[parseInt(Math.random()*4)]
+        var ques = num1 + cal + num2
+        q.innerHTML = ques
+        var ans = 0
+        if (cal == '+'){
+            ans = num1+num2
+        }
+        else if (cal == '-'){
+            ans = num1-num2
+        }
+        else if(cal == '*'){
+            ans = num1*num2
+        }
+        else{
+            ans = num1/num2
+        }
+           
+        function check(){
+            var my = document.getElementById('my').value
+            if(ans == my){
+                alert('정답')       
+            }
+            else{
+                alert('오답')
+               
+            }
+
+        }
+   
+    </script>
+</body>
+
+</html>
