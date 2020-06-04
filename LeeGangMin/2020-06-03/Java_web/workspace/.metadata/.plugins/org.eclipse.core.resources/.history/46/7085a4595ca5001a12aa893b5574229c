@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+<%		
+		String memId = req.getParameter("memId");
+		String memPass = req.getParameter("memPass");
+		String memName = req.getParameter("memName");
+		int memPoint = Integer.parseInt(req.getParameter("memPoint"));
+		
+		String sql = "INSERT INTO member (mem_id, mem_pass, mem_name, mem_point) "
+				+ "VALUES (?, ?, ?, ?)";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memPass);
+			pstmt.setString(3, memName);
+			pstmt.setInt(4, memPoint);
+			
+			pstmt.executeUpdate(); 
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		resp.sendRedirect(req.getContextPath() + "/member/list.do");
+%>

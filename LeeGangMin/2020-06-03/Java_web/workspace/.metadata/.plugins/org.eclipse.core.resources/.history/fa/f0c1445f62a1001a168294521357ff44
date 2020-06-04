@@ -1,0 +1,24 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/member/add.do")
+public class MemberAddServlet extends HttpServlet{
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String memId = req.getParameter("memId");
+		String memPass = req.getParameter("memId");
+		String memName = req.getParameter("memId");
+		String memPoint = req.getParameter("memId");
+	}
+	
+}

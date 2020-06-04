@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //랜덤 정수 생성
+        function nextRandomInteger(limit){
+            return Math.round(Math.random() * limit);
+        }
+
+        //랜덤 알파벳 리턴 함수
+        var alphabet = '가나다라마바사아자차카타파하';
+        function randomAlphabet(){
+            return alphabet.charAt(nextRandomInteger(25));
+        }
+
+        //양수와 음수로 랜덤한 속도를 생성하는 함수
+        function randomSpeed(maxSpeed){
+            return Math.random() * maxSpeed - Math.random() * maxSpeed;
+        }
+
+        function plusColor(plusC, swC){
+            
+            c = plusC;
+
+            if(c > 255) swC = true;
+            else if(c < 0) swC = false;
+
+            if(!swC) { c+=parseInt(Math.random()*2); }
+            else{ c-=parseInt(Math.random()*2); }
+
+            return c;
+        }
+
+        function changeColor(object, red, green, blue) {
+            object.body.style.color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+		}
+
+        function chooseColor(a) {
+            a = parseInt(Math.random() * 256);
+            return a;
+        }
+
+    </script>
+    <script>
+        var swR = new Boolean();
+        swR = false;
+        var swG = new Boolean();
+        swG = false;
+        var swB = new Boolean();
+        swB = false;
+        var r, g, b;
+
+        var canvasWidth = 1820;
+        var canvasHeight = 720;
+
+        function MovingText(){
+            
+            //객체의 속도
+            this.x = nextRandomInteger(canvasWidth);
+            this.y = nextRandomInteger(canvasHeight);
+            this.vx = randomSpeed(10);
+            this.vy = randomSpeed(10);
+
+            //문서 객체 생성
+            r = chooseColor(r);
+            g = chooseColor(g);
+            b = chooseColor(b);
+
+            this.body = document.createElement('h1');
+            this.body.innerHTML = randomAlphabet();
+            this.body.style.position = 'absolute';
+            changeColor(this, r, g, b);
+            this.body.style.fontSize = (Math.random() * 100) + 'px';
+
+            //문서 객체를 document.body에 추가
+            document.body.appendChild(this.body);
+        }
+
+        MovingText.prototype.move = function(){
+            //범위 검사
+            if(this.x < 0 || this.x > canvasWidth) {this.vx *= -1;}
+            if(this.y < 0 || this.y > canvasHeight) {this.vy *= -1;}
+
+            //이동
+            this.x += this.vx;
+            this.y += this.vy;
+
+            //화면에 이동 표시
+            this.body.style.left = this.x + 'px';
+            this.body.style.top = this.y + 'px';
+        }
+
+        MovingText.prototype.changeCol = function(){
+            var cR = plusColor(r, swR);
+            var cG = plusColor(g, swG);
+            var cB = plusColor(b, swB);
+            changeColor(this, cR, cG, cB);
+            r = cR;
+            g = cG;
+            b = cB;
+        }
+
+    </script>
+
+    <script>
+        
+        window.onload = function(){
+            var MovingTexts = [];
+
+            for(var i = 0; i < 100; i++){
+                MovingTexts.push(new MovingText());
+            }
+
+            //30프레임
+            setInterval(function(){
+                for(var i in MovingTexts){
+                    MovingTexts[i].move();
+                }
+            }, 1000 / 30);
+
+            setInterval(function(){
+                for(var i in MovingTexts){
+                    MovingTexts[i].changeCol();
+                }
+            }, 1000 / 1);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

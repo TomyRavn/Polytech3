@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class='container'>
+
+        <br/><br/><br/><br/><br/>
+        <h1 style="font-size: 100px;" id=q>123</h1>
+        <input id='my' />
+        <!-- 클릭했을 때 체크하도록 만듬(check 함수; 아래 참고) -->
+        <!-- 마우스 오버, 키업 등의 이벤트가 있음 -->
+        <button onclick="check()">정답확인</button>
+    </div>
+
+    <!-- 선택자 통해서 alert대신 html에 접근할 수 있는 방법을 배웠음 -->
+    <!-- document.getElementById 등 -->
+    <!-- 결과를 돌려주는 방법 : innerHTML, style 통해서 -->
+
+    <script>
+        var q = document.getElementById('q');
+
+        var cal_list = ['+','-','*','/'];
+        var cal = cal_list[parseInt(Math.random()*4)];
+
+        var num1 = parseInt(Math.random()*10);
+        var num2 = parseInt(Math.random()*10);
+        var ques = num1 + cal + num2;
+        q.innerHTML = ques;
+
+        var ans = 0
+        if (cal == '+'){
+            ans = num1+num2
+        }
+        else if (cal == '-'){
+            ans = num1-num2
+        }
+        else if(cal == '*'){
+            ans = num1*num2
+        }
+        else{
+            ans = num1/num2
+        }
+        
+        
+        function check(){
+            var my = document.getElementById('my').value
+            if(ans == my){
+                alert('정답')
+                // document.getElementById('cor').style.display = 'block'
+            }
+            else{
+                alert('오답')
+                // document.getElementById('err').style.display = 'block'
+            }
+
+        }
+    </script>
+
+</body>
+</html>

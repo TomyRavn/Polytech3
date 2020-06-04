@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <div align='center' class="panel panel-primary">
+        <div class="panel-heading">문제</div>
+        <div class="panel-body" id = 'q'></div>
+    </div>
+</head>
+<body>
+    <script>
+        // var q = document.getElementById('q');
+        // var ques = parseInt(Math.random() * 10) + '+' + parseInt(Math.random()*10)
+        // q.innerHTML = ques;
+
+        var cal_list = ['+', '-', '*', '/']
+        var q = document.getElementById('q');
+        var num1 = parseInt(Math.random()*10);
+        var num2 = parseInt(Math.random()*10);
+        var cal = cal_list[parseInt(Math.random()*4)];
+        var ques = num1 + cal + num2;
+        q.innerHTML = ques;
+        var ans = 0;
+        if(cal == '+'){
+            ans = num1 + num2;
+        }
+        else if(cal == '-'){
+            ans = num1 - num2;
+        }
+        else if(cal == '*'){
+            ans = num1 * num2;
+        }
+        else if(cal == '/'){
+            ans = num1 / num2;
+        }
+    </script>
+</body>
+</html>

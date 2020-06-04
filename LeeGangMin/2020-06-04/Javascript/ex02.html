@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HTML 태그 이름을 이용한 선택</h1>
+    <!-- <h1 id = "a"> HIHIHIHI </h1> -->
+    <!-- 블록태그라서 -->
+
+    <!-- <div id = 'b'> 
+        1111
+        <p>2222</p>
+         </div> -->
+
+    <h1 id = "clock"></h1>
+    <script>
+        //1.
+        //var selectedItem = document.getElementById("a");
+        //selectedItem.style.backgroundColor="gray";
+        //selectedItem.innerHTML = "green";
+        //selectedItem.style.textAlign = "center";
+
+        //2.
+        // var selectedItem = document.getElementById("b");
+        // selectedItem.remove();
+
+        // css는 클래스를 많이 쓰고, 여러개의 스타일을 공통적으로 편집하는 경우가 많아서...
+        // javascript는 아이디를 많이 쓴다. 여러개 공통일 시 같이 영향을 받아 문제가 발생할 확률이 높아서...
+
+
+        //3.
+        //홈페이지가 떴을 때 바로 실행하게끔 하는 코드
+        // window.onload = function(){
+        //     alert('dd');
+        // }
+
+        //4. 1초마다 현재시각 받아 갱신
+        window.onload = function(){
+            var clock = document.getElementById('clock');
+
+        setInterval(function(){
+            clock.innerHTML = new Date().toString()}, 1000)
+            }
+
+        //5.
+        
+    </script>
+</body>
+</html>

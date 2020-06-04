@@ -1,0 +1,40 @@
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Driver"%>
+<%@page import="java.sql.Connection"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%!
+	{
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "com";
+	String password = "com01";
+%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String sql = "SELECT stu_no, stu_name, stu_score FROM student ORDER BY stu_no ASC";
+	String stuNo = request.getParameter("stuNo");
+
+	try (Connection conn = Driver.getConnection(url, user, password);
+	PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+		pstmt.setString(1, stuNo);
+		pstmt.executeUpdate();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+
+	response.sendRedirect(request.getContextPath() + "/student/stuList.jsp");
+%>
