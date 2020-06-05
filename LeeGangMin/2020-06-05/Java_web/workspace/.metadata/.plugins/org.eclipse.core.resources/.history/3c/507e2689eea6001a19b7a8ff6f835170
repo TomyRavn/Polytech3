@@ -1,0 +1,7 @@
+package kr.ac.kopo.member;
+
+//DAO : Data Access Object
+//자바 데이터(객체) 데이터베이스 데이터(테이블)
+public class MemberDaoJdbc {
+
+}

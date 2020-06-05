@@ -1,0 +1,38 @@
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+		
+		<!DOCTYPE html>       
+		<html>                
+		<head>                
+		<meta charset='UTF-8'>
+		<title>회원관리</title>
+		<style>
+		a, a:visited{
+		text-decoration: none;
+		color:black;
+		}
+		</style>
+		</head>               
+		<body>                
+			<h1>회원목록</h1> 
+		<a href= '<%= request.getContextPath() %>/member/memAddForm.jsp'><button>회원가입</button></a></br></br>
+
+<a href='<%= request.getContextPath() %>/member/memEditForm.jsp?memId=<%= memId %>'><b><%= memId %></b></a>
+: <%= memPass %> : <%= memName %> : <%= memPoint %>
+</br>
+	
+<%
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+%>
+		</body>
+		</html>
