@@ -1,0 +1,32 @@
+package com.exam;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//1.직접 지정
+//@WebServlet("/req.do")
+
+//2.req/? : ?에 어떤 것을 써도 이 서블릿이 실행(모든 문자열(파일명)을 의미하는 * 사용 가능
+//@WebServlet("/req/*")
+
+//3.확장자 방식 : 파일명이 .act(사용자 정의)로 끝나는 모든 파일에 대한 요청시, 서블릿 실행(추가로 하위폴더 생성이 되어 들어가도 실행됨)
+@WebServlet("*.act")
+public class ReqServlet extends HttpServlet{
+
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//어떤 주소로 요청이 왔는지 -> req(요청 객체)에 들어있음
+		req.getRequestURI();
+		
+		PrintWriter out = resp.getWriter();
+		out.println("ReqServlet!!");
+	}
+}

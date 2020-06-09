@@ -1,0 +1,10 @@
+package kr.ac.kopo.exapp;
+
+//Food라는 타입을 만듬
+public class Food {
+	public Food(String string, int i) {
+		// TODO Auto-generated constructor stub
+	}
+	String name;
+	int price;
+}

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+		out.println("<!DOCTYPE html>                  ");
+		out.println("<html>                           ");
+		out.println("<head>                           ");
+		out.println("<meta charset='UTF-8'>           ");
+		out.println("<title>학생관리</title> ");
+		out.println("</head>                          ");
+		out.println("<body>                           ");
+		out.println("	<h1>학생목록</h1>     ");
+		
+		out.println("<a href=\"" + req.getContextPath() + "/student/addform.do\" ><button>학생추가</button></a></br></br>");
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				) {
+			
+			while(rs.next()) {
+				String stuNo = rs.getString("stu_no");
+				String stuName = rs.getString("stu_name");
+				int stuScore = rs.getInt("stu_score");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		out.println("<a href=\"" + req.getContextPath() + "/student/editform.do?stuNo=" + stuNo + "\">" + stuNo + "</a> : " + stuName + " : " + stuScore);
+		out.println(" <a href=\"" + req.getContextPath() + "/student/del.do?stuNo=" + stuNo + "\"><button>삭제</button></a> <br/>");
+		out.println("</body>                          ");
+		out.println("</html>                          ");

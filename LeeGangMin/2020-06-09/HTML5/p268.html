@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            position:relative;
+            margin-bottom:20px;
+        }
+        button{
+            left:20px; /*왼쪽에서 20px 떨어진 위치*/
+            width:140px;
+            height:50px;
+            background:rgb(0, 110, 255);
+            border: 1px solid rgb(0, 110, 255);
+            border-radius: 8px;
+            color:#fff;
+            font-weight: bold;
+        }
+        #bg1{
+            background-image: url("img/light.png");
+            background-repeat: no-repeat;
+            background-position: 5px 7px;   /*가로 5만큼 세로 7만큼 떨어져서 이미지 배치*/
+        }
+        #bg2{
+            background-image: url("img/light.png");
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <button id="bg1">
+            IDEA
+        </button>
+    </div>
+    <div>
+        <button id="bg2">
+            IDEA
+        </button>
+    </div>
+</body>
+</html>

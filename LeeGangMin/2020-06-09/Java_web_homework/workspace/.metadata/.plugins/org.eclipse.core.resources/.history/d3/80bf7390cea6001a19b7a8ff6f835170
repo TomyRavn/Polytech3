@@ -1,0 +1,8 @@
+package kr.ac.kopo.exapp;
+
+//Food라는 타입을 만듬
+public class Food {
+	//접근 제한자 private
+	String name;
+	private int price;
+}

@@ -1,0 +1,19 @@
+package com.exam;
+
+import java.io.IOException;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+
+//최소한의 요구조건 : implements servlet
+//httpservlet에서 구현이 되어 상속받았기 때문에 기존 servlet에서는 메소드를 따로 구현할 필요가 없었음(destroy, ... 등)
+
+public class LifeServlet extends HttpServlet{
+	
+	
+	
+}

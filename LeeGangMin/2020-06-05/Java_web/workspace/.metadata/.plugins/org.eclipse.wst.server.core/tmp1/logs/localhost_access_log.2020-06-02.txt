@@ -1,0 +1,15 @@
+127.0.0.1 - - [02/Jun/2020:10:55:25 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:10:55:27 +0900] "GET /ex_web/member/editform.do HTTP/1.1" 200 347
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:10:55:27 +0900] "GET /favicon.ico HTTP/1.1" 404 761
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:10:55:29 +0900] "GET /ex_web/member/editform.do?memId=a001 HTTP/1.1" 200 749
+127.0.0.1 - - [02/Jun/2020:17:01:29 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:32 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1616
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:32 +0900] "GET /favicon.ico HTTP/1.1" 404 761
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:35 +0900] "GET /ex_web/student/editform.do?stuNo=201834519 HTTP/1.1" 200 738
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:39 +0900] "POST /ex_web/student/edit.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:39 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1616
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:41 +0900] "GET /ex_web/student/addform.do HTTP/1.1" 200 743
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:45 +0900] "POST /ex_web/student/add.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:45 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1763
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:47 +0900] "GET /ex_web/student/del.do?stuNo=123 HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [02/Jun/2020:17:01:47 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1616

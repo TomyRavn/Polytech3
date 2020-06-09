@@ -1,0 +1,12 @@
+package kr.ac.kopo.exapp;
+
+//Food라는 타입을 만듬
+public class Food {
+	//접근 제한자 private 사용시 해당클래스내에서만 private 붙은 변수 사용가능
+	//예 ) private String name;
+	
+	private String name;
+	private int price;
+	
+	//변수에 대한 직접 접근은 막고, 값은 세팅할 수 있게 함
+}

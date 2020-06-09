@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+		
+		out.println("<!DOCTYPE html>                  ");
+		out.println("<html>                           ");
+		out.println("<head>                           ");
+		out.println("<meta charset='UTF-8'>           ");
+		out.println("<title>회원관리</title> ");
+		out.println("<style>");
+		out.println("a, a:visited{");
+		out.println("text-decoration: none;");
+		out.println("color:black;");
+		out.println("}");
+		out.println("</style>");
+		out.println("</head>                          ");
+		out.println("<body>                           ");
+		out.println("	<h1>회원목록</h1>     ");
+		
+		out.println("<a href=\"" + req.getContextPath() + "/member/addform.do\"><button>회원가입</button></a></br></br>");
+		
+//		for(int i = 0; i < memberList.size(); i++) {
+//			MemberVo vo = memberList.get(i);
+		//↓ 두 줄을 한줄로 변환	
+		//: 우측에 여러 개의 데이터가 담겨있는 녀석, 왼쪽은 하나의 데이터가 하나씩 들어옴
+		for (MemberVo vo : memberList) {
+			out.println("<a href=\"" + req.getContextPath() + "/member/editform.do?memId=" + vo.getMemId() + "\"><b>" + vo.getMemId() + "</b></a>" + " : " + vo.getMemPass() + " : " + vo.getMemName()  + " : " + vo.getMemPoint() + "</br>");
+		}
+		out.println("===================================");
+		
+		out.println("</body>                          ");
+		out.println("</html>                          ");
