@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP</title>
+</head>
+<body>
+	<h1>Hello JSP</h1>
+	
+<!-- 	JSP도 사실상 servlet -->
+<!-- %	자바코드 쓸 수 있게 해줌 -->
+	<%
+		int a = 3;
+		int b = 4;
+		int c = a + b;
+	%>
+</body>
+</html>

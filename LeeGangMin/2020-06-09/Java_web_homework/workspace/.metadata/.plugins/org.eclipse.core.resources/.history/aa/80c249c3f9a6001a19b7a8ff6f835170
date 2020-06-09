@@ -1,0 +1,37 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/member/list.do")
+public class MemberListServlet extends HttpServlet{
+	
+	
+	MemberDaoJdbc memberDao = new MemberDaoJdbc(); //객체 생성을 반복할 필요없음
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//리스트를 전달할 필요성 -> 요청객체에 담아서 준다
+		ArrayList<MemberVo> memberList = memberDao.selectMemberList();
+		req.setAttribute("", memberList);
+		
+		//"*/ex_web/WebContent
+		// /WEB-INF/jsp/member/memList.jsp" 파일로 이동
+		//현재 파일을 위임하여 처리할 수 있도록 하는 디스패쳐 가져오기
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/member/memList.jsp");
+		rd.forward(req, resp);	//현재 요청객체와 응답객체를 전달해주면서 이동
+		
+//		rd에는 forward -> 맡기고 jsp로 다시 가져올 필요없다.
+//		include -> 맡기고 다시 작업해야할때 다시 이리로 오게끔함
+	}
+	
+}

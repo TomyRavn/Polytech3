@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+		out.println("<!DOCTYPE html>                  ");
+		out.println("<html>                           ");
+		out.println("<head>                           ");
+		out.println("<meta charset='UTF-8'>           ");
+		out.println("<title>회원관리</title> ");
+		out.println("</head>                          ");
+		out.println("<body>                           ");
+		out.println("	<h1>회원 정보 변경</h1>     ");
+		
+		
+
+		out.println("<form action=\"" + req.getContextPath() + "/member/edit.do\" method=\"post\">");
+		out.println("아이디를 입력하세요 : <input type=\"text\" name=\"memId\" value=\"" + vo.getMemId() + "\" readonly />");
+		out.println("</br>");
+		out.println("</br>");
+		out.println("이름을 입력하세요 : <input type=\"text\" name=\"memName\" value=\"" + vo.getMemName() + "\" />");
+		out.println("</br>");
+		out.println("</br>");
+		out.println("포인트를 입력하세요 : <input type=\"text\" name=\"memPoint\" value=\"" + vo.getMemPoint() + "\" />");
+		out.println("<input type=\"submit\" value=\"저장\" /></br></br>");
+		out.println("<a href=\""+ req.getContextPath() + "/member/del.do?memId=" + vo.getMemId() + "\"><button type=\"button\" >삭제</button></a>");
+		out.println("</form>");
+		out.println("</br>");
+		out.println("</br>");
+		
+		out.println("</body>                          ");
+		out.println("</html>                          ");

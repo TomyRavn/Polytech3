@@ -1,0 +1,147 @@
+package kr.ac.kopo.student2;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+//DAO : Data Access Object
+//자바 데이터(객체) <-> 데이터베이스 데이터(테이블) 사이의 상호변환을 담당
+
+public class StudentDaoJdbc {
+	
+	{
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "com";
+	String password = "com01";
+	
+	
+	public ArrayList<StudentVo> selectstudentList() {
+		ArrayList<StudentVo> studentList = new ArrayList<StudentVo>();
+		String sql = "SELECT stu_no, stu_name, stu_score FROM student";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				){
+			
+			while(rs.next()) {
+				StudentVo vo = new StudentVo();
+				vo.setStuNo(rs.getString("stu_no"));
+				vo.setStuName(rs.getString("stu_name"));
+				vo.setStuScore(rs.getInt("stu_score"));
+				studentList.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return studentList;
+	}
+	
+	
+	
+	public int insertstudent(StudentVo vo) {
+		
+		int num = 0;
+		
+		String sql = "INSERT INTO student (stu_no, stu_name, stu_score) "
+				+ "VALUES (?, ?, ?)";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			
+			pstmt.setString(1, vo.getStuNo());
+			pstmt.setString(3, vo.getStuName());
+			pstmt.setInt(4, vo.getStuScore());
+			
+			num = pstmt.executeUpdate();
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
+	
+	
+	public void deletestudent(String stuId) {
+		String sql = "DELETE FROM student WHERE stu_id = ?";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			
+			pstmt.setString(1, stuId);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public StudentVo selectstudent(String stuId) {
+		String sql = "SELECT stu_id, stu_pass, stu_name, stu_point FROM student WHERE stu_id = ?";
+		
+		StudentVo vo = null;
+
+		try (	
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+			){
+			
+			pstmt.setString(1, stuId);
+			
+			try (
+					ResultSet rs = pstmt.executeQuery();	
+					){
+				
+				if(rs.next()) {
+					vo = new StudentVo();
+					
+					vo.setstuId(rs.getString("stu_id"));
+					vo.setstuName(rs.getString("stu_name"));
+					vo.setstuPoint(rs.getInt("stu_point"));
+				}
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	
+	
+	public void updatestudent(StudentVo vo) {
+		String sql = "UPDATE student SET stu_name = ?, stu_point = ? WHERE stu_id = ?";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			
+			pstmt.setString(1, vo.getstuName());
+			pstmt.setInt(2, vo.getstuPoint());
+			pstmt.setString(3, vo.getstuId());
+			
+			pstmt.executeUpdate(); 
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
