@@ -27,32 +27,7 @@ public class MemberAddFormServlet extends HttpServlet {
 protected void service(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException {
 	
-	resp.setContentType("text/html");
-	resp.setCharacterEncoding("UTF-8");
-	PrintWriter out = resp.getWriter();
+	req.getRequestDispatcher("/META-INF/jsp/member/memAddForm.jsp").forward(req, resp);
 	
-	
-	out.println("<!DOCTYPE html>                  ");
-	out.println("<html>                           ");
-	out.println("<head>                           ");
-	out.println("<meta charset='UTF-8'>           ");
-	out.println("<title>회원 관리</title>");
-	out.println("</head>                          ");
-	out.println("<body>                           ");
-	
-	
-	out.println("	<h1>회원 추가</h1>   ");
-	
-	//ContextPath : 현재 웹애플리케이션(프로젝트)의 고유 경로
-	out.println("		<form action='" + req.getContextPath() + "/member/add.do' method='post'> ");
-	out.println("		아이디: <input text='text' name='memId'/><br/>                       ");
-	out.println("		비밀번호: <input text='text' name='memPw'/><br/>                        ");
-	out.println("		이름: <input text='text' name='memName'/><br/>                       ");
-	out.println("		포인트: <input text='text' name='memPoint'/><br/>                        ");
-	out.println("		<input type='submit' value='저장' />                                        ");
-	out.println("</form> ");
-	
-	out.println("</body>                          ");
-	out.println("</html>                          ");
 }
 }

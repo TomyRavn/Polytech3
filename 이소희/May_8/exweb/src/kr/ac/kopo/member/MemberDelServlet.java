@@ -21,18 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/del.do")
 public class MemberDelServlet extends HttpServlet {
-	{
-		try {	
-		Class.forName("oracle.jdbc.OracleDriver");
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-	}
+	MemberDaoJdbc memberDao = new MemberDaoJdbc();
 
-	
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "com";
-	String password = "com01";
 	
 
 	@Override
@@ -41,25 +31,14 @@ public class MemberDelServlet extends HttpServlet {
 	
 	String delId = req.getParameter("memId");
 	
-	String sql = "DELETE FROM member WHERE MEM_ID = ?";
+	int num = memberDao.deleteMember(delId); 
 
-
-	try(
-		Connection conn = DriverManager.getConnection(url, user, password);		
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-	) {
-		pstmt.setString(1, delId); 
-		int num = pstmt.executeUpdate(); 
-		System.out.println(num + "명의 회원 삭제");
-
-	} catch (SQLException e) {
-	e.printStackTrace();
-	} 
-
+	System.out.println(num + "명의 회원 삭제");
+	
 	resp.sendRedirect(req.getContextPath() + "/member/list.do");
 
-}
-	
+	}
+
 }
 
 

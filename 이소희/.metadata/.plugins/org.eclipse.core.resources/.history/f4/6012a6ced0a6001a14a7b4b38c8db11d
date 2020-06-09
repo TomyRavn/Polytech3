@@ -1,0 +1,26 @@
+package kr.ac.kopo.exapp;
+
+public class Food {
+	private String name;
+	private int price;
+	
+	void setName(String n) {
+		this.name = n;
+		
+		
+	}
+	void setPrice(int p) {
+	this.price = p;
+	
+}
+
+	public String getName() {
+	return this.name;
+	
+}
+
+	public int getPrice() {
+	return this.price;
+}
+}
+

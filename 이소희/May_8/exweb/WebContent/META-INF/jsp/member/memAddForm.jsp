@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+	<!DOCTYPE html>                
+	<html>                         
+	<head>                         
+	<meta charset='UTF-8'>         
+	<title>회원 관리</title>
+	</head>                        
+	<body>                         
+			<h1>회원 추가</h1>
+			<form action='<%=request.getContextPath()%>/member/add.do' method='post'> 
+			아이디: <input text='text' name='memId'/><br/>                     
+			비밀번호: <input text='text' name='memPw'/><br/>                   
+			이름: <input text='text' name='memName'/><br/>                     
+			포인트: <input text='text' name='memPoint'/><br/>                  
+			<input type='submit' value='저장' />                              
+	</form>
+	
+	</body>
+	</html>
+

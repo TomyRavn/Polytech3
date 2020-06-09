@@ -1,0 +1,55 @@
+package kr.ac.kopo.member;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+//DAO = Data Access Object
+//자바 데이터(객채) 데이터 베이스 데이터(테이블) 사이의 상호 변환을 담당
+
+public class MemberDaoJdbc {
+
+	try
+	{
+		Class.forName("oracle.jdbc.OracleDriver");
+	}catch(
+	ClassNotFoundException e)
+	{
+		e.printStackTrace();
+	}
+
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "com";
+	String password = "com01";
+
+	public ArrayList<MemberVo> selectMemberList() {
+		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
+			String sql = "SELECT mem_id, mem_pass, mem_name, mem_point FROM member";
+
+		try (Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery();
+				) {
+
+		while (rs.next()) {
+			MemberVo vo = new MemberVo();
+			vo.setMemId(rs.getString("mem_id"));
+			vo.setMemName(rs.getString("mem_pass"));
+			vo.setMemPass(rs.getString("mem_name"));
+			vo.setMemPoint(rs.getInt("mem_point"));
+			
+			list.add(vo);
+		}
+				}
+	catch (SQLException e) {
+	e.printStackTrace();
+	}
+	return list;
+}
+
+}
+
+}

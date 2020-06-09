@@ -1,0 +1,74 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+      <meta charset='UTF-8'>
+      <title>학생 관리</title>
+      </head>
+      <body>
+      
+      <h1>학생 목록</h1>
+      <a href='<%=request.getContextPath()%>/student/addform.do'>학생 추가</a></br>
+     
+	<%
+	ArrayList<StudentVo> list  = (ArrayList<StudentVo>)request.getAttribute("stuList"); 
+	for (StudentVo vo : list) {
+%>
+
+<a href='<%=request.getContextPath()%>/student/editform.do?stuNo=<%=vo.getStuNo()%>'><%=vo.getStuNo()%></a>
+			  : <%=getStuName()%> : <%=vo.getStuScore()%>
+			<br/>
+			
+<%
+		}
+	
+%>
+</body>                        
+</html>                        
+
+
+      {
+         String sql = "SELECT stu_no, stu_name, stu_score FROM student";
+               
+      try(
+         Connection conn = DriverManager.getConnection(url, user, password);            
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery();
+         ) {
+         
+         while (rs.next()) {
+            
+
+        String stuNo = rs.getString("stu_no");
+		String stuName = rs.getString("stu_name");
+// 		int stuScore = rs.getInt("stu_score");	
+	%>
+		
+<%-- 		<td><a href='<%=request.getContextPath()%>/student/stuEditForm.jsp?stu_no=<%=stuNo%>'><%=stuNo%></td></a> --%>
+<%--       	<td><%=stuName%><%=stuScore%></td> --%>
+		
+		
+		<table border = 1;>
+		<tr align = "center">
+    	
+      	<td><a href='<%=request.getContextPath()%>/student/stuEditForm.jsp?stu_no=<%=stuNo%>'><%=stuNo%></td></a>
+      	<td><%=stuName%></td>
+      	
+      	</tr>
+      	</table>
+
+		
+		
+ 
+<%                        
+         }         
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } 
+   }
+ %>               
+      </body>
+      </html>
