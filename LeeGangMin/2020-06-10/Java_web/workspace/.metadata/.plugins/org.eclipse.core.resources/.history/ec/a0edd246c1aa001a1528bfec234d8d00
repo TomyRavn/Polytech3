@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EL 연습</title>
+</head>
+<body>
+	<div>
+		<%="문자열" %> ${"문자열"}
+		
+<%-- 		자바에서는 <%= ' ' %> 안되고 EL에서는 됨 --%>
+<%-- 		<%='문자열' %>  --%>
+		${'문자열'}
+		
+		<%=123 %>	${123}
+		<%=true %>	${true}
+	</div>
+	
+	<div>
+		<%=8+4%> <%=8-4%> <%=8*4%> <%=8/4%>
+		${8+4} ${8-4} ${8*4} ${8/4} ${8 div 4} ${8 mod 4}
+	</div>
+	<div>
+		<%=3==4%> <%=3!=4%> <%=3<4%> <%=3>4%>
+		${3==4} ${3!=4} ${3<4} ${3>4}
+		${3 eq 4} ${3 ne 4} ${3 lt 4} ${3 gt 4}
+<!-- 		lt : less than / gt : greater than  -->
+	</div>
+	<div>
+		<%
+			//따옴표 없이 쓰면 변수로서 여김(abc)
+// 			String s = abc;
+		%>
+<!-- 		기본 객체라는 것은 변수 선언없이 변수처럼 쓸 수 있는 것들을 말함 -->
+<%-- 		${문자열} --%>
+	</div>
+	
+	<div>
+		<%
+			String s = "Hello, EL";
+		%>
+		<%=s %></br>
+<%-- 	중요!!	${s } //실행 불가 --%>
+
+		
+		x 파라미터 값 : 
+		<%
+			String xparam = request.getParameter("x");
+			out.println(xparam);
+		%></br>
+		x 파라미터 값 : <%= request.getParameter("x") %></br>
+		x 파라미터 값 : ${param.x} </br>
+		x 파라미터 값 : ${param["x"]} </br>
+<!-- 		getParameterValues : 체크박스와 같이 값이 여러 개 일 때 배열로 값을 반환해줌 -->
+<!-- 		paramValues도 동일한 기능 -->
+
+
+		User-Agent 헤더 값 : <%= request.getHeader("User-Agent") %> </br>
+		User-Agent 헤더 값 : ${header["User-Agent"]} </br>
+<!-- 		User-Agent는 변수규칙에 어긋나므로 배열처럼 []를 써서 묶은 후 문자 ""로 설정 -->
+<!-- 		.표현을 쓰지 못함 -->
+<!-- 		자바에서는 .만 가능하지만 EL에서는 []대괄호에 ""로 속성명을 적어 속성 접근이 가능 -->
+<!-- 		JSP 기본객체 (request, response, session, application, ...) 는 pageContext에 포함되어 있으므로 꺼내서 사용 가능 -->
+		현재 웹 애플리케이션(프로젝트)의 고유경로(컨텍스트 패스) : <%=request.getContextPath()%> </br>
+		현재 웹 애플리케이션(프로젝트)의 고유경로(컨텍스트 패스) : ${pageContext.request.getContextPath()} </br>
+		현재 웹 애플리케이션(프로젝트)의 고유경로(컨텍스트 패스) : ${pageContext.request.contextPath} </br>
+<%-- 		${} 내부에서는 getXxx() 메서드 대신 .xxx와 같이 속성(변수)이름만 사용하는 것도 가능 --%>
+		
+		<%
+// 			자바 웹 애플리케이션에서 데이터를 저장할 수 있는 공간(객체)/4개의 공간, 용도에 따라 골라서 저장 
+			pageContext.setAttribute("a", 1213213);		//pageContext는 '현재 jsp파일' 안에서만 사용가능	/ jsp하나 당 하나로 씀(유지기간이 request에 비해 짧음)
+			request.setAttribute("b", "asbda");			//request는 '현재 요청이 처리되는 동안'에만 사용가능
+														//한 번 요청이 되어서 실행이 되는 동안(요청 객체 하나로 돌려씀, forward등으로 공유가 됨)
+			session.setAttribute("c", "as123124");
+			application.setAttribute("d", "123124aa");
+		%>
+		pageContext에 "a"라는 이름으로 저장한 값 : <%=pageContext.getAttribute("a")%></br>
+		pageContext에 "a"라는 이름으로 저장한 값 : ${pageScope.a}</br>
+		request에 "b"라는 이름으로 저장한 값 : <%=request.getAttribute("b")%></br>
+		request에 "b"라는 이름으로 저장한 값 : ${requestScope.b}</br>
+		session에 "c"라는 이름으로 저장한 값 : <%=session.getAttribute("c")%></br>
+		session에 "c"라는 이름으로 저장한 값 : ${sessionScope.c}</br>
+		application에 "d"라는 이름으로 저장한 값 : <%=application.getAttribute("d")%></br>
+		application에 "d"라는 이름으로 저장한 값 : ${applicationScope.d}</br>
+	</div>
+		
+</body>
+</html>

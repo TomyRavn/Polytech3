@@ -1,0 +1,65 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/member/edit.do")
+public class MemberEditServlet extends HttpServlet{
+
+	{
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String user = "com";
+	String password = "com01";
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.setCharacterEncoding("UTF-8");
+
+		//파라미터 값 일치해야 하는 것 유의
+		String memId = req.getParameter("memId");
+		String memName = req.getParameter("memName");
+		int memPoint = Integer.parseInt(req.getParameter("memPoint"));
+		
+		updateMember(memId, memName, memPoint);
+		
+		resp.sendRedirect(req.getContextPath() + "/member/list.do");
+		
+	}
+
+	public void updateMember(String memId, String memName, int memPoint) {
+		String sql = "UPDATE member SET mem_name = ?, mem_point = ? WHERE mem_id = ?";
+		
+		try (
+				Connection conn = DriverManager.getConnection(url, user, password);
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				){
+			
+			pstmt.setString(1, memName);
+			pstmt.setInt(2, memPoint);
+			pstmt.setString(3, memId);
+			
+			pstmt.executeUpdate(); 
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
