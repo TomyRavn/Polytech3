@@ -1,0 +1,12 @@
+package kr.ac.kopo.exapp;
+
+public class Member {
+
+	public static void main(String[] args) {
+		String id;
+		String name;
+		int point;
+
+	}
+
+}

@@ -1,6 +1,7 @@
 package kr.ac.kopo.student;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,44 +13,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 @WebServlet("/student/add.do")
 public class StudentAddServlet extends HttpServlet{
-	{
-		try {	
-		Class.forName("oracle.jdbc.OracleDriver");
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	}
-	}
-
-	
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	String user = "com";
-	String password = "com01";
+	StudentDaoJdbc studentDao = new StudentDaoJdbc();
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+	
+		StudentVo vo = new StudentVo();		
+		vo.setStuNo(req.getParameter("stu_no"));
+		vo.setStuName(req.getParameter("stu_name"));
+		vo.setStuScore(Integer.parseInt(req.getParameter("stu_score")));
 		
-		String stuNo = req.getParameter("stu_no");
-		String stuName = req.getParameter("stu_name");
-		int stuScore = Integer.parseInt(req.getParameter("stu_score"));
 		
-		
-		String sql = "INSERT INTO student (stu_no,  stu_name, stu_score) " + "VALUES (?,?,?)";
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-		PreparedStatement pstmt = conn.prepareStatement(sql);) {		
-		pstmt.setString(1, stuNo); 
-		pstmt.setString(2, stuName); 
-		pstmt.setInt(3, stuScore); 
-		int num = pstmt.executeUpdate();
+		int num = studentDao.insertStudent(vo);
 		System.out.println(num + "개의 레코드 추가");
-		
-		} catch (SQLException e) {
-				e.printStackTrace();
-		}
-		
-		
 		resp.sendRedirect(req.getContextPath() + "/student/list.do");
 	}
+		
+	
 }

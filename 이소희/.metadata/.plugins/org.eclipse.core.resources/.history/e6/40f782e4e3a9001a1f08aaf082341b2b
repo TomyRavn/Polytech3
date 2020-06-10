@@ -1,0 +1,27 @@
+package kr.ac.kopo.student;
+
+public class StudentVo {
+	private String stuNo;
+	private String stuName;
+	private int stuScore;
+	
+	public String getstuNo() {
+		return stuNo;
+	}
+	public void setstuNo(String stuNo) {
+		this.stuNo = stuNo;
+	}
+	public String getstuName() {
+		return stuName;
+	}
+	public void setstuName(String stuName) {
+		this.stuName = stuName;
+	}
+	public int getstuScore() {
+		return stuScore;
+	}
+	public void setstuScore(int stuScore) {
+		this.stuScore = stuScore;
+	}
+
+}
