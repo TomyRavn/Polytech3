@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body align='center'>
+    <div class='container'>
+
+        <br/><br/><br/><br/><br/>
+
+        연산 선택:
+        <select id='ch'>
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option> 
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        자릿수 선택:
+        <select id='diff'>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select></br></br>
+
+        <h1 style="font-size: 100px;">< 문 제 ></h1>
+        <h1 style="font-size: 100px;" id=q>123</h1>
+        <b>[ 정답 입력 ]</b></br></br>
+        <input type='hidden' id='ans' value=""/>
+        <input id='my' placeholder="값을 입력하시오"/>  
+        <!-- 클릭했을 때 체크하도록 만듬(check 함수; 아래 참고) -->
+        <!-- 마우스 오버, 키업 등의 이벤트가 있음 -->
+        <button onclick="check()">정답확인</button>
+        <button onclick="refresh()">다음 문제</button></br></br></br></br>
+
+        맞힌 갯수 <input id='cnt' value="0" readonly/>
+        전체 문제 갯수 <input id='eQ' value="0" readonly/>
+    </div>
+
+    <!-- 선택자 통해서 alert대신 html에 접근할 수 있는 방법을 배웠음 -->
+    <!-- document.getElementById 등 -->
+    <!-- 결과를 돌려주는 방법 : innerHTML, style 통해서 -->
+
+    <script>
+        window.onload = refresh();
+        //홈페이지가 다 떴을 때!
+
+        //alert(ch.options[ch.selectedIndex].text);
+        //ch 옵션들 중에서 선택된 값을 찾아서 텍스트를 alert형식으로 출력하라는 뜻
+
+        function refresh(){
+
+            var q = document.getElementById('q');
+
+            var ch = document.getElementById('ch');
+            var op = ch.options[ch.selectedIndex].text;
+
+            var diff = document.getElementById('diff');
+            var digit = diff.options[diff.selectedIndex].text;
+
+            // var cal_list = ['+','-','*','/'];
+            // var cal = cal_list[parseInt(Math.random()*4)];
+
+            var num = 11;
+
+            switch(digit){
+                case '1' : num = 11;
+                break;
+                case '2' : num = 101;
+                break;
+                case '3' : num = 1001;
+                break;
+            }
+
+            if(document.getElementById('cnt').value >= 5 && document.getElementById('cnt').value && (document.getElementById('cnt').value/document.getElementById('eQ').value) >= 0.5 && (document.getElementById('cnt').value/document.getElementById('eQ').value) < 0.8){
+                num = 101;
+            }
+            else if(document.getElementById('cnt').value >= 5 && (document.getElementById('cnt').value/document.getElementById('eQ').value) >= 0.8){
+                num = 1001;
+            }
+            else{
+                num = 11;
+            }
+
+            var num1 = parseInt(Math.random()*num);
+            var num2 = parseInt(Math.random()*num);
+            // var ques = num1 + cal + num2;
+            if(op == '/'){
+                while(true){
+                    num1 = parseInt(Math.random()*num);
+                    num2 = parseInt(Math.random()*num);
+
+                    if(num1 != 0 && num2 != 0){
+                        break;
+                    }
+                }
+            }
+
+            var ques = num1 + op + num2;
+            
+            q.innerHTML = ques;
+
+            if(op == '+'){
+                document.getElementById('ans').value = num1 + num2;
+            }
+            else if(op == '-'){
+                document.getElementById('ans').value = num1 - num2;
+            }
+            else if(op == '*'){
+                document.getElementById('ans').value = num1 * num2;
+            }
+            else{
+                document.getElementById('ans').value = parseInt(num1 / num2);
+            }
+            //document : HTML문서(Javascript와 HTML을 연결시켜주는 역할)
+        }
+        
+        // if (cal == '+'){
+        //     ans = num1+num2
+        // }
+        // else if (cal == '-'){
+        //     ans = num1-num2
+        // }
+        // else if(cal == '*'){
+        //     ans = num1*num2
+        // }
+        // else{
+        //     ans = num1/num2
+        // }
+        
+        
+        function check(){
+
+            if(document.getElementById('ans').value == document.getElementById('my').value){
+                document.getElementById('cnt').value++;
+                alert('정답')
+                // document.getElementById('cor').style.display = 'block'
+            }
+            else{
+                alert('오답')
+                // document.getElementById('err').style.display = 'block'
+            }
+            document.getElementById('eQ').value++;
+        }
+    </script>
+
+</body>
+</html>

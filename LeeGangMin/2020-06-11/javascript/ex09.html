@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body align='center'>
+    <div class='container'>
+
+        <br/><br/><br/><br/><br/>
+
+        자릿수 선택:
+        <select id='diff'>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select></br></br>
+
+        <h1 style="font-size: 100px;">< 문 제 ></h1>
+        <h1 style="font-size: 100px;" id=q>123</h1>
+        <b>[ 정답 입력 ]</b></br></br>
+        <input type='hidden' id='ans' value=""/>
+        <input id='my' placeholder="값을 입력하시오"/>
+        <button id='nextButton' onclick="check()">다음 문제</button></br></br></br></br>
+
+        정답 갯수 <input id='cnt' value="0" readonly/>
+        푼 문제 갯수 <input id='eQ' value="0" readonly/>&nbsp;&nbsp;&nbsp;
+        남은 문제 수 <input id = 'limit' value="30" readonly/></br></br>
+        정확도 <input id='percent' value="0" readonly/>%
+    </div>
+
+    <script>
+        var grade = "";     //등급 담을 String 변수
+        var percent = 0;    //percent 담을 double 변수
+        var num = 11;       //num1과 num2의 범위를 지정할 변수(이 때 초기 범위를 1~10으로 설정해주기 위해 11을 초기값으로 지정)
+
+        window.onload = refresh();  //처음 브라우저가 뜨면 refresh()메소드를 1회 실행시켜라
+                                    //이후의 refresh()메소드가 작동하는 이유는 위의 input태그에서 '다음문제'버튼을 클릭할 때마다 check()메소드
+                                    //안에 들은 refresh()메소드가 계속 작동하기 때문
+        
+
+        function refresh(){
+            //퍼센트를 보기좋게 *100해주는 부분
+            document.getElementById('percent').value = Number(document.getElementById('cnt').value/document.getElementById('eQ').value) * 100;
+            //실제 정확도(퍼센트) 처리 변수
+            percent = Number(document.getElementById('cnt').value/document.getElementById('eQ').value);
+
+            //퍼센트에 따른 등급 처리
+            if(percent >= 0.9){
+                grade = "A";
+            }else if(percent >= 0.8 && percent < 0.9){
+                grade = "B";
+            }else if(percent >= 0.7 && percent < 0.8){
+                grade = "C";
+            }else{
+                grade = "F";
+            }
+
+            //남은 문제수가 0보다 클때만 문제 처리
+            if(document.getElementById('limit').value > 0){
+
+                //연산자 랜덤으로 뽑아줄 배열
+                var op_list = ['+', '-', '*', '/'];
+                var op = op_list[parseInt(Math.random() * 4)];
+                //문제 출력해줄 부분
+                var q = document.getElementById('q');
+                //난이도 수동조절해줄 변수
+                var diff = document.getElementById('diff');
+                var digit = diff.options[diff.selectedIndex].text;
+
+                
+                //난이도 수동조절
+                switch(digit){
+                    case '1' : num = 11;
+                    break;
+                    case '2' : num = 101;
+                    break;
+                    case '3' : num = 1001;
+                    break;
+                }
+
+                //난이도 조절
+                //10문제 이상풀었을 때 + 수동조절 버튼이 2일때 ~~~~~
+                if(document.getElementById('eQ').value >= 10 && document.getElementById('eQ').value < 20 || digit == '2'){
+                    num = 101;
+                }
+                else if(document.getElementById('eQ').value >= 20 || digit == '3'){
+                    num = 1001;
+                }
+                else{
+                    num = 11;
+                }
+
+                //숫자 2개 뽑는 부분(num은 난이도에 따라 범위가 바뀌는 변수)
+                var num1 = parseInt(Math.random()*num);
+                var num2 = parseInt(Math.random()*num);
+                
+                //나누기 일 때 0뽑지않게 해주는 조건
+                if(op == '/'){
+                    while(true){
+                        num1 = parseInt(Math.random()*num);
+                        num2 = parseInt(Math.random()*num);
+
+                        if(num1 != 0 && num2 != 0){
+                            break;
+                        }
+                    }
+                }
+
+                //연산식을 출력해줄 변수(예: 1 + 2)
+                var ques = num1 + op + num2;
+                //연산식이 담긴 ques 변수를 HTML로(q로 id를 준 부분에)
+                q.innerHTML = ques;
+
+                //사칙연산 처리 부분
+                if(op == '+'){
+                    document.getElementById('ans').value = num1 + num2;
+                }
+                else if(op == '-'){
+                    document.getElementById('ans').value = num1 - num2;
+                }
+                else if(op == '*'){
+                    document.getElementById('ans').value = num1 * num2;
+                }
+                else{
+                    document.getElementById('ans').value = parseInt(num1 / num2);   //소수점 생략
+                }
+            }
+            //남은 문제수가 0이하일 경우
+            else{
+                //버튼 비활성화 메소드를 이 조건이 만족하면 실행
+                off();
+                //등급 출력문
+                alert("당신의 학점은 " + grade + "등급 입니다.")
+            }
+            
+        }
+        
+        //정답인지 오답인지 처리해줄 부분
+        function check(){
+            if(document.getElementById('ans').value == document.getElementById('my').value){
+                document.getElementById('cnt').value++; //맞힌 갯수+1
+                alert('정답');
+            }
+            else{
+                alert('오답');
+            }
+
+            document.getElementById('eQ').value++;      //전체 갯수+1
+            document.getElementById('limit').value--;   //남은 문제 갯수-1
+
+            //체크한 후 문제를 바로 출력하게끔(원래의 check()와 refresh()를 합쳐 처리)
+            //따라서 버튼은 check()메소드를 실행시키는 것으로 변경(기존에는 refresh()메소드를 실행하였음)
+            refresh();
+        }
+
+        //버튼을 비활성화해줄 메소드
+        function off(){
+            document.getElementById("nextButton").disabled = true;
+        }
+    </script>
+
+</body>
+</html>
