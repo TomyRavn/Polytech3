@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -38,7 +39,7 @@
 				<tbody>
 					<c:forEach var="vo" items="${bbsList}">
 						<tr>
-							<th>${vo.bbsNo}</th> <th><a href='${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}'><b> ${vo.bbsTitle} </b></a></th> <th>${vo.bbsWriter}</th> <th>${vo.bbsRegDate}</th> <th>${vo.bbsEditDate}</th> <th>${vo.bbsCount}</th>
+							<th>${vo.bbsNo}</th> <th><a href='${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}'><b> ${vo.bbsTitle} </b></a></th> <th>${vo.bbsWriter}</th> <th><fmt:formatDate value="${vo.bbsRegDate}" pattern="yyyy/MM/dd HH:mm:ss"/></th> <th><fmt:formatDate value="${vo.bbsEditDate}" pattern="yyyy/MM/dd HH:mm:ss"/></th> <th>${vo.bbsCount}</th>
  						</tr>
  					</c:forEach>
 				</tbody>

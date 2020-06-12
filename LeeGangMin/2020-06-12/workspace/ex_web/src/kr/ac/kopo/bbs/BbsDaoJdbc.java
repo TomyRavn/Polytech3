@@ -94,7 +94,7 @@ public class BbsDaoJdbc {
 	
 	
 	public BbsVo selectBbs(int bbsNo) {
-		String sql = "SELECT bbs_no, bbs_title, bbs_content, bbs_writer, TRUNC(bbs_reg_date), TRUNC(bbs_edit_date), bbs_count FROM bbs WHERE bbs_no = ? ORDER BY bbs_no ASC";
+		String sql = "SELECT bbs_no, bbs_title, bbs_content, bbs_writer, bbs_reg_date, bbs_edit_date, bbs_count FROM bbs WHERE bbs_no = ? ORDER BY bbs_no ASC";
 		
 		BbsVo vo = null;
 
@@ -117,7 +117,7 @@ public class BbsDaoJdbc {
 					vo.setBbsContent(rs.getString("bbs_content"));
 					vo.setBbsWriter(rs.getString("bbs_writer"));
 					vo.setBbsRegDate(rs.getTimestamp("bbs_reg_date"));
-					vo.setBbsRegDate(rs.getTimestamp("bbs_edit_date"));
+					vo.setBbsEditDate(rs.getTimestamp("bbs_edit_date"));
 					vo.setBbsCount(rs.getInt("bbs_count"));
 				}
 				
