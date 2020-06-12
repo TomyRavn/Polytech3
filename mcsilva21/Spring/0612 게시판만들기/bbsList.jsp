@@ -30,7 +30,7 @@ table{
 		<td>${vo.bbsNo}</td>
 		<td><a href="${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}">${vo.bbsTitle}</a></td>
 		<td>${vo.bbsWriter}</td>
-		<td>${vo.bbsRegDate}</td>
+		<td><fmt:formatDate value="${vo.bbsRegDate}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
 		</tr>
 		</c:forEach>
 	</tbody>
