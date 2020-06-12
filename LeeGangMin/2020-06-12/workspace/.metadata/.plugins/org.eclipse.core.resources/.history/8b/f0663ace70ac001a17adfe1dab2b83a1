@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+		<!DOCTYPE html>                  
+		<html>                           
+		<head>                           
+		<meta charset='UTF-8'>           
+		<title>게시판 관리</title>
+		
+		<style>
+			input{
+		 	vertical-align:middle;
+		 	margin-bottom:10px;
+			}
+		</style>
+		
+		</head>                          
+		<body bgcolor=#66FFCC>                           
+			<h1>게시판 글 변경</h1>
+			
+		<form action='${pageContext.request.contextPath}/bbs/edit.do' method='post'>
+		글 번호 : <input type='text' name='bbsNo' value='${bbsVo.bbsNo}' readonly /></br></br>
+		글 제목 : <input type='text' name='bbsTitle' value='${bbsVo.bbsTitle}' style='width:600px;'/></br></br>
+		글 내용 : <textarea name="bbsContent" cols="40" row="20"' value='${bbsVo.bbsContent}' style='width:600px; height:400px;'></textarea>
+		<input type='submit' value='저장' /></br></br>
+		<a href='${pageContext.request.contextPath}/bbs/del.do?bbsNo=${bbsVo.bbsNo}'><button type='button' >삭제</button></a>
+		</form></br></br>
+		
+		</body>                          
+		</html>

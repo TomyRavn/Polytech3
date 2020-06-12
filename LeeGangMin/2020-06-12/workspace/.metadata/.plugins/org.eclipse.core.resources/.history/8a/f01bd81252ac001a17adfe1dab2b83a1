@@ -1,0 +1,53 @@
+package kr.ac.kopo.bbs;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/bbs/edit.do")
+public class BbsEditServlet extends HttpServlet{
+
+	BbsDaoJdbc bbsDao = new BbsDaoJdbc();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int altNo = Integer.parseInt(req.getParameter("bbsNo"));
+		BbsVo vo = bbsDao.selectBbs(altNo);
+		
+		req.setAttribute("bbsVo", vo);
+		
+		req.getRequestDispatcher("/WEB-INF/jsp/bbs/bbsEditForm.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.setCharacterEncoding("UTF-8");
+		
+		BbsVo vo = new BbsVo();
+		
+		String bbsTitle = req.getParameter("bbsTitle");
+		String bbsContent = req.getParameter("bbsContent");
+		String bbsWriter = req.getParameter("bbsWriter");
+		String bbsRegDate = req.getParameter("bbsRegDate");
+		int bbsCount = Integer.parseInt(req.getParameter("bbsCount"));
+		//vo.setBbsNo(Integer.parseInt(req.getParameter("bbsNo")));
+		vo.setBbsTitle(req.getParameter("bbsTitle"));
+		vo.setBbsContent(Integer.parseInt(req.getParameter("bbsContent")));
+		
+		memberDao.updateMember(vo);
+		
+		resp.sendRedirect(req.getContextPath() + "/member/list.do");
+	}
+
+}
