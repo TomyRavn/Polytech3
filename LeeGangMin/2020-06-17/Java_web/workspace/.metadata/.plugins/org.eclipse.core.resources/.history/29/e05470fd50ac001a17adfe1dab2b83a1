@@ -1,0 +1,26 @@
+package kr.ac.kopo.bbs;
+
+import java.io.IOException;
+
+@WebServlet("/member/del.do")
+public class BbsDelServlet extends HttpServlet{
+	
+	MemberDaoJdbc memberDao = new MemberDaoJdbc();
+	
+	//리팩토링 : 코드가 하는 일은 똑같이 두면서, 코드를 더 효율적으로 개선하는 것
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.setCharacterEncoding("UTF-8");
+		
+		String delId = req.getParameter("memId");
+		
+		memberDao.deleteMember(delId);
+		
+		resp.sendRedirect(req.getContextPath() + "/member/list.do");
+	
+	}
+
+	//alt + shift + r 로 같은 값 해당 메소드 내 전체 변경
+	
+}

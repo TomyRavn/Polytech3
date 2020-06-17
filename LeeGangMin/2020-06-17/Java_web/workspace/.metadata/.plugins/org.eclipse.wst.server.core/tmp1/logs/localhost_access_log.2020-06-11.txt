@@ -1,0 +1,13 @@
+127.0.0.1 - - [11/Jun/2020:19:21:16 +0900] "GET / HTTP/1.1" 404 750
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:19 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1526
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:19 +0900] "GET /favicon.ico HTTP/1.1" 404 761
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:21 +0900] "GET /ex_web/student/edit.do?stuNo=201131606 HTTP/1.1" 200 889
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:23 +0900] "GET /ex_web/student/add.do HTTP/1.1" 200 587
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:27 +0900] "POST /ex_web/student/add.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:27 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1613
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:28 +0900] "GET /ex_web/student/edit.do?stuNo=111 HTTP/1.1" 200 871
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:30 +0900] "POST /ex_web/student/edit.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:30 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1614
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:31 +0900] "GET /ex_web/student/edit.do?stuNo=111 HTTP/1.1" 200 872
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:32 +0900] "GET /ex_web/student/del.do?stuNo=111 HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [11/Jun/2020:19:21:32 +0900] "GET /ex_web/student/list.do HTTP/1.1" 200 1526

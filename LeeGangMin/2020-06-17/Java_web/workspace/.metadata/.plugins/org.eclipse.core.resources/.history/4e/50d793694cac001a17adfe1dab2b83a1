@@ -1,0 +1,12 @@
+package kr.ac.kopo.bbs;
+
+public class BbsVo {
+	
+	private int bbsNo;
+	private String bbsTitle;
+	bbs_title VARCHAR2(150),	--글제목
+	bbs_content CLOB,			--글내용
+	bbs_writer VARCHAR2(50),	--작성자(아이디)
+	bbs_reg_date DATE DEFAULT SYSDATE,			--글 등록일(작성일/시,분,초까지 저장)	//자동으로 입력됨
+	bbs_count
+}

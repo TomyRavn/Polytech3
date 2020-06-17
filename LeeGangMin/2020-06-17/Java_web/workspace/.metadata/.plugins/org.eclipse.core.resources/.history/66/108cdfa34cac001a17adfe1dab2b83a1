@@ -1,0 +1,11 @@
+package kr.ac.kopo.bbs;
+
+public class BbsVo {
+	
+	private int bbsNo;
+	private String bbsTitle;
+	private String bbsContent;
+	private String bbsWriter;
+	private String bbsRegDate;
+	private int bbsCount;
+}

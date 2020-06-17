@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class KeyListener extends KeyAdapter {
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(DynamicBeat.game == null) {
@@ -63,5 +63,9 @@ public class KeyListener extends KeyAdapter {
 			DynamicBeat.game.releaseL();
 		}
 		
+	}
+	
+	public void keyTyped(KeyEvent e) {
+		super.keyTyped(e);
 	}
 }

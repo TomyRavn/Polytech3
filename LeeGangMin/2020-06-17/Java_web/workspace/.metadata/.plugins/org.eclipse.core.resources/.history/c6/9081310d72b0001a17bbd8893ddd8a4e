@@ -1,0 +1,23 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+//필터(Filter) : 지정된 주소로 요청이 왔을 때, 서블릿의 실행 전과 후에 실행되는 객체
+
+//WebServlet을 여러개 썼을 경우 보다 구체적으로 일치하는 주소만 실행 (* | abc.do 중 abc.do가 실행)
+
+public class LoginFilter implements Filter{
+
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		
+	}
+	
+}

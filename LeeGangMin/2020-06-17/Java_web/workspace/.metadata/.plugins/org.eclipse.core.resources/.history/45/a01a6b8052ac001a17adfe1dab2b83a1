@@ -1,0 +1,38 @@
+package kr.ac.kopo.bbs;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+//요청받았을 때 사용되는 것들(Servlet) 을 Controller
+//보여줄 때 사용되는 것들(jsp) 을 View
+//dao, vo 등의 클래스는 Model (핵심 비즈니스 모델) dao는 사실 model이라고 잘 칭하지 않고, vo와 service가 모델의 핵심(데이터를 담은 클래스와 중간에 껴서 요청과 db와 분리된 클래스)
+// + service라는 클래스까지 포함하여 Model이라고 지칭
+//service 는 db와 관계없이 순수한 java 데이터만 다룸 (핵심 비즈니스 로직)
+//==> MVC 패턴 이라고하며, Model2 방식이라고 함
+//
+//ps. Model1방식은 jsp 안에서 모든 것을 다 처리하는 방식 -> 유지보수가 어려우므로 Model2 방식과 같이 나눠서 처리
+
+@WebServlet("/bbs/list.do")
+public class BbsListServlet extends HttpServlet{
+
+
+	BbsDaoJdbc bbsDao = new BbsDaoJdbc();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ArrayList<BbsVo> bbsList = bbsDao.selectBbsList();
+		req.setAttribute("bbsList", bbsList);
+
+		req.getRequestDispatcher("/WEB-INF/jsp/bbs/bbsList.jsp").forward(req, resp);
+	}
+
+}
