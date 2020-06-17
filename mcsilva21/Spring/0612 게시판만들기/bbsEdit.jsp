@@ -17,7 +17,7 @@
 	<tr><th>제목</th><td><input type="text" name="bbsTitle" value="${bbsVo.bbsTitle}"/></td></tr> 
 	<tr><th>내용</th><td><textarea name="bbsContent" rows="20" cols="30">${bbsVo.bbsContent}</textarea></td></tr> 
 	<tr><th>작성자</th><td>${bbsVo.bbsWriter}</td></tr> 	
-	<tr><th>작성일</th><td>${bbsVo.bbsRegDate}</td></tr> 			
+	<tr><th>작성일</th><td><fmt:formatDate value="${bbsVo.bbsRegDate}" pattern="yyyy년  MM월 dd일  HH시 mm분 ss초"/></td></tr>			
 	</tbody>			
 </table>		
 	<input type="submit" value="저장">
