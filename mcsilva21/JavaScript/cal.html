@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+
+    <style>
+h1{
+    color: darkcyan;
+}
+
+button{
+    color: rgb(238, 136, 179); background-color: rgb(236, 227, 227)
+}
+
+    </style>
+
+</head>
+   
+<body style="font-size: 60px;" align='center'>
+
+    <h1>계산기</h1>
+    <input id='con' style="font-size: 60px;" />
+
+    <div style="margin-bottom:-10px;">
+        <button id='clr' style="width: 120px; height: 50px; 
+        font-size: 30px;" onclick="clr()">Clear</button>
+        <button id='enter' style="width: 120px; height: 50px; 
+        font-size: 30px;" onclick="cal()">=</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='a' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('a')">1</button>
+        <button id='b' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('b')">2</button>
+        <button id='c' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('c')">3</button>
+        <button id='d' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('d')">+</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='e' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('e')">4</button>
+        <button id='f' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('f')">5</button>
+        <button id='g' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('g')">6</button>
+        <button id='h' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('h')">-</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='i' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('i')">7</button>
+        <button id='j' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('j')">8</button>
+        <button id='k' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('k')">9</button>
+        <button id='l' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('l')">*</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='m' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('m')" disabled>&nbsp;</button>
+        <button id='n' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('n')">0</button>
+        <button id='o' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('o')" disabled>&nbsp;</button>
+        <button id='p' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('p')">/</button>
+     </div>
+
+     <script>
+        var key = document.getElementById('con')
+        key.onkeydown = function(){  
+            console.log(event.keyCode)      
+           
+           if (event.keyCode == 13){
+               cal()
+               // easy()
+           }
+           if  (event.keyCode == 8){
+               clr()
+           }
+
+           };
+
+           //  onclick 입력받은 값을 clk함수로 선언하고 파라미터 값으로 x를 받아옴
+           function clk(x){
+            var btn = document.getElementById(x).textContent
+            var con = document.getElementById('con').value
+            con = con + btn
+            document.getElementById('con').value = con
+
+         }
+
+        //  = 입력되어 있을때 함수를 실행 
+       function cal(){
+           var con = document.getElementById('con').value 
+        // con은 onclick으로 입력받은 계산식이 들어가 있음
+           var result=0
+        // 결과값을 0으로 초기화  
+           var temp=''
+        //숫자 자리수를 입력하기 위해 빈문자공간을 선언
+           var num = []
+         //숫자저장
+           var op = []
+         //연산자 저장
+           for(var i=0; i<con.length;i++){
+            //  입력받은 문자 길이 만큼 반복을 실행
+               if(con[i] != '+' && con[i] != '-' && con[i] != '*' && con[i] != '/'){
+                   temp = temp + con[i]
+         //  연산자를 받기 전까지 값을 temp에 저장함 기존값에다 새로운 수를 붙혀줘야 하므로 temp=temp+con[i]
+               }
+               else{
+        //연산자를 받았을때 op공간에 저장하고 숫자는 num 배열에 저장 temp값은 비워줌 새로운 숫자를 받아야 하므로 temp를 비워둠
+                   num.push(parseInt(temp))
+                   op.push(con[i])
+                   temp = ''
+               }
+           }
+           num.push(parseInt(temp)) // 마지막 숫자 넣어주기
+           console.log(num)
+           console.log(op)
+           //지금까지의 실행결과를 보기위해 콘솔을 찍어봄. 이시점에 num과op는 어떤 값을 입력받았을까?
+           var op_len = op.length
+           //연산자의 길이 만큼 연산을 하기 위해 선언
+           var count = 0
+           //카운트 0을 초기화 시킨후
+           while (count<op_len){
+               //배열 길이(연산자 수)만큼 반복문을 돌려줌
+           
+               for (var i = 0; i<op.length;i++){
+               
+                   if(op[i] =='*'){
+                       num.splice(i,2,num[i]*num[i+1])
+                     //배열 1 위치에서 2개를 삭제하고 num[i]*num[i+1]으로 대체하여라.
+                     //예  연산식[2+3*5-7]  num[2,3,5,7]  op[+,*,-]    
+                    //   splice시에 3과5를 삭제하고 , 3*5=15값으로 대체를 하게된다. 
+                    // num[2,15,7]이 남고 op[+,-]이 남게 된다.             
+                       op.splice(i,1)
+                   //첫번째에 한개 삭제 
+                   }
+                   if(op[i] =='/'){
+                       num.splice(i,2,num[i]/num[i+1])
+                       op.splice(i,1)
+                   
+                   }
+               }
+               count +=1
+           }
+           
+           
+           result = num[0]// 첫 숫자 넣어주기
+           for (var i = 0; i<op.length; i++){
+           
+               if(op[i] == '+'){
+                   result = result + +num[i+1]
+               }
+               else if (op[i] == '-'){
+                   result = result -num[i+1]
+               }
+           
+           }
+           
+           document.getElementById('con').value = result
+       }
+
+       function clr(){
+           document.getElementById('con').value=''
+       }
+
+       function easy(){
+           document.getElementById('con').value 
+           = eval(document.getElementById('con').value)
+       }
+    </script>
+</body>
+</html>
+      
+

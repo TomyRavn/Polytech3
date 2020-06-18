@@ -1,0 +1,12 @@
+
+public class Ok {
+int x, y;
+	public static void main(String[] args) {
+		Ok obj = new Ok();
+		obj.x = 10;
+		
+		System.out.println("Field x : + obj.x");
+
+	}
+
+}
