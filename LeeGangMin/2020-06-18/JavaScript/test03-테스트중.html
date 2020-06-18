@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body style="font-size: 60px;" align="center">
+    <input id="con" style="font-size: 60px;" /></br>
+
+    <button id="one" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('one')">1</button>
+    <button id="two" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('two')">2</button>
+    <button id="three" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('three')">3</button>
+    <button id="plus" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('plus')">+</button></br>
+    <button id="four" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('four')">4</button>
+    <button id="five" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('five')">5</button>
+    <button id="six" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('six')">6</button>
+    <button id="minus" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('minus')">-</button></br>
+    <button id="seven" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('seven')">7</button>
+    <button id="eight" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('eight')">8</button>
+    <button id="nine" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('nine')">9</button>
+    <button id="multiple" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('multiple')">*</button></br>
+    <button id="clear" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('clear')">C</button>
+    <button id="zero" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('zero')">0</button>
+    <button id="divide" style="width: 50px; height: 50px; font-size: 30px;" onclick="clk('divide')">/</button>
+    <button id="equal" style="width: 50px; height: 50px; font-size: 30px;" onclick="cal()">=</button></br>
+
+    <script>
+        window.onload = clk(0);
+
+        function clk(num){
+            var btn = document.getElementById(num).textContent;
+            var con = document.getElementById('con').value;
+
+            if(btn == 'C'){
+                con = null;
+            }
+            else{
+                con = con + btn;
+            }
+            document.getElementById('con').value = con;
+        }
+
+        function cal(){
+            //전체 결과를 가져옴
+            
+            var con = document.getElementById('con').value;
+            var result = 0;
+            var multipleResult = 1;
+            var temp;
+            var tempOper;
+            var cnt = 0;
+            var tempCnt = 0;
+
+            //연산
+            for(var i = 0; i < con.length; i++){
+                if(i == 0){
+                    if(con[i] == '+' || con[i] == '*' || con[i] == '/') con[i] = '0';
+                    else{   //-랑 숫자
+                        temp += con[i];
+                    }
+                }
+                else{       //2번째 인덱스부터(i >= 1)
+                    if(con[i] != '+' && con[i] != '-' && con[i] != '*' && con[i] != '/'){
+                        temp += con[i];
+                    }else{
+                        tempOper = '';
+                        cnt++;
+                        switch(con[i]){
+                            case '+':
+                                result = result + parseInt(temp);
+                                break;
+                            case '-':
+                                if(cnt == 1){
+                                    result = result + parseInt(temp);
+                                }
+                                else{
+                                    result = result - parseInt(temp);
+                                }
+                                break;
+                            case '*':
+                                if(cnt == 1){
+                                    result = multipleResult * parseInt(temp);
+                                }
+                                else{
+                                    result = result * parseInt(temp);
+                                }
+                                break;
+                            case '/':
+                                if(cnt == 1){
+                                    result = parseInt(temp);
+                                }
+                                else{
+                                    result = result / parseInt(temp);
+                                }
+                                break;
+                        }
+                        tempOper = con[i];
+                        temp = '';
+                    }
+                }
+                
+            }
+
+            switch(tempOper){
+                case '+':
+                    result += parseInt(temp);
+                    break;
+                case '-':
+                    result -= parseInt(temp);
+                    break;
+                case '*':
+                    result *= parseInt(temp);
+                    break;
+                case '/':
+                    result /= parseInt(temp);
+                    break;
+            }
+
+            document.getElementById('con').value = result;
+        }
+
+
+    </script>
+</body>
+</html>

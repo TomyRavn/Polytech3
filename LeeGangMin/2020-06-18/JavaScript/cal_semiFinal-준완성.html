@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="font-size: 60px;" align='center'>
+    
+    <h1>계산기</h1>
+    <input id='con' style="font-size: 60px;" />
+    
+    <div style="margin-bottom:-10px;">
+        <button id='clr' style="width: 120px; height: 50px; 
+        font-size: 30px;" onclick="clr()">Clear</button>
+        <button id='enter' style="width: 120px; height: 50px; 
+        font-size: 30px;" onclick="cal()">=</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='a' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('a')">1</button>
+        <button id='b' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('b')">2</button>
+        <button id='c' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('c')">3</button>
+        <button id='d' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('d')">+</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='e' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('e')">4</button>
+        <button id='f' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('f')">5</button>
+        <button id='g' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('g')">6</button>
+        <button id='h' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('h')">-</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='i' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('i')">7</button>
+        <button id='j' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('j')">8</button>
+        <button id='k' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('k')">9</button>
+        <button id='l' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('l')">*</button>
+     </div>
+     <div style="margin-bottom:-10px;">
+        <button id='m' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('m')" disabled>&nbsp;</button>
+        <button id='n' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('n')">0</button>
+        <button id='o' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('o')" disabled>&nbsp;</button>
+        <button id='p' style="width: 50px; height: 50px; 
+        font-size: 30px;" onclick="clk('p')">/</button>
+     </div>
+
+     <script>
+         //키보드 입력 받는 코드
+         var key = document.getElementById('con')
+         key.onkeydown = function(){        
+            if (event.keyCode == 13){      //13번은 Enter키, Enter키 눌렀을 시 cal() 메소드 실행
+                cal()
+            }
+            if  (event.keyCode == 8){      //8번은 BackSpace키, BackSpace키 눌렀을 시 clr() 메소드 실행
+                clr()
+            }
+        };
+
+        //버튼 클릭 시 실행하는 코드(위의 버튼에서 onclick으로 작동하는 메소드)
+        //화면에서 숫자를 입력받아 출력해주는 역할
+         function clk(x){
+            var btn = document.getElementById(x).textContent    //버튼을 입력받아 해당 텍스트를 저장하는 변수(<button>값</button>)
+            var con = document.getElementById('con').value      //화면에서 출력하는 네모부분의 값을 저장하는 변수
+            con = con + btn                             //버튼 입력받았을 시 해당 값을 con 변수에 저장
+            document.getElementById('con').value = con  //con 변수의 바뀐 값을 출력해주기 위해 value값을 직접 con값으로 수정
+         }
+
+        //계산 실행하는 코드(위의 = 버튼 눌렀을 시 onclick으로 작동하는 메소드)
+        function cal(){
+            var cnt = 0;                                    //1번째 연산자인지 확인할 count용 변수
+            var con = document.getElementById('con').value  //화면에서 네모부분의 출력되는 값을 담은 변수
+            var result=0                                    //결과 값을 담은 변수
+            var temp=''                                     //연산자를 만났을 시 숫자를 끊어주기 위한 변수
+            var num = []                                    //숫자를 담을 배열 변수
+            var op = []                                     //연산자를 담을 배열 변수
+
+            for(var i=0; i<con.length;i++){
+                //'+', '-', '*', '/'와 같은 연산자가 아닐 시 temp에 해당 문자를 저장(숫자일 시, 붙여주는 역할을 함/ 예: 45)
+                if(con[i] != '+' && con[i] != '-' && con[i] != '*' && con[i] != '/'){
+                    temp = temp + con[i]       
+                }
+                //연산자일 시
+                else{
+                    //temp에 저장된 값이 없고, num과 op배열의 길이가 같거나 작을 때, 첫번째 연산자라면 temp에 0을 저장
+                    //-5+5일때, 처음 -를 만났을 때 0-5를 해서 -5로 만들어줌
+                    if(temp == '' && (num.length <= op.length) && cnt == 0) {
+                        temp = '0';
+                    }
+                    
+                    //연산자가 2번째 이상의 연산자라면 temp에 그대로 그 연산자를 저장하고, num,op 배열에 담지않고 i값을 증가
+                    //5+-5 일때, 5+(-5)로 만들어주는 역할을 함
+                    if(temp == '' && (num.length <= op.length) && cnt > 0) {
+                        temp = temp + con[i];
+                        continue;
+                    }
+
+                    //+,-,*,/ 연산자가 temp에 들어와있을 떄는 반복문을 넘김(*, / 연산에서 문제 발생 -- 보류)
+                    if(temp == '+' || temp == '-' || temp == '*' || temp == '/'){
+                        continue;
+                    }
+
+                    
+                    num.push(parseInt(temp))    //num배열에는 여태까지 저장한 temp(숫자값)를 저장
+                    op.push(con[i])             //op배열에는 현재 연산자를 저장
+                    temp = ''                   //그리고 temp를 ''공백 으로 초기화하여 숫자를 끊어줌(56 + 45 일때, 56에서 끊어줌 / 이를 안할 시 5645가 됨)
+                    cnt++;                      //count 값을 증가해 연산자가 몇 번째 연산자인지를 저장
+                }
+            }
+
+            num.push(parseInt(temp)) // 마지막 숫자 넣어주기(for문을 다 돌고나면 연산자가 숫자보다 1개 모자라기 때문에 마지막 저장된 temp를 num배열에 따로 저장해주어야 함)
+
+            //'*' 연산자를 만났을 시
+            for (var i = 0; i<op.length; i++){
+                if (op[i] == '*'){
+                    num[i] = num[i] * num[i+1]  //num배열에 i번째 자리 값을 i와 i+1번째 값의 곱으로 저장
+                    num.splice(i+1, 1);         //num 배열의 i+1번째 자리 인덱스를 삭제
+                    //이를 num.splice(i, 2, num[i]*num[i+1])로도 가능//i번째부터 2개를 삭제한 후 num[i]*num[i+1]값을 i자리에 추가(대체)
+                    op.splice(i, 1);            //op배열의 i번째 자리 인덱스를 삭제
+                    i--;                        //num과 op배열이 1개씩 줄어들었으므로 반복문의 i값도 -1을 해줌
+                }
+            }
+
+            //'/' 연산자를 만났을 시
+            //※이때, 주의할 점은 *와 /를 같은 for문 안에 두면 배열의 삭제로 인해서 검사가 꼬이게 되므로 다른 반복문안에 배치해야 함
+            for (var i = 0; i<op.length; i++){
+                if(op[i] == '/'){
+                    num[i] = num[i] / num[i+1]  //num배열에 i번째 자리 값을 i와 i+1번째 값의 나눗셈으로 저장
+                    num.splice(i+1, 1);
+                    op.splice(i, 1);
+                    i--;
+                }
+            }
+
+            //*, / 연산으로 인해 배열에 든 값이 변하기 때문에 첫번째 인덱스의 값을 결과값에 이 때 저장
+            result = num[0]         // 첫 숫자 넣어주기
+
+            //남은 +, -연산을 처리(배열이 삭제되지 않으므로 그냥 결과값에 바로 저장하여 처리)
+            for (var i = 0; i<op.length; i++){
+                if(op[i] == '+'){
+                    result = result + num[i+1]
+                }
+                else if (op[i] == '-'){
+                    result = result - num[i+1]
+                }
+            }
+            
+            //출력될 값을 모두 연산된 result값으로 변경
+            document.getElementById('con').value = result
+        }
+
+        //C 버튼을 눌렀을 때, 출력되는 값을 초기화해주는 clr()메소드
+        function clr(){
+            document.getElementById('con').value=''
+        }
+
+
+//※ 이 코드의 문제점
+//연산자가 여러개 나왔을 때(음수값을 계산해주는 *-, --, +-, /-는 제외)
+//NaN값이 출력됨(계산이 되지 않음)
+//해결 방법 아이디어 : op와 num배열의 길이를 비교했을 때, 연산자 배열에 넣지 않음.(temp에 사칙연산이 있을때는 따로 처리 ; for(){if(temp[i] = '-'){}} )
+     </script>
+</body>
+</html>
