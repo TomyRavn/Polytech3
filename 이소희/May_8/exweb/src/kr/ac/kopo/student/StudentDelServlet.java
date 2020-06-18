@@ -20,15 +20,12 @@ public class StudentDelServlet extends HttpServlet {
 	StudentDaoJdbc studentDao = new StudentDaoJdbc();
 
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) 
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 		throws ServletException, IOException {
 
 	
-	String delNo = req.getParameter("stu_no");
-	
-	
+	String delNo = req.getParameter("stu_no");	
 	int num = studentDao.deleteStudent(delNo); 
-
 	System.out.println(num + "명의 학생 삭제");
 	resp.sendRedirect(req.getContextPath() + "/student/list.do");
 

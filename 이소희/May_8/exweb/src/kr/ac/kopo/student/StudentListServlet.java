@@ -23,13 +23,12 @@ public class StudentListServlet extends HttpServlet {
 	StudentDaoJdbc studentDao = new StudentDaoJdbc();
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) 
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		ArrayList<StudentVo> list = studentDao.selectStudentList();
 		
 		req.setAttribute("stuList", list);
-
-		
+	
 		req.getRequestDispatcher("/META-INF/jsp/student/stuList.jsp").forward(req, resp);
 	}
 }
