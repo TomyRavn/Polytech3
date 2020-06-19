@@ -48,7 +48,7 @@ public class KeyListener extends KeyAdapter {
 			DynamicBeat.game.releaseD();
 			
 		} else if (e.getKeyCode() == KeyEvent.VK_F) {
-			DynamicBeat.game.pressF();
+			DynamicBeat.game.releaseF();
 			
 		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			DynamicBeat.game.releaseSpace();

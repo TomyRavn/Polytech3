@@ -72,6 +72,7 @@ public class DynamicBeat extends JFrame {
 
 	public DynamicBeat() {
 		setUndecorated(true);
+		setFocusable(true);
 		setTitle("Dynamic Beat");
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setResizable(false);
@@ -81,7 +82,8 @@ public class DynamicBeat extends JFrame {
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
 
-//		addKeyListener(new KeyListener());
+		addKeyListener(new KeyListener());
+
 		
 		// 인트로뮤직 시작
 		introMusic.start();
@@ -402,7 +404,8 @@ public class DynamicBeat extends JFrame {
 				.getImage();
 		backButton.setVisible(true);
 		isGameScreen = true;
-//		setFocusable(true);
+		
+		
 	}
 	
 	public void backMain() {
