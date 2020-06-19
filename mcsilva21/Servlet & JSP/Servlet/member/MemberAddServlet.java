@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/member/add.do")
 
 public class MemberAddServlet extends HttpServlet{			
-	MemberDaojdbc memberDao = new MemberDaojdbc();
+	MemberDao memberDao = new MemberDaoBatis();
 	
 	
 	//요청을 받으면 , 요청방식에 상관없이 실행되는 메서드 : service()
@@ -28,7 +28,7 @@ public class MemberAddServlet extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
-		req.setCharacterEncoding("UTF-8");			
+//		req.setCharacterEncoding("UTF-8");			
 		MemberVo vo = new MemberVo();
 		vo.setMemId(req.getParameter("memId"));
 		vo.setMemPass(req.getParameter("memPass"));

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,15 +29,14 @@ table{
 		<c:forEach var="vo" items="${bbsList}">
 		<tr>
 		<td>${vo.bbsNo}</td>
-		<td><a href="${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}">${vo.bbsTitle}</a></td>
-		<td>${vo.bbsWriter}</td>
+		<td><a href="${pageContext.request.contextPath}/bbs/edit.do?bbsNo=${vo.bbsNo}"><c:out value="${vo.bbsTitle}"></c:out></a></td>
+		<td><c:out value="${vo.bbsWriter}"></c:out></td>
 		<td><fmt:formatDate value="${vo.bbsRegDate}" pattern="yyyy/MM/dd HH:mm:ss"/></td>
 		</tr>
 		</c:forEach>
-	</tbody>
 	
+	</tbody>
 	</table>
-
 
 </body>
 </html>

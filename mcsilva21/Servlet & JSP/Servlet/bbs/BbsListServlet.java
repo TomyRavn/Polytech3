@@ -1,7 +1,7 @@
 package kr.ac.kopo.bbs;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/bbs/list.do")
 public class BbsListServlet extends HttpServlet{
-	BbsDaojdbc bbsDao = new BbsDaojdbc();
+	BbsDao bbsDao = new BbsDaoBatis();
 			
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ArrayList<BbsVo> list = bbsDao.selectBbsList();
+		List<BbsVo> list = bbsDao.selectBbsList();
 		
 		req.setAttribute("bbsList", list); //${bbsList}
 				

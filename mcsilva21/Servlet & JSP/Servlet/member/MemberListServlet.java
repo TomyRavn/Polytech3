@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,13 +21,13 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/member/list.do")
 public class MemberListServlet extends HttpServlet {
 
-	MemberDaojdbc memberDao = new MemberDaojdbc();
+	MemberDao memberDao = new MemberDaoBatis();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 
 		
 
-		ArrayList<MemberVo>list = memberDao.selectMemberList();
+		List<MemberVo>list = memberDao.selectMemberList();
 		
 		req.setAttribute("memList", list);
 	
