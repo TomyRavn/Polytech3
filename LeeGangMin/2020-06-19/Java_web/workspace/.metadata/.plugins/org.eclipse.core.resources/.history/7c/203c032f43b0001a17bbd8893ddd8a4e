@@ -1,0 +1,40 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+//자바 웹 애플리케이션에서 데이터를 저장할 수 있는 공간(객체)
+//요청객체(HttpServletRequest) : 요청마다 1개씩 새로 생성, 요청처리(응답전송)가 끝나면 소멸
+//세션객체(HttpSession)
+//서블릿컨텍스트객체(ServletContext)
+
+@WebServlet("/attr.do")
+public class AttrServlet extends HttpServlet{
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		//요청객체에 "reqCnt"라는 이름으로 저장된 값을 가져오기
+		AtomicInteger rcnt = (AtomicInteger) req.getAttribute("reqCnt");
+		if(rcnt == null) {					//요청객체에 "reqCnt"라는 이름으로 값을 저장한 적이 없는 경우
+			rcnt = new AtomicInteger(0);	//0값을 가진 정수 객체 생성	(Thread의 안전한 정수 객체 , 일단은 Integer라고 생각(정수 하나를 저장가능함))
+		}
+		rcnt.incrementAndGet();				//정수 값을 1 증가
+		req.setAttribute("reqCnt", rcnt);	//요청객체에 "reqCnt"라는 이름으로 rcnt 값을 저장
+		
+		PrintWriter out = resp.getWriter();
+		out.println("reqCnt : " + rcnt);
+		
+		//요청객체를 계속 새로 생성하기 때문에, 새로고침을 해도 계속 1로만 출력(기존 요청객체는 사라지고, 다른 요청걕체가 생성되었기 때문)
+		
+	}
+	
+}

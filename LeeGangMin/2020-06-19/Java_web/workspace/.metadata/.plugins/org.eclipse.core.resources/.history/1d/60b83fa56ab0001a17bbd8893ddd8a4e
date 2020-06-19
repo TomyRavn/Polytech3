@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<a href='${pageContext.request.contextPath}/member/list.do'>[회원관리]</a>
+	<a href='${pageContext.request.contextPath}/bbs/list.do'>[게시판]</a>
+	<a href='${pageContext.request.contextPath}/student/list.do'>[학생관리]</a>
+	
+<!-- 	로그인하지 않은 경우 -->
+	[로그인]
+	
+<!-- 	로그인한경우 -->
+<% 
+	String nickParam = request.getParameter("memName");
+	if(nickParam != null){
+		session.setAttribute("userName", nickParam)
+	}
+%>
+	'로그인한 회원 이름' 님
+	<a href='${pageContext.request.contextPath}/member/logout.do'>[로그아웃]</a></br></br>
+</body>
+</html>

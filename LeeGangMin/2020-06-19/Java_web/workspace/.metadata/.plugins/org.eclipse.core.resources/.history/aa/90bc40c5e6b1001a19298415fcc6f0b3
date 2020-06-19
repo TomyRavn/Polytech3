@@ -1,0 +1,7 @@
+package kr.ac.kopo.comm;
+
+//리스너(Listener) : 특정 사건(이벤트)이 발생하면, 자동으로 실행
+
+public class InitListener {
+
+}

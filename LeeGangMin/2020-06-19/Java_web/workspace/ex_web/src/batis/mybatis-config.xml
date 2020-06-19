@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 마이바티스를 통해서 사용하려는 데이터베이스 환경(접속 정보)을 설정 -->
+<!-- 환경은 여러개 들어갈 수 있음 -->
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+<!--       마이바티스가 자동으로 풀해준 걸 쓸거다 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="username" value="com"/>
+        <property name="password" value="com01"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+<!-- 마이바티스를 통해서 실행할 SQL문들을 정의한 XML파일 등록 -->
+  <mappers>
+    <mapper resource="batis/mapper/MemberMapper.xml"/>
+    <mapper resource="batis/mapper/BbsMapper.xml"/>
+  </mappers>
+</configuration>

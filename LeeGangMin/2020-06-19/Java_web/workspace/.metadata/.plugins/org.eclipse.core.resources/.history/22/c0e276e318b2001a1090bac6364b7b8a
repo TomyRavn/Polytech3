@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.kopo.bbs.BbsDao">
+
+  <select id="selectBbsList" resultType="kr.ac.kopo.bbs.BbsVo">
+    SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_edit_date, bbs_count FROM bbs ORDER BY bbs_no ASC
+  </select>
+  
+  <insert id="insertBbs" parameterType="kr.ac.kopo.bbs.BbsVo">
+  	INSERT INTO member (mem_id, mem_pass, mem_name, mem_point) VALUES ( #{memId}, #{memPass}, #{memName}, #{memPoint} )
+  </insert>
+  
+  <update id="updateMember" parameterType="kr.ac.kopo.member.MemberVo">
+  	UPDATE member SET mem_name = #{memName}, mem_point = #{memPoint} WHERE mem_id = #{memId}
+  </update>
+  
+  <delete id="deleteMember" parameterType="string">
+  	DELETE FROM member WHERE mem_id = #{memId}
+  </delete>
+  
+  <select id="selectLoginMember" parameterType="kr.ac.kopo.member.MemberVo" resultType="kr.ac.kopo.member.MemberVo">
+  	SELECT mem_id as memId, mem_pass as memPass, mem_name as memName, mem_point as memPoint FROM member WHERE mem_id=#{memId} and mem_pass=#{memPass}
+  </select>
+  
+</mapper>

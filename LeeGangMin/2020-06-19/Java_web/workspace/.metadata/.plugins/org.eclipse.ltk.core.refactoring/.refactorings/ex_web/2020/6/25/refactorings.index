@@ -1,0 +1,19 @@
+1592353993898	Move 'login.jsp' to 'member'
+1592359677953	Rename type 'LoginServlet'
+1592539563991	Extract local variable 'string'
+1592539849459	Convert local variable 'enc' to field
+1592540145800	Move compilation unit
+1592544730385	Extract interface 'MemberDao'
+1592547156989	Move folder
+1592547173867	Delete element
+1592547227278	Copy package
+1592547237447	Move file
+1592547240381	Delete element
+1592547250196	Rename package 'batis.copy'
+1592547264286	Delete element
+1592547326433	Copy package
+1592547338187	Delete element
+1592547343180	Rename package 'batis.mapper.copy'
+1592555289122	Extract interface 'bbsDao'
+1592555329310	Rename type 'bbsDao'
+1592555703498	Copy file

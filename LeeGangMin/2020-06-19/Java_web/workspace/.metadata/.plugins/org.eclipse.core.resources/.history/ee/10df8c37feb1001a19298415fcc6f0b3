@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 현재 Mapper 파일(SQL문들의 집합)의 고유한 이름을 namespace 속성에 지정 -->
+<!-- 일반적으로 여기 등록된 SQL문들을 실행할 인터페이스의 이름과 동일하게 설정  -->
+
+<mapper namespace="kr.ac.kopo.member.MemberDao">
+<!-- 	실행할 SQL문과 동일한 이름의 엘리먼트를 사용하여 SQL문을 등록 -->
+<!-- 	SQL문의 고유한 이름을 id 속성에 지정 -->
+
+<!-- id는 보통 SQL문을 실행할 때 사용할 인터페이스의 메소드 이름과 동일하게 설정 -->
+<!-- resultType 속성에는 실행결과 레코드 1개를 담을 자바객체의 클래스명을 지정(패키지 포함)   -->
+<!-- 변수명과 컬럼이름을 똑같게 별명으로 설정, 그래야 자동으로 담김(이때 as는 붙여도 되고 안붙여도됨) -->
+  <select id="selectMemberList" resultType="kr.ac.kopo.member.MemberVo">
+    SELECT mem_id as memId, mem_pass as memPass, mem_name as memName, mem_point as memPoint FROM member
+  </select>
+  
+<!--   실행에 필요한 값을 받는 경우에는, 받을 값을 타입을 parameterType 속성에 지정 -->
+<!-- String의 경우, java.lang.String 또는 string(소문자) 둘 다 가능 -->
+  <select id="selectMember" parameterType="string" resultType="kr.ac.kopo.member.MemberVo">
+  	SELECT mem_id as memId, mem_pass as memPass, mem_name as memName, mem_point as memPoint FROM member WHERE mem_id = #{memId}
+  </select>
+  
+<!--   파라미터로 받은 객체의 속성(변수)값을 SQL문에 주입하기 위해서 #{변수명} 을 사용 -->
+  <insert id="insertMember" parameterType="kr.ac.kopo.member.MemberVo">
+  	INSERT INTO member (mem_id, mem_pass, mem_name, mem_point) VALUES ( #{memId}, #{memPass}, #{memName}, #{memPoint} )
+  </insert>
+  
+  <update id="updateMember" parameterType="kr.ac.kopo.member.MemberVo">
+  	UPDATE member SET mem_name = #{memName}, mem_point = #{memPoint} WHERE mem_id = #{memId}
+  </update>
+  
+<!--   parameterType이 단일값을 갖는 객체인 경우(String, Integer, ...)에는 #{}의 이름은 무엇을 사용해도 상관없음 -->
+<!-- 보통은 #{value}나 #{파라미터값(여기서는 memId)} 로 쓴다 -->
+  <delete id="deleteMember" parameterType="string">
+  	DELETE FROM member WHERE mem_id = #{memId}
+  </delete>
+  
+</mapper>

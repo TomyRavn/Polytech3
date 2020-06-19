@@ -1,0 +1,52 @@
+package kr.ac.kopo.bbs;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import kr.ac.kopo.comm.MyBatisUtils;
+
+public class BbsDaoBatis implements BbsDao{
+	
+	private SqlSessionFactory sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
+	
+	@Override
+	public List<BbsVo> selectBbsList() {
+		List<BbsVo> list = null;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			list = session.selectList("kr.ac.kopo.bbs.BbsDao.selectBbsList");
+		}
+		return list;
+	}
+
+	@Override
+	public int insertBbs(BbsVo vo) {
+		int num = 0;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			num = session.insert("kr.ac.kopo.bbs.BbsDao.insertBbs", vo);
+			session.commit();
+		}		
+		return num;
+	}
+
+	@Override
+	public void deleteBbs(int bbsNo) {
+		try(SqlSession session = sqlSessionFactory.openSession()){
+			session.delete("kr.ac.kopo.bbs.BbsDao.deleteBbs", bbsNo);
+		}
+	}
+
+	@Override
+	public BbsVo selectBbs(int bbsNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateBbs(BbsVo vo) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

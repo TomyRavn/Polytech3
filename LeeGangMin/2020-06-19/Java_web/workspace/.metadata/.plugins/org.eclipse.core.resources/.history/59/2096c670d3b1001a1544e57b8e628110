@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ex_web</display-name>
+  <!-- 특정 파일이 아닌 폴더를 주소로 요청받았을 때, -->
+  <!-- 해당 폴더에 존재하는 어떤 파일을 응답으로 전송하고 싶은지를 설정 -->
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+<!--   com.exam.LifeServlet 서블릿 클래스를 LifeServ라는 이름으로 등록 -->
+  <servlet>
+		<servlet-name>LifeServ</servlet-name>
+<!-- 		<servlet-class>/ex_web/src/com/exam/LifeServlet.java</servlet-class> -->
+		<servlet-class>com.exam.LifeServlet</servlet-class>
+  </servlet>
+  
+<!--   /cycle.do 주소(경로)로 요청이 오면, LifeServ라는 이름으로 등록된 서블릿을 실행 -->
+  <servlet-mapping>
+  		<servlet-name>LifeServ</servlet-name>
+  		<url-pattern>/cycle.do</url-pattern>
+  </servlet-mapping>
+  
+<!--   kr.ac.kopo.comm.CharacterEncodingFilter 객체를 encFilter라는 이름의 필터로 등록 (톰캣에)-->
+  <filter>
+  	<filter-name>encFilter</filter-name>
+  	<filter-class>kr.ac.kopo.comm.CharacterEncodingFilter</filter-class>
+  </filter>
+  
+<!--   필터를 실행할 때 설정 -->
+<!-- *.do 는 서블릿, /* 는 모든 결로로 요청이 오면 -->
+  <filter-mapping>
+  	<filter-name>encFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+</web-app>

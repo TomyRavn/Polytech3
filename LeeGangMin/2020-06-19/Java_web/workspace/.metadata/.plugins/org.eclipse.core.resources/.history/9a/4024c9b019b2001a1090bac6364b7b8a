@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.kopo.bbs.BbsDao">
+
+  <select id="selectBbsList" resultType="kr.ac.kopo.bbs.BbsVo">
+    SELECT bbs_no as bbsNo, bbs_title as bbsTitle, bbs_writer as bbsWriter, bbs_reg_date as bbsRegDate, bbs_edit_date as bbsEditDate, bbs_count as bbsCount FROM bbs ORDER BY bbs_no ASC
+  </select>
+  
+  <insert id="insertBbs" parameterType="kr.ac.kopo.bbs.BbsVo">
+  	INSERT INTO bbs (bbs_no, bbs_title, bbs_content, bbs_writer) VALUES (seq_bbs_no.NEXTVAL, #{bbsTitle}, #{bbsContent}, #{bbsWriter})
+  </insert>
+  
+  <update id="updateBbs" parameterType="kr.ac.kopo.bbs.BbsVo">
+  	UPDATE bbs SET bbs_title = ?, bbs_content = ?, bbs_edit_date = SYSDATE WHERE bbs_no = ?
+  </update>
+  
+  <delete id="deleteBbs" parameterType="int">
+  	DELETE FROM bbs WHERE bbs_no = ?
+  </delete>
+  
+  <select id="selectBbs" parameterType="int" resultType="kr.ac.kopo.member.MemberVo">
+  	SELECT bbs_no as bbsNo, bbs_title as bbsTitle, bbs_content as bbsContent, bbs_writer as bbsWriter, bbs_reg_date as bbsRegDate, bbs_edit_date as bbsEditDate, bbs_count as bbsCount FROM bbs WHERE bbs_no = ? ORDER BY bbs_no ASC
+  </select>
+  
+</mapper>
