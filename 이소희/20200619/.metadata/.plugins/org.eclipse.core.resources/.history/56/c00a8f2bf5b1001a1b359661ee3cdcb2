@@ -1,0 +1,17 @@
+package kr.ac.kopo.student;
+
+import java.util.ArrayList;
+
+public interface studentDao {
+
+	ArrayList<StudentVo> selectStudentList();
+
+	int deleteStudent(String stuNo);
+
+	int insertStudent(StudentVo vo);
+
+	StudentVo selectStudent(String StuNo);
+
+	int updateStudentVo(StudentVo vo);
+
+}

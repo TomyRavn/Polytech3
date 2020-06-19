@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="Date"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="date"/>
+			<item value="Content"/>
+			<item value="&apos;"/>
+			<item value="list"/>
+			<item value="select"/>
+			<item value="SELECT"/>
+			<item value="mem"/>
+			<item value="td"/>
+			<item value="member"/>
+			<item value="회원"/>
+			<item value="point"/>
+			<item value="id"/>
+			<item value="회원 "/>
+			<item value="StuNo"/>
+			<item value="Stu_No"/>
+		</list>
+		<list key="replacehistory">
+			<item value="&quot;"/>
+			<item value=""/>
+			<item value="stu"/>
+			<item value="학생"/>
+			<item value="score"/>
+			<item value="student"/>
+			<item value="no"/>
+			<item value="stu_no"/>
+			<item value="Stu_No"/>
+			<item value="StuNo"/>
+			<item value="Score"/>
+			<item value="No"/>
+			<item value="Stu"/>
+			<item value="Student"/>
+			<item value="stuScore"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1463"/>
+		<item key="DIALOG_Y_ORIGIN" value="219"/>
+		<item key="DIALOG_WIDTH" value="288"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="729"/>
+		<item key="DIALOG_Y_ORIGIN" value="403"/>
+	</section>
+</section>

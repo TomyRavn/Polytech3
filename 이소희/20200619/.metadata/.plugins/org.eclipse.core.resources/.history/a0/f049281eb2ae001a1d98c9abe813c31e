@@ -1,0 +1,21 @@
+package June15;
+
+public class Test1 {
+
+	public static int add(int x, int y) {
+		return x + y;
+	}
+	
+	public static int comSum(int[] a) {
+		
+	}
+
+	public static void main(String[] args) {
+		int result = add(10, 20);
+		int[] arr = new int[5];
+		int result1 = comSum(arr)
+		System.out.printf("result:%d", result);
+		System.out.printf("result:%d", result);
+	}
+
+}

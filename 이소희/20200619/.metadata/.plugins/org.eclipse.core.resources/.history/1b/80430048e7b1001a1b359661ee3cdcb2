@@ -1,0 +1,26 @@
+package kr.ac.kopo.comm;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+//리스너(Listener) : 특정 사건(이벤트)이 발생하면, 자동으로 실행
+//				  -요청객체, 세션객체, 서블릿컨텍스트객체가 생성 또는 소멸될 때
+//				  -요청객체, 세션객체, 서블릿컨텍스트객체에 속성을 추가, 수정, 삭제할 때
+//				  -기타 등등
+
+
+public class InitListener implements ServletContextListener{
+	
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		//서블릿 컨텍스트 객체가 처음 생성된 후 실행
+		ServletContextListener.super.contextInitialized(sce);
+	}
+	
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		//서블릿 컨텍스트 객체가 소멸되기 직언에 실행
+		ServletContextListener.super.contextDestroyed(sce);
+	}
+
+}
