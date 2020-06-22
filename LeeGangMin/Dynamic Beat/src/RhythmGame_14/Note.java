@@ -8,10 +8,10 @@ import javax.swing.ImageIcon;
 public class Note extends Thread{
 	
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
-	private int x, y = 580 - 1000 / Main.SLEEP_TIME * Main.NOTE_SPEED;
+	private int x, y = 580 - (1000 / Main.SLEEP_TIME * Main.NOTE_SPEED) * Main.REACH_TIME;
 	private String noteType;
 	
-	public Note(int x, String noteType) {
+	public Note(String noteType) {
 		if(noteType.equals("S")) {
 			x = 228;
 		}else if(noteType.equals("D")) {

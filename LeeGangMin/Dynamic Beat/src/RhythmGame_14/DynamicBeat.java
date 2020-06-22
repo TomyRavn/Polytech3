@@ -24,13 +24,15 @@ public class DynamicBeat extends JFrame {
 	// 이미지 소스 업로드
 	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
-	private ImageIcon startButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/startButtonEntered.png"));
+	private ImageIcon startButtonEnteredImage = new ImageIcon(
+			Main.class.getResource("../images/startButtonEntered.png"));
 	private ImageIcon startButtonBasicImage = new ImageIcon(Main.class.getResource("../images/startButtonBasic.png"));
 	private ImageIcon quitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/quitButtonEntered.png"));
 	private ImageIcon quitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/quitButtonBasic.png"));
 	private ImageIcon leftButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/leftButtonEntered.png"));
 	private ImageIcon leftButtonBasicImage = new ImageIcon(Main.class.getResource("../images/leftButtonBasic.png"));
-	private ImageIcon rightButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/rightButtonEntered.png"));
+	private ImageIcon rightButtonEnteredImage = new ImageIcon(
+			Main.class.getResource("../images/rightButtonEntered.png"));
 	private ImageIcon rightButtonBasicImage = new ImageIcon(Main.class.getResource("../images/rightButtonBasic.png"));
 	private ImageIcon easyButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/easyButtonEntered.png"));
 	private ImageIcon easyButtonBasicImage = new ImageIcon(Main.class.getResource("../images/easyButtonBasic.png"));
@@ -67,10 +69,18 @@ public class DynamicBeat extends JFrame {
 	private Music selectedMusic;
 	private Music introMusic = new Music("introMusic.mp3", true);
 	private int nowSelected = 0;
-	
+
 	public static Game game;
 
 	public DynamicBeat() {
+		// 트랙 추가
+		trackList.add(new Track("Love Mode Title Image.png", "Love Mode Start Image.png", "Love Mode Game Image.jpg",
+				"Love Mode Selected.mp3", "Joakim Karud - Love Mode.mp3", "Joakim Karud - Love Mode"));
+		trackList.add(new Track("Sadday Title Image.png", "Sadday Start Image.png", "Sadday Game Image.jpg",
+				"Sadday Selected.mp3", "Bensound - SadDay.mp3", "Bensound - SadDay"));
+		trackList.add(new Track("Energy Title Image.png", "Energy Start Image.png", "Energy Game Image.jpg",
+				"Energy Selected.mp3", "Alan Walker - Energy.mp3", "Alan Walker - Energy"));
+		
 		setUndecorated(true);
 		setFocusable(true);
 		setTitle("Dynamic Beat");
@@ -84,17 +94,8 @@ public class DynamicBeat extends JFrame {
 
 		addKeyListener(new KeyListener());
 
-		
 		// 인트로뮤직 시작
 		introMusic.start();
-
-		// 트랙 추가
-		trackList.add(new Track("Love Mode Title Image.png", "Love Mode Start Image.png", "Love Mode Game Image.jpg",
-				"Love Mode Selected.mp3", "Joakim Karud - Love Mode.mp3", "Joakim Karud - Love Mode"));
-		trackList.add(new Track("Sadday Title Image.png", "Sadday Start Image.png", "Sadday Game Image.jpg",
-				"Sadday Selected.mp3", "Bensound - SadDay.mp3", "Bensound - SadDay"));
-		trackList.add(new Track("Energy Title Image.png", "Energy Start Image.png", "Energy Game Image.jpg",
-				"Energy Selected.mp3", "Alan Walker - Energy.mp3", "Alan Walker - Energy"));
 
 		// setting exitButton
 		exitButton.setBounds(1245, 0, 30, 30);
@@ -312,7 +313,7 @@ public class DynamicBeat extends JFrame {
 
 			@Override
 			public void mousePressed(MouseEvent e) {
-				//메인 화면으로 돌아가는 이벤트
+				// 메인 화면으로 돌아가는 이벤트
 				backMain();
 			}
 		});
@@ -356,9 +357,16 @@ public class DynamicBeat extends JFrame {
 		}
 		if (isGameScreen) {
 			game.screenDraw(g);
-			
+
 		}
 		paintComponents(g);
+		
+		try {
+			Thread.sleep(5);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		this.repaint();
 	}
 
@@ -404,10 +412,12 @@ public class DynamicBeat extends JFrame {
 				.getImage();
 		backButton.setVisible(true);
 		isGameScreen = true;
-		
-		game = new Game(trackList.get(nowSelected).getTitleName(), difficulty, trackList.get(nowSelected).getGameMusic());
+
+		game = new Game(trackList.get(nowSelected).getTitleName(), difficulty,
+				trackList.get(nowSelected).getGameMusic());
+		game.start();
 	}
-	
+
 	public void backMain() {
 		isMainScreen = true;
 		leftButton.setVisible(true);
@@ -418,11 +428,10 @@ public class DynamicBeat extends JFrame {
 		backButton.setVisible(false);
 		selectTrack(nowSelected);
 		isGameScreen = false;
-		
+
 		game.close();
 	}
-	
-	
+
 	public void enterMain() {
 		startButton.setVisible(false);
 		quitButton.setVisible(false);
@@ -432,7 +441,7 @@ public class DynamicBeat extends JFrame {
 		easyButton.setVisible(true);
 		hardButton.setVisible(true);
 		introMusic.close();
-		
+
 		isMainScreen = true;
 		selectTrack(0);
 	}
