@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +21,11 @@ import kr.ac.kopo.student.StudentVo;
 @WebServlet ("/student/list.do")
 public class StudentListServlet extends HttpServlet {
    
-   StudentDaoJdbc studentDao = new StudentDaoJdbc();
+   StudentDao studentDao = new StudentDaoJdbc();
    
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      ArrayList<StudentVo> list = studentDao.selectStudentList();
+      List<StudentVo> list = studentDao.selectStudentList();
       
       req.setAttribute("stuList", list);
    

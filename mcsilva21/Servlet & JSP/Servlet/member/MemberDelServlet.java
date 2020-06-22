@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/del.do")
 public class MemberDelServlet extends HttpServlet {
-	MemberDaojdbc memberDao = new MemberDaojdbc(); 
+	MemberDao memberDao = new MemberDaoBatis(); 
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

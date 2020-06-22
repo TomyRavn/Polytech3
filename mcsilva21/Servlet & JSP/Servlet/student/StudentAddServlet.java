@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/student/add.do")
 public class StudentAddServlet extends HttpServlet{
-   StudentDaoJdbc studentDao = new StudentDaoJdbc();
+   StudentDao studentDao = new StudentDaoJdbc();
    
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {    

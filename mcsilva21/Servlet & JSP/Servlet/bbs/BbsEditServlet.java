@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/bbs/edit.do")
 
 public class BbsEditServlet extends HttpServlet{		
-	BbsDaojdbc bbsDao = new BbsDaojdbc();
+	BbsDao bbsDao = new BbsDaoBatis();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class BbsEditServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
-		req.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8");
 		
 		BbsVo vo = new BbsVo();
 		vo.setBbsTitle(req.getParameter("bbsTitle"));

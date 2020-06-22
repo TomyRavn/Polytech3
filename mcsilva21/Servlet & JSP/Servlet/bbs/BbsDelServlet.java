@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/bbs/del.do")
 public class BbsDelServlet extends HttpServlet {
-	BbsDaojdbc bbsDao = new BbsDaojdbc(); 
+	BbsDao bbsDao = new BbsDaoBatis(); 
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

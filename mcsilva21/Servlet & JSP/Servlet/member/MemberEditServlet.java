@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/edit.do")
 public class MemberEditServlet extends HttpServlet{
-	MemberDaojdbc memberDao = new MemberDaojdbc();
+	MemberDao memberDao = new MemberDaoBatis();
 	
 	
 	@Override
@@ -27,7 +27,7 @@ public class MemberEditServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {	
-		req.setCharacterEncoding("UTF-8");			
+//		req.setCharacterEncoding("UTF-8");			
 		MemberVo vo= new MemberVo();
 		vo.setMemId(req.getParameter("memId"));
 		vo.setMemName(req.getParameter("memName"));

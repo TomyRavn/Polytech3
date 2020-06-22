@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/member/login.do")
 public class LoginServlet extends HttpServlet {	
-	private MemberDaojdbc memberDao = new MemberDaojdbc();
+	 MemberDao memberDao = new MemberDaoBatis();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 	

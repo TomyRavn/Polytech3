@@ -8,24 +8,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class StudentDaoJdbc {
-   {
-      try {   
-      Class.forName("oracle.jdbc.OracleDriver");
-   } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-   }
-   }
+public class StudentDaoJdbc implements StudentDao {
 
- 
    String url = "jdbc:oracle:thin:@localhost:1521:xe";
    String user = "com";
    String password = "com01";
 
-   public ArrayList<StudentVo> selectStudentList() {
+   @Override
+public ArrayList<StudentVo> selectStudentList() {
       
       ArrayList<StudentVo> list = new ArrayList<StudentVo>();
-      String sql = "SELECT stu_no, stu_name, stu_score FROM student";
+      String sql = "SELECT stu_no, stu_name, stu_score FROM student order by stu_no";
 
       try (Connection conn = DriverManager.getConnection(url, user, password);
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -46,7 +39,8 @@ public class StudentDaoJdbc {
       return list;
    }
    
-   public int deleteStudent(String stuNo) {
+   @Override
+public int deleteStudent(String stuNo) {
       int num = 0;
 
       String sql = "DELETE FROM student WHERE stu_no = ?";
@@ -62,7 +56,8 @@ public class StudentDaoJdbc {
       return num;
    }
 
-   public int insertStudent(StudentVo vo) {
+   @Override
+public int insertStudent(StudentVo vo) {
       int num = 0;
    String sql = "INSERT INTO student (stu_no,  stu_name, stu_score) " + "VALUES (?,?,?)";
    try (Connection conn = DriverManager.getConnection(url, user, password);
@@ -80,7 +75,8 @@ public class StudentDaoJdbc {
    
    }
      
-   public StudentVo selectStudent(String StuNo) {
+   @Override
+public StudentVo selectStudent(String StuNo) {
    StudentVo vo = null;
     String sql = "SELECT stu_no, stu_name, stu_score FROM student WHERE stu_no = ?";
    
@@ -106,7 +102,8 @@ public class StudentDaoJdbc {
    return vo;
 }
    
-   public int updateStudentVo(StudentVo vo) {
+   @Override
+public int updateStudentVo(StudentVo vo) {
       int num = 0;
       
       String sql = "UPDATE student SET stu_name = ?, stu_score=? WHERE stu_no = ?";

@@ -6,24 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class BbsDaojdbc {
-
-	{
-		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+public class BbsDaojdbc implements BbsDao {
 
 	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "com";
 	String password = "com01";
 
-	public ArrayList<BbsVo> selectBbsList() {
+	@Override
+	public List<BbsVo> selectBbsList() {
 		ArrayList<BbsVo> list = new ArrayList<BbsVo>();
-		String sql = "SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count FROM bbs";
+		String sql = "SELECT bbs_no, bbs_title, bbs_writer, bbs_reg_date, bbs_count FROM bbs ORDER BY bbs_no ASC";
 
 		try (Connection conn = DriverManager.getConnection(url, user, password);
 				PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -44,6 +38,7 @@ public class BbsDaojdbc {
 		return list;
 	}
 
+	@Override
 	public BbsVo selectBbs(int bbsNo) {
 		BbsVo vo = null;
 		String sql = "SELECT bbs_no,bbs_title,bbs_content,bbs_writer,bbs_reg_date,bbs_count FROM bbs WHERE bbs_no = ?";
@@ -69,6 +64,7 @@ public class BbsDaojdbc {
 		return vo;
 	}
 
+	@Override
 	public int insertBbs(BbsVo vo) {
 		int num = 0;
 		String sql = "insert into bbs(bbs_no,bbs_title,bbs_content,bbs_writer)" + "values (seq_bbs_no.NEXTVAL,?,?,?)";
@@ -84,6 +80,7 @@ public class BbsDaojdbc {
 		return num;
 	}
 
+	@Override
 	public int updateBbs(BbsVo vo) {
 		int num = 0;
 
@@ -104,6 +101,7 @@ public class BbsDaojdbc {
 		return num;
 	}
 
+	@Override
 	public int delBbs(int bbsNo) {
 		int num = 0;
 
