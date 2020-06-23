@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .invisible{
+            visibility: hidden;
+        }
+        div#wrapper{
+            position: relative;
+        }
+        .box{
+            position:absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            font-size: 26px;
+        }
+        #b1{
+            left: 50px;
+            top:50px;
+            z-index: 1;
+            background-color: red;
+        }
+        #b2{
+            left: 110px;
+            top:70px;
+            z-index: 3; 
+            background-color: yellow;
+        }
+        #b3{
+            left: 70px;
+            top:110px;
+            z-index: 1;
+            background-color: blue;
+            }
+    </style>
+</head>
+<body>
+    <img src='img/pic1.jpg'>
+    <img src='img/pic2.jpg' class="invisible">
+    <img src='img/pic3.jpg'>
+
+    <div id="wrapper">
+        <div class="box" id="b1">1</div>
+        <div class="box" id="b2">2</div>
+        <div class="box" id="b3">3</div>
+    </div>
+</body>
+</html>

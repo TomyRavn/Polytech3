@@ -1,0 +1,61 @@
+index <- sample(2,nrow(iris),replace = TRUE,prob=c(0.8,0.2))
+table(index)			//집계함수
+trainset<- iris[index == 1,]		//index==1인 값은 trainset에 저장해주세요
+testset<-iris[index==2,]		//index==2인 값은 testset에 저장해주세요
+head(trainset)			//샘플 출력(일부만 출력)
+head(testset)
+trainset$setosa <-trainset$Species == "setosa"
+head(trainset$setosa)
+trainset$virginica <-trainset$Species == "virginica"
+head(trainset$virginica)
+trainset$versicolor <-trainset$Species == "versicolor"
+head(trainset$versicolor)
+
+network <- neuralnet(versicolor + virginica + setosa ~
+Sepal.Length + Sepal.Width + Petal.Length +Petal.Width, data
+= trainset, hidden = 3)
+
+plot(network)
+par(mfrow=c(2,2))
+gwplot(network,selected.covariate="Petal.Width")
+predict_testNN = compute(network,testset[,c(1:4)])
+predict_testNN
+colnames(predict_testNN$net.result)<-c("versicolor","virginica",“setosa")
+predict_testNN$net.result
+
+
+
+concrete<-read.csv("D:\\sbkim\\2020\\IOT\\concrete.csv") 
+head(concrete)
+normalize = function(x) {
+return ((x - min(x)) / (max(x) - min(x)))
+}
+
+concrete <- as.data.frame(lapply(concrete, normalize))
+
+max_index <- length(concrete$strength)
+samplesize <- round(max_index * 0.75)
+
+index=sample(seq_len(nrow(concrete)),size=samplesize)
+training_data <- concrete[index,]
+test_data <- concrete[-index,]
+head(training_data)
+
+concrete_model <- neuralnet(strength ~ cement + slag + ash +  water + superplastic + coarseagg + fineagg + age, data= training_data, hidden=3)
+plot(concrete_model)
+model_results <- compute(concrete_model, test_data[1:9])length(indx
+
+cor(model_results$net.result, test_data$strength)
+
+
+colnames(predict_testNN$net.result)<-c("versicolor","virginica",“setosa")
+
+Samples <- runif(10, 0, 100)
+test.data<-runif(10,0,10)
+
+sqrt.data <- data.frame(Samples, Sqrt=sqrt(Samples))
+// testsqrt.data <- data.frame(test.data, Sqrt=sqrt(test.data))
+print(net.sqrt <- neuralnet(Sqrt~Samples, sqrt.data,hidden=10,(threshold=0.01)))
+plot(net.sqrt)
+
+model<-compute(net.sqrt, sqrt.data)
