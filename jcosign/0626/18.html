@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        // 아래 내용을 eclipse로 설명한다면
+        // String a = 'bc'
+        // system.out.println('a'+ a +'defg')
+        // 와 같다.
+
+        $(document).ready(function (event) {
+            $('textarea#a').keyup(function () {
+                // 남은 글자 수를 구한다.
+                
+                var input = $(this).val()
+                var a = $('h1:contains('+input+')')
+                
+                $(a).hide()
+                // $(a).css('display','none') 같은 방법.
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <p>지금 내 생각을</p>
+        <h1>1</h1>
+        <h1>2</h1>
+        <h1>3</h1>
+        <h1>4</h1>
+        <h1>5</h1>
+        <textarea id="a" cols="70"rows="5"></textarea>
+
+        <!-- 네모칸에 1~5 중 숫자 1개를 작성하면 사라진다. -->
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 이벤트를 연결합니다.
+            // $('h1').click(function () {
+            // $('h1').one('click',function () {    //'one' 이벤트 한번씩만 가능
+            $('h1').on('click',function () {    //'on' 이벤트 계속 가능
+                // 출력합니다.
+                $(this).html('CLICK');
+                alert('이벤트가 발생했습니다.');
+
+                // 이벤트를 제거합니다.
+                // $(this).off();
+            });
+        });
+
+        //해당 글귀 클릭하면 이벤트 제거. 
+
+    </script>
+</head>
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+</body>
+</html>
