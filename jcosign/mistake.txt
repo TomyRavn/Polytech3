@@ -1,0 +1,105 @@
+☆ 차분히 이해하기
+☆ 대소문자 확인하기
+☆ 괄호 확인하기
+철자 확인하기
+저장하기
+파일 위치 잘 보기
+
+5/29
+- 회원정보 변경을 만드는데, ID를 disabled로 고정시켜서 변경이 안됐다.
+=> readonly로 바꾸어 해결했다.
+
+6/3
+-  MemberList의 editform주소와 editform의 editForm의 주소가 달라 연결이 안됐다.
+
+=> ewed -> webContent -> WEB-INF -> wed.xml -> source
+
+=> ctrl + shift + c (xml의 주석)
+
+=> class우클릭 -> copy Qualified Name 이름복사
+
+6/4
+- function의 c가 빠졌다.
+
+- chart At의 c를 대문자로 썼다.
+
+- jdbc를 jbdc로 썼다.
+
+=> 홈페이지 -> 우클릭 -> 검사 -> console -> 빨간줄 확인
+
+6/8
+- 6/1에 만들어둔 week.java를 가져오지 않아서 빨간줄 파티였다.
+
+6/9
+- student 파일이 내가 써둔 위치와 달랐다.
+
+6/10
+- method가 아닌 것에 ()를 붙여 실행이 안됐다.
+
+- Hello.jsp를 hello.jsp의 주소로 써서 링크 실패했다.
+
+- hello.jsp로 이름 바꿔서 오류가 났다.
+
+- MemberList의 주소는 "list"가 아닌 
+"/member/List.do"이다.
+
+- items의 s가 빠졌고,
+prefix의 x가 빠졌다.
+
+- Servlet에서 실행해야되는데, jsp에서 실행해놓고 안된다고 했다.
+
+6/11 오류파티~!
+- con을 com으로 쓰고,
+.value가 없었고,
+funtion에 c가 없었다.
+
+- List 인데 list로 되어있었다.
+이름을 정말 바꿔야 할까.
+
+6/12
+- jsp에서 만든 태그가 ListServlet에서 실행되지 않고, <thead>만 나열된다.
+=> DaoJDBC에서 Select엔 5개, jsp에선 4개였기 때문이다. 4개로 통일 후 해결
+
+6/17
+- Login..login.. 글씨체가 헷갈린다.
+
+- <form action="${Page ~}'} '/ex~">
+중괄호, 공백('} ')이 주소에 들어갔다.
+
+- if문 안에 있으면 안돼요..
+
+- @webFilter인데 @webservlet으로 들어갔다.
+
+6/18
+- 제목이 없는 글 지우기
+F12 -> Elements -> table -> tbody -> 해당글<tr> -> <td> -> 링크 -> 삭제 
+
+6/19
+- {$loginUser.MemId}
+글쓸 때 작성자 표시 
+
+- '{' 괄호 위치가 이상했다.
+
+- Session -> session
+대문자 아니고 소문자
+
+- mapper resource=" "
+주소에 .xml을 넣지 않았다.
+
+6/22
+- Color -> color
+대문자 아니고 소문자
+
+- cmd 
+  >D: 
+  >cd ctrl+v 
+cd를 안썼다.
+
+- The type 클래명 is already defined.
+해당 클래스명이 이미 정의되어있다.
+=> 이클립스 - 상단 메뉴바 project - clean으로 해결
+
+6/23
+- ENAME에 E를 하나 더 넣었다.
+
+6/29
