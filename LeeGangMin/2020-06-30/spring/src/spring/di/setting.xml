@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<context:component-scan base-package="spring.di.ui, spring.di.entity"></context:component-scan>
+
+<!-- 	//<bean id="exam" class="spring.di.entity.NewlecExam">를 생성하지 않고도 Autowired에 따라 내부의 annotation을 검사 -->
+<!-- 	<context:annotation-config></context:annotation-config> -->
+
+<!-- /////// 아래에 객체 생성하는 부분 없음(15강부터 없어짐)-->
+<!-- 	Exam exam = new NewlecExam(); -->
+<!-- 	@Autowired는 이름이 아닌 타입을 통해 바인딩 -->
+
+<!-- 	<bean id="exam1" class="spring.di.entity.NewlecExam" p:kor='10' p:eng='20'/> -->
+<!-- 	객체가 모호할 경우에는 이름을 적어주면 정상적으로 바인딩이 됨 -->
+<!-- 	둘 다 이름이 있을 경우에는 @Qualifier를 사용 -->
+<!-- 	<bean id="exam2" class="spring.di.entity.NewlecExam" p:kor='10' p:eng='40'/> -->
+	
+<!-- 	<bean id="exam" class="spring.di.entity.NewlecExam"> -->
+		
+<!-- 	2. 생성자 형식 -->
+<!-- 		<constructor-arg index="0" value="10" /> -->
+<!-- 		<constructor-arg index="1" value="20" /> -->
+<!-- 		<constructor-arg index="3" value="30" /> -->
+<!-- 		<constructor-arg index="2" value="40" /> -->
+		
+<!-- 		<constructor-arg name="kor" value="10" /> -->
+<!-- 		<constructor-arg name="eng" value="20" /> -->
+<!-- 		<constructor-arg name="com" value="30" /> -->
+<!-- 		<constructor-arg name="math" value="40" />	 -->
+	
+<!-- 	1. 값 형식 -->
+<!-- 		<property name="kor"> -->
+<!-- 			<value>10</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="eng" value="10"></property> -->
+<!-- 		<property name="math" value="10"></property> -->
+<!-- 		<property name="com" value="10"></property> -->
+	
+<!-- ExamConsole console = new GridExamConsole(); -->
+<!-- 	<bean id="console" class="spring.di.ui.GridExamConsole"> -->
+<!-- 	console.setExam(exam); setter 메소드가 있어야 함 -->
+<!-- 		<property name="exam" ref="exam"></property> -->
+<!-- 	</bean> -->
+	
+	
+<!-- 	생성자에 담는 방식 : 목록을 설정할 때 만듬, 자체적으로 객체를 만드는 역할을 하지 못함-->
+<!-- 	<bean id="exams" class="java.util.ArrayList"> -->
+<!-- 		<constructor-arg> -->
+<!-- 			<list> -->
+<!-- 				<bean class="spring.di.entity.NewlecExam" p:kor='1' p:eng='1' /> -->
+<!-- 				<ref bean="exam" /> -->
+<!-- 			</list> -->
+<!-- 		</constructor-arg> -->
+<!-- 	</bean> -->
+	
+<!-- 	namespace : util 이용  : 객체를 만드는 능력을 갖고 있음 -->
+<!-- 컬렉션의 종류가 많아서 list-class를 구체적으로 설정해주어야 함 -->
+<!-- 	<util:list id="exams" list-class="java.util.ArrayList"> -->
+<!-- 		<bean class="spring.di.entity.NewlecExam" p:kor='1' p:eng='1' /> -->
+<!-- 		<ref bean="exam" /> -->
+<!-- 	</util:list> -->
+	
+</beans>
