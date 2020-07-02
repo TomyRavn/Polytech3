@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.ac.kopo.student.StudentDao">
+
+  <select id="selectStudentList" resultType="StudentVo">
+    SELECT stu_no, stu_name, stu_score FROM student
+  </select>
+  
+  <insert id="insertStudent" parameterType="StudentVo">
+  	INSERT INTO student (stu_no, stu_name, stu_score) VALUES (#{stuNo}, #{stuName}, #{stuScore})
+  </insert>
+  
+  <update id="updateStudent" parameterType="StudentVo">
+  	UPDATE student SET stu_name = #{stuName}, stu_score = #{stuScore} WHERE stu_no = #{stuNo}
+  </update>
+  
+  <delete id="deleteStudent" parameterType="string">
+  	DELETE FROM student WHERE stu_no = #{stuNo}
+  </delete>
+  
+  <select id="selectStudent" parameterType="string" resultType="StudentVo">
+  	SELECT stu_no, stu_name, stu_score FROM student WHERE stu_no = #{stuNo}
+  </select>
+  
+</mapper>

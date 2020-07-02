@@ -1,0 +1,42 @@
+package kr.ac.kopo.member;
+
+//VO : Value object ; 2개의 객체를 받았을 때 상응하는 2개의 값이 서로 같으면 Value Object라고 부름(Food 클래스의 값과 상대 클래스에서 사용하는 값이 일치 시)
+//테이블의 한 행(한 레코드 ; 회원 한 명의 정보)을 담을 수 있는 클래스
+//DTO : Data transfer object
+
+//회원 테이블에 있는 레코드 하나를 담을 수 있는 클래스라는 뜻
+//일반적으로 데이터베이스 테이블의 레코드(row) 1개를 저장할 수 있는 VO 클래스를 정의
+public class MemberVo {
+	
+	//자바에서는 낙타표기법을 많이 씀
+	private String memId;
+	private String memPass;
+	private String memName;
+	private int memPoint;
+	
+	public String getMemId() {
+		return memId;
+	}
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+	public String getMemPass() {
+		return memPass;
+	}
+	public void setMemPass(String memPass) {
+		this.memPass = memPass;
+	}
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+	public int getMemPoint() {
+		return memPoint;
+	}
+	public void setMemPoint(int memPoint) {
+		this.memPoint = memPoint;
+	}
+	
+}

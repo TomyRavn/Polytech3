@@ -1,0 +1,64 @@
+package kr.ac.kopo.bbs;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import kr.ac.kopo.comm.MyBatisUtils;
+
+public class BbsDaoBatis implements BbsDao{
+	
+	private SqlSessionFactory sqlSessionFactory = MyBatisUtils.getSqlSessionFactory();
+	
+	private BbsDaoBatis() {}
+	private static BbsDao bbsDao = new BbsDaoBatis();
+	public static BbsDao getInstance() {
+		return bbsDao;
+	}
+	
+	@Override
+	public List<BbsVo> selectBbsList() {
+		List<BbsVo> list = null;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			list = session.selectList("kr.ac.kopo.bbs.BbsDao.selectBbsList");
+		}
+		return list;
+	}
+
+	@Override
+	public int insertBbs(BbsVo vo) {
+		int num = 0;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			num = session.insert("kr.ac.kopo.bbs.BbsDao.insertBbs", vo);
+			session.commit();
+		}		
+		return num;
+	}
+
+	@Override
+	public void deleteBbs(int bbsNo) {
+		try(SqlSession session = sqlSessionFactory.openSession()){
+			session.delete("kr.ac.kopo.bbs.BbsDao.deleteBbs", bbsNo);
+			session.commit();
+		}
+	}
+
+	@Override
+	public BbsVo selectBbs(int bbsNo) {
+		BbsVo vo = null;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			vo = session.selectOne("kr.ac.kopo.bbs.BbsDao.selectBbs", bbsNo);
+		}
+		return vo;
+	}
+
+	@Override
+	public void updateBbs(BbsVo vo) {
+		try(SqlSession session = sqlSessionFactory.openSession()){
+			session.update("kr.ac.kopo.bbs.BbsDao.updateBbs", vo);
+			session.commit();
+		}
+	}
+	
+}
