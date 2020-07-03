@@ -1,0 +1,19 @@
+# 폴더 구조
+- src/main/java : *.java
+- src/main/resources : *.java를 제외한 파일들(*.xml, *.properties, ..)
+- src/main/webapp : *.jsp, *.html, *.css, *.js, *.jpg, ...파일들
+
+src/main/webapp 폴더가 배포 폴더로서,
+Dynamic Web Project의  WebContent폴더처럼 생각하고 사용
+
+--개발이 끝난 뒤에 필요없는 부분
+- src/test/java : 테스트를 위한 *.java
+- src/test/resources : 테스트를 위한 *.java를 제외한 파일들(*.xml, *.properties, ...)
+
+# 설정 파일
+- src/main/resources/log4j.xml : log4j라는 로그 라이브러리 설정 파일
+- src/main/webapp/WEB-INF/web.xml : 웹애플리케이션 전체 설정 파일
+- src/main/webapp/WEB-INF/spring/*/*.xml : 스프링 프레임 워크 설정 파일
+- pom.xml : 프로젝트 빌드 도구인 메이븐(MAVEN) 설정 파일
+
+자바 빌드 도구 : ANT -> Maven -> Gradle (Spring은 Maven을 쓰고 있지만, 최근에는 Gradle도 가능)
