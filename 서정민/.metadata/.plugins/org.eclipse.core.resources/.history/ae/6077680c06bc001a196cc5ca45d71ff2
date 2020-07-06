@@ -1,0 +1,44 @@
+package kr.ac.kopo.member;
+
+import java.util.List;
+
+public class MemberServiceImpl implements MemberService {
+	private MemberDao memberDao = new MemberDaoBatis();
+
+	@Override
+	public List<MemberVo> selectMemberList() {
+		return memberDao.selectMemberList();
+	}
+
+	@Override
+	public MemberVo selectMember(String memId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int insertMember(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateMember(MemberVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delMember(String memId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public MemberVo selectLoginMember(MemberVo memberVo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

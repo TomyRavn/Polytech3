@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Q1 {
+
+	public static void main(String[] args) {
+		
+		int [] arr = new int[4];
+		char temp = ' ';
+		
+		Scanner sc = new Scanner(System.in);
+		for (int i = 0; i<10; i++) {						
+			System.out.println("Q1. 2018년 여름 휴가 계획은?");
+			System.out.println("(1)여행 (2)독서 (3)방콕 (4)아직결정안됨 [선택]");
+			String n = sc.next();	
+											
+			for (int j = 0; j < arr.length; j++) {
+				temp = n.charAt(j);
+			
+			for (int h = 0; h < arr.length; h++) {
+				if((temp - '0') == h)
+					arr[h] +=1;
+			}
+				System.out.printf("%d번:%d\n",i+1,arr[i]);
+				for (int j2 = 0; j2 < arr[i]; j2++) {
+					System.out.println("#");
+				}
+				System.out.println();
+			}
+		
+			}
+			
+	
+
+
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 빈(bean) : 본래는 Java Beans라는 규약(규칙)을 지켜서 만든 객체를 의미 -->
+<!-- 최근에는 아래 2가지 정도의 조건만 만족하면 Bean이라고 부르며,인자없는 생성자가 존재 -->
+<!-- 속성(멤버변수,필드)에 대한 getter/setter 메서드가 존재  -->
+<!-- 사실상 인스턴스(객체)와 동일한 단어처럼 사용되고 있다. -->
+
+
+<!--com.exam.MyApp 클래스의 객체(인스턴스)를 생성(new)하여 ma라는 스프링에 등록 -->
+	<bean id="ma" class="com.exam.MyApp"></bean>
+
+</beans>

@@ -1,0 +1,27 @@
+package kr.ac.kopo.member;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller()
+public class MemberController {
+	private MemberService memberService = MemberServiceImpl.getInstance();
+
+
+//	@RequestMapping(value="/member/list.do",method = RequestMethod.GET)
+	@RequestMapping("/member/list.do")
+	public String list(Map modelMap) { 		
+		List<MemberVo>list = memberService.selectMemberList();
+		
+		modelMap.put("memList", list);//모델에 "memList"라는 이름으로 list를 저장
+		
+		//"/WEB-INF/views/member/memList.jsp" 파일로 이동		
+		// req.getRequestDispatcher("/WEB-INF/jsp/Student/StudentList.jsp").forward(req, resp);
+		//return "/WEB-INF/views/member/memList.jsp";		
+		return "member/memList";
+}
+}

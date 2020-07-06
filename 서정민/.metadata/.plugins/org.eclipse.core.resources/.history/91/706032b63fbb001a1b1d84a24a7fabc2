@@ -1,0 +1,15 @@
+package 미션;
+
+class Div extends Calc {
+
+	@Override
+	int calculate() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+	}
+	
+
+

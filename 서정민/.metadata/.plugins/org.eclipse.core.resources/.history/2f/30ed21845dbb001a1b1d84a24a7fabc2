@@ -1,0 +1,15 @@
+package 미션2;
+
+public class MyColorPoint extends MyPoint {
+
+	public static void main(String[] args) {
+		MyPoint p = new MyColorPoint(2,3,"blue");
+		p.move(3,4);
+		p.reverse();
+		p.show();
+			
+			
+	}
+
+}
+

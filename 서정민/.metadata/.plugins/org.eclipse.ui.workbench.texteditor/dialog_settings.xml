@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="729"/>
+		<item key="DIALOG_Y_ORIGIN" value="403"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="NEXT"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="next"/>
+			<item value="serv"/>
+			<item value="Bbrs"/>
+			<item value="&apos;"/>
+			<item value="O"/>
+			<item value="stuVo"/>
+			<item value="no"/>
+			<item value="stuNO"/>
+			<item value="memPoint"/>
+			<item value="memName"/>
+			<item value="memPass"/>
+			<item value="memId"/>
+			<item value="member"/>
+			<item value="Member"/>
+			<item value="st"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Bbs"/>
+			<item value="&apos;&apos;"/>
+			<item value="&quot;"/>
+			<item value="o"/>
+			<item value="stuScore"/>
+			<item value="stuName"/>
+			<item value="stu"/>
+			<item value="stuNO"/>
+			<item value="student"/>
+			<item value="Student"/>
+			<item value="Stu"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="824"/>
+		<item key="DIALOG_Y_ORIGIN" value="268"/>
+		<item key="DIALOG_WIDTH" value="288"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

@@ -1,0 +1,11 @@
+1592533734300	Move file
+1592539560184	Extract local variable 'string'
+1592539850518	Convert local variable 'enc' to field
+1592540145056	Move compilation unit
+1592544729654	Extract interface 'MemberDao'
+1592545402349	Delete element
+1592546983340	Delete element
+1592546997244	Extract interface 'StudentDao'
+1592555303810	Extract interface 'BbsDao'
+1592555666555	Delete element
+1592555700379	Copy file

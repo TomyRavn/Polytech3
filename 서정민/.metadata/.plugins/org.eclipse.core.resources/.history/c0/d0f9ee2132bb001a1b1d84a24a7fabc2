@@ -1,0 +1,10 @@
+package 추상클래스;
+
+public class Abstract {
+
+	public static void main(String[] args) {
+		
+		Dobject obj = new Dobject();
+
+}
+}

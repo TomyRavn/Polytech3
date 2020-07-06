@@ -1,0 +1,32 @@
+import java.util.Scanner;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);		
+		System.out.println("정수를 입력 :");
+		
+		while(true) {
+		int num1 =s.nextInt();
+		if(num1>1 && num1<51) {
+		
+			for(int i=1; i<=num1; i++)			
+				System.out.print("#");
+				System.out.println();		
+		}
+			else break;				
+				
+				
+	
+					
+		}
+		
+		
+		
+	}
+}
+	
+
+
+

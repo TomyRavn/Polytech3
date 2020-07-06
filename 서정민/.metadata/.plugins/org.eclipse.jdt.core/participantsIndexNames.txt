@@ -1,0 +1,25 @@
+INDEX VERSION 1.131
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1307668566.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3313026612.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1094386399.index
+\exspring\src\main\java
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4098432764.index
+\exspring\src\main\java
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1947228710.index
+\exspring\src\main\java
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3754337974.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2863331664.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2310562351.index
+\exspring\src\main\java
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2818173342.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2878590644.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3935792896.index
+\exweb\src
+C:\web\eclipse\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2121393913.index
+\exspring\src\main\java

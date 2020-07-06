@@ -1,0 +1,11 @@
+package com.exam;
+
+import org.aspectj.lang.JoinPoint;
+
+public class MyAdvice {
+	public void log(JoinPoint jp) {
+		System.out.println("실행전!");
+	}
+	
+
+}

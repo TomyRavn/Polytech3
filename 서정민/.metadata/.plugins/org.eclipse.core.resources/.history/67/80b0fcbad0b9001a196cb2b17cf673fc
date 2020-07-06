@@ -1,0 +1,13 @@
+package 미션;
+
+class CPoint {
+	String a;
+	String b;
+	public void show() {
+		show();
+		System.out.println("나는 조상이다");
+		System.err.println(a);
+		System.err.println(b);
+	}
+
+}

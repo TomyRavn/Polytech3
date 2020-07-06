@@ -1,0 +1,18 @@
+package 미션;
+
+class CColorPoint extends CPoint {
+	CColorPoint(int a, int b, String s) {
+		super(a, b);
+		this.s=s;
+	}
+
+    public static void main(String[] args) {
+        CPoint a,b;
+        a=new CPoint(2,3);
+        b=new CColorPoint(3,4,"red");
+        a.show();
+        b.show();
+    }
+}
+
+

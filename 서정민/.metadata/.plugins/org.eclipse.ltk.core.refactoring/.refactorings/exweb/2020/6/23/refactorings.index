@@ -1,0 +1,27 @@
+1590987761189	Copy compilation unit
+1590987774793	Rename type 'MemberAddFormServlet'
+1590988358994	Delete element
+1590988372386	Copy compilation unit
+1590988388920	Rename type 'MemberAddServlet'
+1590994801821	Copy compilation unit
+1590994808097	Move compilation unit
+1590996468144	Delete element
+1590997564644	Copy compilation unit
+1590997570986	Rename type 'StudentEditServlet2'
+1591324591080	Extract method 'insertMember'
+1591330396048	Copy compilation unit
+1591330637691	Delete element
+1591331100431	Extract method 'delMember'
+1591331118249	Rename local variable 'delId'
+1591331786883	Extract method 'selectMember'
+1591332136173	Rename local variable 'no'
+1591332245273	Extract method 'insertStudent'
+1591332557293	Extract method 'updateMember'
+1591332901511	Extract method 'insertStudent'
+1591334263688	Extract method 'selectMemberList'
+1591336736942	Extract method 'delStudent'
+1591337394599	Extract method 'updateStudent'
+1591338931409	Copy folder
+1591342419916	Delete element
+1591344916955	Delete element
+1591346161487	Delete element

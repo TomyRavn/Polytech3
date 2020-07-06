@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+		
+		Scanner s = new Scanner(System.in);		
+		System.out.println("정수를 입력 :");
+		int i=1;
+		int cnt =1;
+			
+		while(true) {
+			
+			System.out.printf("막대%d의 길이: ",cnt);
+			int num1 =s.nextInt();
+
+			if(num1>0 && num1<51) {
+				for( i=1; i<=num1; i++)	
+					for(cnt=1; cnt<11; cnt++)
+					System.out.print("#");
+				
+				System.out.println();
+
+			} else  System.out.print("정수를 다시 입력하세요");
+
+		}
+	}
+}
+
+

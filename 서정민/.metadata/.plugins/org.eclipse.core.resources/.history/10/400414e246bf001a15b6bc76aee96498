@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class Q1 {
+
+	public static void main(String[] args) {
+		
+		int [] arr = new int[4];
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.printf("Q1. 2018년 여름 휴가 계획은?");
+		System.out.printf("(1)여행 (2)독서 (3)방콕 (4)아직결정안됨 [선택]");
+
+	}
+
+}

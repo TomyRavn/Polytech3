@@ -1,0 +1,11 @@
+package 추상클래스;
+
+public class Rect extends Dobject {
+
+	@Override
+	public void draw() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

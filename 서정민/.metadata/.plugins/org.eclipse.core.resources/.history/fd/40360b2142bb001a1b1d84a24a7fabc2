@@ -1,0 +1,8 @@
+package 미션;
+
+public class calculate {
+
+	calculate cal = new calculate();
+	
+	
+}

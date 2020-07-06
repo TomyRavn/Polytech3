@@ -1,0 +1,37 @@
+package kr.ac.kopo.student;
+
+import java.util.List;
+
+public class StudentServiceImpl implements StudentService {
+	private StudentDao studentDao = new StudentDaoBatis();
+	
+
+	@Override
+	public List<StudentVo> selectStudentList() {
+		
+		return studentDao.selectStudentList();
+	}
+
+	@Override
+	public StudentVo selectStudent(String StuNo) {
+		return studentDao.selectStudent(StuNo);
+	}
+
+	@Override
+	public int deleteStudent(String stuNo) {
+		return studentDao.deleteStudent(stuNo);
+	}
+
+	@Override
+	public int insertStudent(StudentVo vo) {
+		return studentDao.insertStudent(vo);
+	}
+
+	@Override
+	public int updateStudentVo(StudentVo vo) {
+		return studentDao.updateStudentVo(vo);
+		
+	}
+	
+
+}

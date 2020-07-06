@@ -1,0 +1,25 @@
+package 미션2;
+
+abstract class MyPoint {
+	int x;
+	int y;
+	
+public MyPoint(int x, int y) {
+	this.x = x;
+	this.y = y;
+}
+
+protected void move(int x,int y) {//새로운 x,y위치로 이동
+System.out.println(x+","+y);
+}
+
+protected void reverse(String color) {//새로운 x,y위치로 이동
+System.out.println(x+","+y+","+color);
+}
+
+protected void show(String color) {
+	System.out.println(x+","+y+","+color);
+}
+
+}
+

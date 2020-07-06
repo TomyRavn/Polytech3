@@ -1,0 +1,13 @@
+package 연습문제;
+
+public class 동영상실험 {
+	
+	public static void main(String[] args) {
+		
+		int x = 1;
+		int y=  2;
+		
+		System.out.println("x+y");
+	}
+
+}

@@ -1,0 +1,9 @@
+package 미션;
+
+class Div extends Calc {
+	
+
+	}
+	
+}
+

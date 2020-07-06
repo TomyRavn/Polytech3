@@ -1,0 +1,6 @@
+package 미션;
+
+class Sub extends Calc {
+	
+	
+}

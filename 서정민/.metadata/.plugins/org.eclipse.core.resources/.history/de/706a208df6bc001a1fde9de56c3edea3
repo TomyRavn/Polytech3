@@ -1,0 +1,79 @@
+package kr.ac.kopo.member;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller()
+public class MemberController {
+	private MemberService memberService = MemberServiceImpl.getInstance();
+
+//	@RequestMapping(value="/member/list.do",method = RequestMethod.GET)
+	@RequestMapping("/member/list.do")
+	public String list(Map modelMap) {
+		List<MemberVo> list = memberService.selectMemberList();
+
+		modelMap.put("memList", list);// 모델에 "memList"라는 이름으로 list를 저장
+
+		// "/WEB-INF/views/member/memList.jsp" 파일로 이동
+		// req.getRequestDispatcher("/WEB-INF/jsp/Student/StudentList.jsp").forward(req,
+		// resp);
+		// return "/WEB-INF/views/member/memList.jsp";
+		return "member/memList";
+	}
+
+	@RequestMapping(value = "/member/add.do", method = RequestMethod.GET)
+	public String addform() {
+		return "member/memAddForm";
+	}
+
+	@RequestMapping(value = "/member/add.do", method = RequestMethod.POST)
+	public String add(MemberVo vo) {
+
+//req.setCharacterEncoding("UTF-8");			
+//MemberVo vo = new MemberVo(); vo.setMemId(req.getParameter("memId"));
+//vo.setMemPass(req.getParameter("memPass"));
+//vo.setMemName(req.getParameter("memName")); vo.setMemPoint(Integer.parseInt(
+//req.getParameter("memPoint")));
+
+		int num = memberService.insertMember(vo);
+		System.out.println(num + "개의 레코드 추가");
+//resp.sendRedirect(req.getContextPath()+ "/member/list.do");
+
+//컨트롤로에서 반환하는 뷰이름문자열의 앞에 "Redirect"을 붙이면 리다이렉트
+		return "redirect:/member/list.do";
+
+	}
+
+	@RequestMapping(value = "/member/edit.do", method = RequestMethod.GET)
+	public String editform(String memId,Map modelMap){
+//		String no = req.getParameter("memId");
+		MemberVo vo = memberService.selectMember(memId);
+//		req.setAttribute("memVo", vo);
+		modelMap.put("memVo", vo);
+//		req.getRequestDispatcher("/WEB-INF/jsp/member/memEditForm.jsp").forward(req, resp);
+		return "/member/memEditForm";
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//	req.setCharacterEncoding("UTF-8");			
+		MemberVo vo = new MemberVo();
+		vo.setMemId(req.getParameter("memId"));
+		vo.setMemName(req.getParameter("memName"));
+		vo.setMemPoint(Integer.parseInt(req.getParameter("memPoint")));
+		int num = memberService.updateMember(vo);
+		System.out.println(num + "개의 레코드 변경");
+		resp.sendRedirect(req.getContextPath() + "/member/list.do");
+
+	}
+}

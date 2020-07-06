@@ -1,0 +1,16 @@
+package 추상클래스;
+
+abstract public class Abstract {
+
+	public static void main(String[] args) {
+		
+		Dobject obj = new Dobject() {
+			
+			@Override
+			public void draw() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+}
+}

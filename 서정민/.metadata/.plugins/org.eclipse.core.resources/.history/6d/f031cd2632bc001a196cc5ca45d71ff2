@@ -1,0 +1,46 @@
+package kr.ac.kopo.student;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import kr.ac.kopo.comm.MyBatisUtils;
+
+public class StudentDaoBatis implements StudentDao {
+	SqlSessionFactory sqlSessionFactory = MyBatisUtils.getsSessionFactory();
+	
+	@Override
+	public List<StudentVo> selectStudentList() {
+		List<StudentVo> list = null;
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			list = session.selectList("kr.ac.kopo.student.StudentDao.selectStudentList");
+		}
+		return list;	
+	}
+
+	@Override
+	public StudentVo selectStudent(String StuNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int deleteStudent(String stuNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int insertStudent(StudentVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateStudentVo(StudentVo vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

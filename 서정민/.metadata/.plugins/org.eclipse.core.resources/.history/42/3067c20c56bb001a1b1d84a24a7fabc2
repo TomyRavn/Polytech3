@@ -1,0 +1,36 @@
+package 추상클래스;
+
+public abstract class CalculatorC extends Calculator {
+	
+	int a,b;
+	
+	void setValue(int a,int b) {
+		this.a=a;
+		this.b=b;
+	}
+	
+	abstract class add extends Calculator {
+		public int add(int a,int b) {		
+			return a+b;
+		}
+	}
+
+	abstract class subtract extends Calculator {
+		public int subtract(int a,int b) {		
+				return a-b;
+			
+		}
+	}
+
+	abstract class average extends Calculator{
+	public double average(int[] a) {
+		int sum = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			sum ++;
+		}		
+		int result = sum/a.length;		
+		return result;
+	}
+}
+}

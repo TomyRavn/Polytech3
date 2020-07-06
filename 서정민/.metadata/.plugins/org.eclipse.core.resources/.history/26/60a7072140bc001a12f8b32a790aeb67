@@ -1,0 +1,9 @@
+package com.exam;
+
+public class MyConfig {
+	
+	public MyApp ma() {
+		return new MyApp();
+	}
+
+}

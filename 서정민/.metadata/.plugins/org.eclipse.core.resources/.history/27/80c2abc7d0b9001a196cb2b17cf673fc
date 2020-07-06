@@ -1,0 +1,17 @@
+package 미션;
+
+public class CColorPoint extends CPoint {
+	protected String a;
+
+	public void show() {
+		System.out.println("나는자식이다.");
+		a = 2;
+	}
+	
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}

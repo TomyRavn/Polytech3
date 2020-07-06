@@ -1,0 +1,25 @@
+package kr.ac.kopo.member;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller()
+public class MemberController {
+
+	private MemberService memberService = MemberServiceImpl.getInstance();
+
+
+//	@RequestMapping(value="/member/list.do",method = RequestMethod.GET)
+	@RequestMapping("/member/list.do")
+	public String list(Map modelMap) { 		
+		List<MemberVo>list = memberService.selectMemberList();
+		
+		modelMap.put("memList", list);
+	
+		return "member/memList";
+}
+}

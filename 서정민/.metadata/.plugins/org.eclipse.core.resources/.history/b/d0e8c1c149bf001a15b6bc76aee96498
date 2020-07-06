@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Q1 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int [] arr = new int[4];
+		int temp;
+		
+	
+		for (int i = 0; i <=10; i++) {
+			System.out.println("Q1. 2018년 여름 휴가 계획은?");
+			System.out.println("(1)여행 (2)독서 (3)방콕 (4)아직결정안됨 [선택]");
+			int n = sc.nextInt();
+			
+			switch (n) {
+			case 1:
+				
+				break;
+
+			default:
+				break;
+			}
+			
+			
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		}
+	}
+
+}

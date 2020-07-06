@@ -1,0 +1,58 @@
+package 미션;
+
+import java.util.Scanner;
+
+abstract public class CalEx {
+
+	public static void menu() {
+		System.out.println("1.add"+"2.sub"+"3.mul"+"4.div"+"5.end");
+		System.out.print("메뉴 선택>>");
+	}
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+
+		while (true) {
+			menu();
+			int n = s.nextInt();
+			
+			if(n==5) {
+				System.out.println("프로그램종료합니다.");
+				return;
+			}
+			
+			if(n<1 || n>5) {
+				System.out.println("존재 하지 않습니다. 숫자를 다시 입력해 주세요");
+				continue;
+			}
+			
+			System.out.println("피연산자1:");
+			int a = s.nextInt();
+			System.out.println("피연산자2:");
+			int b = s.nextInt();
+			int result = 0;
+			
+			Calc c;
+
+			switch (n) {
+			case 1:
+				c = new Add(); c.setValue(a, b);
+				result = c.calculate(); break;
+			case 2:
+				c = new Sub(); c.setValue(a, b);
+				result =  c.calculate(); break;
+			case 3:
+				c= new Mul(); c.setValue(a, b);
+				result =  c.calculate(); break;
+			case 4:
+				c = new Div(); c.setValue(a, b);
+				result = c.calculate(); break;
+
+			case 5:return;
+			}
+			System.out.println("결과:"+result);
+		}
+
+	}
+
+}

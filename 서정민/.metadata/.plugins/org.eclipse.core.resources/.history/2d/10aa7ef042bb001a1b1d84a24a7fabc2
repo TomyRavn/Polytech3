@@ -1,0 +1,28 @@
+package 추상클래스;
+
+public class CalculatorEx extends Calculator {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+	@Override
+	public int add(int a, int b) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int subtract(int a, int b) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int average(int[] a) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.exam;
+
+import org.springframework.stereotype.Component;
+
+@Component("ma") //"ma"라는 이름으로 스프링에 등록
+public class MyApp {
+	private MyService myService;
+	
+	public MyService getMyService() {
+		return myService;
+	}
+	
+	public void setMyService(MyService myService) {
+		this.myService = myService;
+	}
+	
+	public void sayHello() {
+		System.out.println(myService.getHelloMsg());
+	}
+	public void sayBye() {
+		System.out.println(myService.getByeMsg());
+	}
+
+}

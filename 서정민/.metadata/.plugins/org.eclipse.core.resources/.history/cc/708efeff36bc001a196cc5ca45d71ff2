@@ -1,0 +1,10 @@
+package com.exam;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface MyService {
+	String getHelloMsg();
+	String getByeMsg();
+
+}

@@ -1,0 +1,16 @@
+package 추상클래스;
+
+public abstract class average extends CalculatorC {
+
+	int calculate(int[] a) {
+		int sum = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			sum ++;
+		}		
+		int result = sum/a.length;		
+		return result;
+	}
+	}
+
+

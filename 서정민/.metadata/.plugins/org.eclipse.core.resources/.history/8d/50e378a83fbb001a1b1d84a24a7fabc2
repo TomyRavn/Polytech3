@@ -1,0 +1,7 @@
+package 미션;
+
+class Mul extends Calc {	
+
+	
+	}
+

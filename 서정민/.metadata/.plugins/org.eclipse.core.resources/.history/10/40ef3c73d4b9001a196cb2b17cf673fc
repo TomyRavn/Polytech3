@@ -1,0 +1,17 @@
+package 미션;
+
+class CPoint {
+	int a;
+	int b;
+	
+	protected CPoint(int a,int b) {
+		this.a=a;
+		this.b=b;	
+		
+	
+	}
+	void show() {
+	 System.out.println("("+a+","+b+")");
+}
+
+}

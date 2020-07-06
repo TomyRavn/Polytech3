@@ -1,0 +1,11 @@
+package 추상클래스;
+
+public class subtract extends CalculatorC {
+
+	@Override
+	int calculate() {
+		
+		return a-b;
+	}
+
+}

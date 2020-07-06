@@ -1,0 +1,15 @@
+package com.exam;
+
+public class MyServiceEn implements MyService {
+
+	@Override
+	public String getHelloMsg() {
+		return "Hello";
+	}
+
+	@Override
+	public String getByeMsg() {
+		return "Good bye";
+	}
+
+}

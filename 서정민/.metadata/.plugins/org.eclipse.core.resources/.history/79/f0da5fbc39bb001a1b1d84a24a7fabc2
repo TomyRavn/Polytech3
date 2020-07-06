@@ -1,0 +1,29 @@
+package 미션;
+
+class Mul extends Cal {
+	
+	Mul(int num1, int num2) {
+		super(num1, num2);
+	}
+
+	int a;
+	int b;
+	
+	public int getA() {
+		return a;
+	}
+
+	public int getB() {
+		return b;
+	}
+	
+	void setValue(int a, int b) {
+		this.a=a;
+		this.b=b;
+	}
+	
+	public void calculate(int a, int b) {
+		System.out.println(a*b);
+	}
+	
+}
