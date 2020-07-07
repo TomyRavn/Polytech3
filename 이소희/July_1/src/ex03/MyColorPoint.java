@@ -1,10 +1,25 @@
 package ex03;
 
-public abstract class MyColorPoint extends MyPoint {
+public class MyColorPoint extends MyPoint {
 
-	public MyColorPoint(int x, int y, String color) {
-		super(x, y);
-		// TODO Auto-generated constructor stub
+	public MyColorPoint(int i, int j, String color) {
+		super(i, j);
+		System.out.println(i + "," + j + "," + color);
+
+	}
+
+	@Override
+	protected void move(int x, int y) {
+		this.x += x;
+		this.y += y;
+	}
+
+	@Override
+	protected void reverse() {
+		int temp = x;
+		x = y;
+		y = temp;
+
 	}
 
 	public static void main(String[] args) {

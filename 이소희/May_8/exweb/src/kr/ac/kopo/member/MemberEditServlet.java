@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/edit.do")
 public class MemberEditServlet extends HttpServlet{
-	MemberDaoJdbc memberDao = new MemberDaoJdbc();	
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
 		String no = req.getParameter("memId");		
-		MemberVo vo = memberDao.selectMember(no);
+		MemberVo vo = memberService.selectMember(no);
 		
 		req.setAttribute("memVo", vo);
 		
@@ -31,7 +31,7 @@ public class MemberEditServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8");
 
 		
 		MemberVo vo =new MemberVo();
@@ -40,7 +40,7 @@ public class MemberEditServlet extends HttpServlet{
 		vo.setMemPoint(Integer.parseInt(req.getParameter("memPoint")));
 		
 		
-		int num = memberDao.updateMember(vo);
+		int num = memberService.updateMember(vo);
 
 		System.out.println(num + "개의 레코드 추가");
 		resp.sendRedirect(req.getContextPath() + "/member/list.do");

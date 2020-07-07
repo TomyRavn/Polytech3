@@ -1,0 +1,16 @@
+package com.exam;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class AppMain {
+	public static void main(String[] args) {
+//		MyApp myApp = new MyApp();
+		
+		new ClassPathXmlApplicationContext("/com/exam/context.xml");
+		
+		myApp.sayHello();
+		myApp.sayBye();
+		
+	}
+
+}

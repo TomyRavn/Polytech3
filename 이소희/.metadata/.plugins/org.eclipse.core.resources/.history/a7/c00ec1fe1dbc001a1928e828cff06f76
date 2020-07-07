@@ -1,0 +1,5 @@
+package kr.ac.kopo.bbs;
+
+public class BbsServiceImpl implements BbsService{
+
+}

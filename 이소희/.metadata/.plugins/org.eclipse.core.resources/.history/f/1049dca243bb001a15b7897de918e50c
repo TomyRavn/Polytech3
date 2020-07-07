@@ -1,0 +1,11 @@
+package ex;
+
+abstract public class Calculator {
+	int a,b,c;
+	
+	public abstract int add(int a, int b);
+	public abstract int substract(int a, int b);
+	public abstract double average(int[], a);
+	
+
+}

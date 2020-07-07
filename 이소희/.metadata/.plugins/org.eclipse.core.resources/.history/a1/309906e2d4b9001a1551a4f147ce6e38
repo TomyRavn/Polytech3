@@ -1,0 +1,21 @@
+package overring;
+
+public class CColorPoint extends CPoint{
+		String color;
+		void setColor(String color) {
+			this.color = color;
+		}
+		
+		void showColorPoint() {
+			System.out.print(color);
+			showCPoint();
+		}
+		
+
+		public static void main(String[] args) {
+			CColorPoint cp = new CColorPoint();
+			cp.set(3, 4);
+			cp.setColor("red");	
+			cp.showColorPoint();
+		}
+	}

@@ -1,0 +1,36 @@
+package overring;
+
+class CPoint {
+	int x, y;
+	
+
+	public void set(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	
+		public void showCPoint() {
+			System.out.println(x +"," + y);
+
+			}
+}
+
+
+
+
+
+
+
+//		
+//		class CPoint {
+//			int x, y;
+//			
+//		protected void set(int x, int y) {
+//			this.x = x;
+//			this.y = y;
+//		}
+//		protected void showPoint() {
+//			System.out.println("(" + x + ", " + y + ")");
+//		}
+//	}

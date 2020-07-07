@@ -1,0 +1,9 @@
+package ex;
+
+public class Div extends Calc {
+
+	@Override
+	public void cal() {
+		System.out.println(b / c);
+	}
+}

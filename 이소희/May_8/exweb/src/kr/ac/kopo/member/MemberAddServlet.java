@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/member/add.do")
 public class MemberAddServlet extends HttpServlet {
-	MemberDaoJdbc memberDao = new MemberDaoJdbc();
+	private MemberService memberService = MemberServiceImpl.getInstance();
 	
 	
 	//요청을 받으면, 요청 방식에 상관 없이 실행되는 메서드 : service()
@@ -29,13 +29,13 @@ public class MemberAddServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8");
 		MemberVo vo = new MemberVo();
 		vo.setMemId(req.getParameter("memId"));
 		vo.setMemPass(req.getParameter("memPw"));
 		vo.setMemName(req.getParameter("memName"));
 		vo.setMemPoint(Integer.parseInt(req.getParameter("memPoint")));	
-		int num = memberDao.insertMember(vo);
+		int num = memberService.insertMember(vo);
 		System.out.println(num + "개의 레코드 추가");
 		resp.sendRedirect(req.getContextPath() + "/member/list.do");
 	}				

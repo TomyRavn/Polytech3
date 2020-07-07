@@ -1,0 +1,16 @@
+package com.exam;
+
+public class MyApp {
+	private MyService myService = new MyServiceEn();
+	
+	public void sayHello() {
+		System.out.println(myService.getHelloMsg());
+	}
+	
+	
+	public void sayBye() {
+		System.out.println(myService.getByeMsg());
+		
+	}
+
+}

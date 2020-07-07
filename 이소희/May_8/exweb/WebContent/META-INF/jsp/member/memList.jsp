@@ -26,8 +26,9 @@
 		
 
 	<c:forEach var="vo" items="${memList}">
-		<a href='${pageContext.request.contextPath}/member/edit.do?memId=${vo.memId}'>${vo.memId}</a>
-		: ${vo.memPass} : ${vo.memName} : ${vo.memPoint}
+		<a href='${pageContext.request.contextPath}/member/edit.do?memId=${vo.memId}'>
+		<c:out value="${vo.memId}"/></a> : 
+		<c:out value="${vo.memName}"/>
 		<br/>				
 	</c:forEach>
 				

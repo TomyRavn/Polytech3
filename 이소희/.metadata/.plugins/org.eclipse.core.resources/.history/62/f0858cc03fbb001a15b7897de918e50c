@@ -1,0 +1,9 @@
+package ex;
+
+public class Mul extends Calc {
+
+	@Override
+	public void cal() {
+		System.out.println(b * c);
+	}
+}

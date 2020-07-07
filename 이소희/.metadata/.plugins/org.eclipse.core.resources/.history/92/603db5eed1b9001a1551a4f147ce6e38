@@ -1,0 +1,35 @@
+package overring;
+
+public class CPoint {
+	CPoint a, b;
+	
+		public void main(String[] args){
+			
+
+			a = new CPoint(2, 3);
+			b = new CColorPoint(3, 4, "red");
+			a.show();
+			b.show();
+			System.out.println(a);
+			System.out.println(b);
+			}
+}
+
+
+
+
+
+
+
+//		
+//		class CPoint {
+//			int x, y;
+//			
+//		protected void set(int x, int y) {
+//			this.x = x;
+//			this.y = y;
+//		}
+//		protected void showPoint() {
+//			System.out.println("(" + x + ", " + y + ")");
+//		}
+//	}

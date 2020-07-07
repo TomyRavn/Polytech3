@@ -1,0 +1,9 @@
+package ex;
+
+public class Sub extends Calc {
+
+	@Override
+	public void cal() {
+		System.out.println(b - c);
+	}
+}

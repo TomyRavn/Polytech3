@@ -1,0 +1,7 @@
+package kr.ac.kopo;
+
+public class MyVo {
+	private int mtNo;
+	private String mtId;
+
+}
