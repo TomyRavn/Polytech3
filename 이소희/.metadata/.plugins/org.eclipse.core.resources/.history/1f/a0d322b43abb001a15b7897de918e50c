@@ -1,8 +1,0 @@
-package ex;
-
-public class Mul extends Calc {
-
-	@Override
-	public void cal() {
-	}
-}

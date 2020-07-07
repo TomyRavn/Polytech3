@@ -1,7 +1,0 @@
-package kr.ac.kopo.comm;
-
-import javax.servlet.http.HttpServlet;
-
-public class InitServlet extends HttpServlet{
-
-}

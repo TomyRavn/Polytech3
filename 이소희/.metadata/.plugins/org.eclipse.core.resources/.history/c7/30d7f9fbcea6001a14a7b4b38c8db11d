@@ -1,8 +1,0 @@
-package kr.ac.kopo.exapp;
-
-public class Food {
-	private String name;
-	int price;
-	
-
-}

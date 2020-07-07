@@ -1,9 +1,0 @@
-package ex03;
-
-public class MyColorPoint {
-	
-	public static void main(String[] args) {
-		
-	}
-
-}

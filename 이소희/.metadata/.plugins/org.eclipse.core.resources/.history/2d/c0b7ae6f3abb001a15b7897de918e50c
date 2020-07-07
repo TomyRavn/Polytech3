@@ -1,8 +1,0 @@
-package ex;
-
-public class Add extends Calc {
-
-	@Override
-	public void cal() {
-	}
-}

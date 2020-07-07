@@ -1,5 +1,0 @@
-package ex;
-
-public class Sub extends Calc{
-
-}

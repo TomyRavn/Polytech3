@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move 4 elements to &apos;exapp/src/kr.ac.kopo.exapp&apos;&#x0D;&#x0A;- Original project: &apos;exapp&apos;&#x0D;&#x0A;- Destination element: &apos;exapp/src/kr.ac.kopo.exapp&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     ExExchange.java&#x0D;&#x0A;     ExInOut.java&#x0D;&#x0A;     ExLogin.java&#x0D;&#x0A;     exTest.java&#x0D;&#x0A;- Update references to refactored element" description="Move compilation units" destination="/src&lt;kr.ac.kopo.exapp" element1="/src&lt;{ExExchange.java" element2="/src&lt;{ExInOut.java" element3="/src&lt;{ExLogin.java" element4="/src&lt;{exTest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1589503320575" units="4" version="1.0"/>
-</session>

@@ -1,5 +1,0 @@
-package kr.ac.kopo.member;
-
-public class MemberServiceImpl implements MembverService{
-
-}
