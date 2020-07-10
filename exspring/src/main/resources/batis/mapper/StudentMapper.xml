@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="kr.ac.kopo.student.StudentDao">
+
+<resultMap type="StudentVo" id="StudentMap">
+	<id property="stuNo" column="stu_no" />
+	<result property="stuName" column="stu_name" />
+	<result property="stuScore" column="stu_score" />	
+</resultMap>
+
+ <select id="selectStudentList" resultType="StudentVo">
+    SELECT stu_no, stu_name, stu_score
+    FROM student order by stu_no
+ </select>
+  
+<!--   실행에 필요한 값을 받는 경우에는, 받을 값을 타입을 parameterType 속성에 저장 -->
+  <select id="selectStudent" parameterType="string" resultType="StudentVo">
+    SELECT stu_no, stu_name, stu_score
+ 	 FROM student
+ 	 WHERE stu_no = #{stuNo} 
+  </select>
+  
+<!--   파라미터로 받은 객체의 속성(변수)값을 SQL문에 주입하기 위해서는 ${변수명}을 사용 -->
+  <insert id="insertStudent" parameterType="StudentVo">
+  	INSERT INTO student 
+  	(stu_no, stu_name, stu_score) 
+	VALUES (#{stuNo},#{stuName},#{stuScore})  
+  </insert>
+  
+  <update id="updateStudentVo" parameterType="StudentVo">
+  	UPDATE student 
+  	SET stu_name = #{stuName}, stu_score =#{stuScore}
+  	where stu_no = #{stuNo}
+  </update>
+  
+<!--parameterType이 단일값을 갖는 객체인 경우(string,Integer...(단일값))에는 #{}의 이름은 무엇을 사용하든 상관없음 -->
+  <delete id="deleteStudent" parameterType="string">
+ 	 Delete from student 
+  	where stu_no = #{stuNo}
+  </delete>
+  
+ 
+</mapper>
