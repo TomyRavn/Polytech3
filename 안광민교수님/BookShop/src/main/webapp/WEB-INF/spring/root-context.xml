@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+<!-- 		개발자 : dao, mapper 만드는 것 까지 관장 -->
+		
+		
+<!-- 		데이터베이스 연결을 관장 -->
+<!-- ref : 참조 / value : 값을 넣음 -->
+<!-- factory 패턴을 씀 ; 팩토리가 중간에서 팩토리클래스에서 템플릿을 만들어줌, 개발자는 명령을 템플릿에 줌-->
+<!-- 템플릿 클래스를 리턴해주므로, 템플리에 요청 -->
+<!-- 우리나라는 80~90%가 mybatis를 씀 -->
+<!-- cf ) jpa -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> 
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/> 
+		<property name="username" value="madang"/> 
+		<property name="password" value="madang"/> 
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
+		
+<!-- 		<property name="mapperLocations" value="classpath:/testMapper.xml"></property> -->
+<!-- 		mapper를 잘못관리, mapper를 등록하고 삭제하지 않은 경우, mapper가 남아있으면, 비정상적인 공격의 취약점이 될 수 있음 -->
+	</bean>
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+
+</beans>
