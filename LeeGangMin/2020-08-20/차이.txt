@@ -1,0 +1,13 @@
+statement;
+normal한 String을 파라미터로 받아 '' + '' 로 길게 써서 작성할 수 있지만, 보안에 매우 취약
+
+"SELECT * FROM book WHERE bookid='"' + 3 + '"'
+
+-> 변수 위치를 조작하여 SQL injection 발생
+=================================================================
+
+preparedStatement ;
+
+SELECT * FROM book WHERE bookid=?
+
+-> 이상한 문장을 쓰면 String으로 더해지지 않고, 값이 잘못되었다고 오류로 처리됨(setInt, setString 등)

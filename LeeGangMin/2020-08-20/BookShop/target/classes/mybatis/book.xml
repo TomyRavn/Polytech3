@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="book">
+
+<!-- resultType을 짧게 쓰기위해 aliancing -->
+
+<!-- sql은 조각 query -->
+<!-- 내부적으로 사용, dao에서 호출해서 사용 불가 -->
+<!-- 구조화하기 위해 조각냄 -->
+<!-- oracle버전에도 관계없고 mysql에서도 사용될 수있게 ||대신 CONCAT을 사용했음 -->
+	<sql id="search">
+		SELECT * FROM book
+		<where>
+			<if test="search == 1">
+				bookid = #{keyword}
+			</if>
+			<if test="search == 2">
+				bookname LIKE CONCAT( CONCAT('%', #{keyword}), '%')
+			</if>
+			<if test="search == 3">
+				publisher LIKE CONCAT( CONCAT('%', #{keyword}), '%')
+			</if>
+			<if test="search == 4">
+				price = #{keyword}
+			</if>
+		</where>
+		<if test="header == 1">
+			ORDER BY bookid
+		</if>
+		<if test="header == 2">
+			ORDER BY bookname
+		</if>
+		<if test="header == 3">
+			ORDER BY publisher
+		</if>
+		<if test="header == 4">
+			ORDER BY price
+		</if>
+		
+		<if test="order == 0">
+			ASC
+		</if>
+		<if test="order == 1">
+			DESC
+		</if>
+	</sql>
+
+<!-- 	SELECT * FROM book ORDER BY bookid -->
+	<select id="list" resultType="Book">
+		SELECT * FROM
+  			(SELECT ROWNUM rn, sub.* FROM
+    			(<include refid="search" />) sub)
+    	<![CDATA[
+		WHERE rn > (#{page} - 1) * #{perPage} AND rn <= #{page} * #{perPage}
+		]]> 
+<!-- 	BETWEEN (2 - 1) * 5 + 1 AND 2 * 5; -->
+	</select>
+	
+	<select id="total" resultType="int">
+		SELECT COUNT(*) FROM
+			(<include refid="search" />)
+	</select>
+	
+	<insert id="add" parameterType="Book">
+		INSERT INTO book 
+		VALUES(#{bookid}, #{bookname}, #{publisher}, #{price})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM book 
+		WHERE bookid=#{bookid} 
+	</delete>
+	
+	<update id="update" parameterType="Book">
+		UPDATE book
+		SET bookname=#{bookname}, publisher=#{publisher}, price=#{price}
+		WHERE bookid=#{bookid}
+	</update>
+	
+	<select id="item" parameterType="int" resultType="Book">
+		SELECT * FROM book
+		WHERE bookid=#{bookid}
+	</select>
+
+</mapper>
