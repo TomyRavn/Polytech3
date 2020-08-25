@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2주차_0825</title>
+    <style>
+        /* 전체 선택자에서 초기 여백을 0으로 잡고 시작 */
+
+        /* float은 z축을 띄워서 붙이기 때문에 아래에 깔린 배경이라던가 다른 요소를 신경쓰지 못함 */
+        /* 그래서 아래에 깔린 div등은 높이를 따로 설정해주어야함 */
+
+        /* *{
+            padding: 0px;
+            margin: 0px;
+        } */
+        .summary{
+            background: #ddd;
+            /* padding: 30px 20px 50px 30px; */
+            padding: 30px 20px;
+            height: 100px;
+        }
+        .summary-img{
+             float: left;
+             width: 30%;
+        }
+        .summary-con{
+            float: right;
+            width: 70%;
+            text-align: justify;
+        }
+        .cl{clear: both;}
+        .icon1{
+            font-size: 24px;
+            font-weight: 700;
+            color: blue;
+            padding-left: 30px;
+            background: url(/images/bl.gif) no-repeat 0 15px;
+            /* background-repeat: no-repeat; */
+            /* background-position-y: 15px; */
+        }
+        .border-box{
+            border: 1px solid gray;
+        }
+        .icon-list li{
+            list-style: none;
+            padding-left: 30px;
+            background: url(/images/bl2.gif) no-repeat 0 10px;
+        }
+        table.chart{
+            width: 100%;
+            /* border: 1px solid black; */
+            padding: 30px;
+        }
+        table.chart th{
+            background: #ddd;
+            padding: 10px 30px;
+        }
+        table.chart td{
+            padding: 10px;
+            text-align: center;
+            border-left: 3px solid #999;
+            border-bottom: 3px solid #999;
+        }
+        table.chart td:first-child{
+            border-left: none;
+        }
+        .page-con{
+            background: yellow;
+            margin: 50px;
+            padding: 30px;
+            text-align: center;
+        }
+        .right-image{
+            /* position: absolute; */
+            float: right;
+            margin-top: 110px;
+        }
+        .center-image{
+            margin: 0 auto;
+            width: 500px;
+            margin-left: 20%;
+        }
+        .container{
+            margin: 0 auto;
+            width: 80%;
+        }
+        .link{
+            text-align: center;
+        }
+        nav{
+            background: #ddd;
+        }
+        nav li{
+            display: inline-block;
+            box-sizing: border-box;
+            width: 24%;
+            color: black;
+            text-align: center;
+        }
+        nav li a, nav li a:visited{
+            display: block;
+            text-decoration: none;
+            padding: 20px;
+            font-weight: 700;
+            color: black;
+        }
+        nav li a:hover{
+            background: red;
+            font-weight: 700;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="summary">
+        <div class="summary-img">
+            <img src="http://www.kopo.ac.kr/images/logo_new/daejeon.png">
+        </div>
+        <div class="summary-con">
+            청춘의 그들은 만천하의 듣기만 있으랴? 인류의 내려온 얼마나 수 새 우리 우리는 갑 있다.<br>
+            것은 발휘하기 놀이 것이다. 긴지라 황금시대의 인생의 뼈 있는 너의 뿐이다.<br>
+            속잎나고, 천하를 가치를 찾아 청춘을 인생을 있는가? 과실이 영락과 평화스러운 칼이다.<br>
+            어디 사랑의 자신과 가슴이 놀이 부패뿐이다. 곳으로 아니더면, 더운지라 생의 사막이다.<br>
+            인도하겠다는 없는 현저하게 그들을 찾아다녀도, 속에서 황금시대를 내는 실로 봄바람이다.<br>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#">우리과 소개</a></li>
+            <li><a href="#">갤러리</a></li>
+            <li><a href="#">교육과정</a></li>
+            <li><a href="#">카페바로가기</a></li>
+        </ul>
+    </nav>
+
+    <h3 class="icon1 cl">운영안내</h3>
+    <div class="border-box">
+        <ul class="icon-list">
+            <li>운영기간: 상반기, 하반기, 겨울, 여름방학, 수시</li>
+            <li>운영대상: 유아, 학생, 일반인, 노인 등 전계층</li>
+            <li>운영내용: 독서, 문화·예술</li>
+        </ul>
+    </div>
+        <ul class="icon-list">
+            <li>운영기간: 상반기, 하반기, 겨울, 여름방학, 수시</li>
+            <li>운영대상: 유아, 학생, 일반인, 노인 등 전계층</li>
+            <li>운영내용: 독서, 문화·예술</li>
+        </ul>
+
+    <h3 class="icon1">테이블</h3>
+    <table class="chart">
+        <thead>
+            <th>구분</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>비고</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>구분1</td>
+                <td>제목1</td>
+                <td rowspan="2">내용</td>
+                <td>비고1</td>
+            </tr>
+            <tr>
+                <td>구분2</td>
+                <td>제목2</td>
+                <td>비고2</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td>구분구분구분</td>
+            <td>제목제목제목</td>
+            <td>내용내용내용내용내용</td>
+            <td>비고비고</td>
+        </tfoot>
+    </table>
+    
+    <h3 class="icon1">Page</h3>
+    <div class="page-con">
+        토끼, 시인의 없이 거외다. 우는 패, 않은 별에도 파란 별 다하지 나는 있습니다.<br>
+        하나 이름자를 둘 위에도 말 있습니다. 하나에 별 노루, 둘 마디씩 계십니다.<br>
+        부끄러운 둘 것은 당신은 어머니, 아직 묻힌 봅니다. 프랑시스 추억과 하나에 남은 이름을 언덕 헤는 버리었습니다.<br>
+        어머님, 벌레는 경, 별 거외다. 시와 때 사랑과 아스라히 남은 노루, 봅니다. 이름과 아름다운 아직 계십니다.<br>
+        마디씩 없이 별 잠, 봅니다. 계집애들의 계절이 된 그러나 가을 봅니다.<br>
+        <img class="center-image" src="http://www.kopo.ac.kr/images/campus/daejeon/dormi01.jpg">
+        <img class="right-image" src="/images/l_bg.png">
+    </div>
+    <div class="link">
+        <a href="http://www.kopo.ac.kr/" target="_blank"> >> 한국 폴리텍 대학 바로가기 </a>
+    </div>
+    </div>
+</body>
+</html>
